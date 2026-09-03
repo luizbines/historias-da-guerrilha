@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Soledad Barrett - Perfil</title>
+  <script src="i18n.js"></script>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    /* GLOBAL FONT */
+    img {
+      opacity: 0.8 !important;
+    }
+
+    * {
+      font-family: "Roboto Mono", monospace !important;
+    }
+
+    :root {
+      --bg-color: #f5f2e6;
+      /* Main screen cream */
+      --text-main: #2b2b2b;
+      --text-highlight: #8a0e14;
+      /* Wine / Blood */
+      --accent: #a8080e;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Roboto Mono', monospace;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Header Navigation */
+    .nav-bar {
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      background: rgba(245, 242, 230, 0.9);
+      backdrop-filter: blur(5px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: var(--text-highlight);
+      font-weight: 700;
+      font-size: 16px;
+      transition: opacity 0.3s ease;
+    }
+
+    .back-btn:hover {
+      opacity: 0.7;
+    }
+
+    /* Container */
+    .profile-container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Elements */
+    p {
+      font-size: 20px;
+      margin: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .quote-block {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--text-highlight);
+      border-left: 4px solid var(--text-highlight);
+      padding-left: 20px;
+      margin: 20px 0;
+    }
+
+    .agent-block {
+      background: rgba(0, 0, 0, 0.03);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-name {
+      color: var(--text-highlight);
+      font-weight: bold;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .image-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hero section layout */
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      margin: 40px 0;
+      position: relative;
+      width: 100%;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      width: 100%;
+    }
+
+    /* Image styling */
+    .hero-image {
+      width: 45%;
+      max-width: 450px;
+      height: auto;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .hero-header-right {
+      margin-left: -8%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-self: stretch;
+    }
+
+    /* Huge stacked typography over image */
+    .hero-title {
+      font-size: clamp(1.8rem, 12vw, 200px);
+      line-height: 0.82;
+      color: var(--text-highlight);
+      opacity: 1;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* Meta info aligned to the bottom-right of the 1st photo, never overlapping */
+    .hero-meta-info {
+      color: var(--text-main);
+      font-size: clamp(14px, 1.6vw, 20px);
+      line-height: 1.4;
+      margin-top: auto;
+      margin-left: calc(10% + 50px);
+      padding: 2px;
+      padding-bottom: 10px;
+    }
+
+    /* Paragraph positioned always below the image */
+    .hero-text {
+      margin-top: 35px;
+      margin-left: 0;
+      width: 100%;
+      max-width: 100%;
+      font-size: clamp(15px, 1.7vw, 20px);
+    }
+
+    /* Red bold style for city/state (no underline) */
+    .highlight-bold {
+      color: var(--text-highlight);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* Quote & Photo Section */
+    .quote-photo-section {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 50px;
+      width: 100%;
+      position: relative;
+    }
+
+    .quote-text-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-right: -12%;
+      padding-top: 35px;
+      z-index: 2;
+    }
+
+    .quote-highlight-paragraph {
+      margin: 0 !important;
+      line-height: 2.2 !important;
+    }
+
+    .quote-highlight-text {
+      display: inline;
+      background-color: var(--text-highlight);
+      color: #f5f2e6 !important;
+      font-size: clamp(14px, 1.6vw, 20px);
+      font-weight: 700 !important;
+      padding: 6px 18px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .quote-author {
+      font-size: 16px !important;
+      color: var(--text-highlight) !important;
+      font-style: normal !important;
+      margin-top: 10px !important;
+    }
+
+    .quote-image-container {
+      width: 52%;
+      max-width: 600px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .quote-image {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Content & Photo Section */
+    .content-photo-section {
+      display: flex;
+      align-items: center;
+      gap: 65px;
+      margin-top: 80px;
+      margin-bottom: 70px;
+      width: 100%;
+    }
+
+    .highlight-bg {
+      display: inline;
+      background-color: var(--text-highlight);
+      color: #f5f2e6 !important;
+      font-weight: 700 !important;
+      padding: 3px 8px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .content-text-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    .content-text-container p {
+      line-height: 1.9;
+    }
+
+    .content-image-container {
+      width: 48%;
+      max-width: 580px;
+      flex-shrink: 0;
+    }
+
+    .content-image-container.small {
+      width: 28%;
+      max-width: 300px;
+    }
+
+    .content-image {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-caption {
+      font-size: 13px;
+      color: #666666;
+      margin-top: 10px;
+      margin-bottom: 0;
+      line-height: 1.4;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    /* Red Banner Section */
+    .red-banner-section {
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background-color: var(--text-highlight);
+      color: #f5f2e6;
+      padding: 70px 5vw;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      box-sizing: border-box;
+    }
+
+    .red-banner-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      width: 100%;
+    }
+
+    .red-banner-image-container {
+      width: 55%;
+      max-width: 600px;
+      flex-shrink: 0;
+    }
+
+    .red-banner-image {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      opacity: 1 !important;
+    }
+
+    .highlight-black-bg {
+      display: inline;
+      background-color: #000000;
+      color: #f5f2e6 !important;
+      font-weight: 700 !important;
+      padding: 3px 8px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .red-banner-text-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .red-banner-text-container p {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #f5f2e6;
+      margin: 0;
+      opacity: 1;
+    }
+
+    .red-banner-quote-wrapper {
+      margin: 10px 0;
+    }
+
+    .red-banner-quote {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 17px;
+      font-style: normal;
+      color: #1a1a1a;
+      display: inline;
+      background-color: rgba(200, 200, 200, 0.85);
+      padding: 4px 8px;
+      line-height: 2.2;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    /* Weird order constraints handling */
+    .footer-block {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .end-note {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 100px;
+    }
+
+    /* Animations with stagger */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-container>*:nth-child(1) {
+      animation-delay: 0.1s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(2) {
+      animation-delay: 0.2s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(3) {
+      animation-delay: 0.3s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(4) {
+      animation-delay: 0.4s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(5) {
+      animation-delay: 0.5s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(6) {
+      animation-delay: 0.6s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(7) {
+      animation-delay: 0.7s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(n+8) {
+      animation-delay: 0.8s;
+      transform: translateY(20px);
+    }
+
+
+    .global-header {
+      background-color: var(--text-highlight);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 40px;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .global-header a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: opacity 0.3s ease;
+    }
+
+    .global-header a:hover {
+      opacity: 0.7;
+    }
+
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .global-header {
+        padding: 15px 20px !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+      }
+
+      .profile-container {
+        margin: 30px auto !important;
+      }
+
+      p {
+        font-size: 14px !important;
+      }
+
+      .hero-top {
+        align-items: flex-start !important;
+      }
+
+      .hero-meta-info {
+        margin-left: calc(10% + 20px) !important;
+        font-size: 14px !important;
+      }
+
+      .hero-text {
+        margin-left: 0 !important;
+        margin-top: 25px !important;
+        font-size: 16px !important;
+      }
+
+      .quote-photo-section {
+        flex-direction: column !important;
+        gap: 30px !important;
+      }
+
+      .quote-text-container {
+        width: 100% !important;
+        margin-right: 0 !important;
+      }
+
+      .quote-image-container {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .content-photo-section {
+        flex-direction: column !important;
+        gap: 30px !important;
+      }
+
+      .content-text-container {
+        width: 100% !important;
+      }
+
+      .content-image-container {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .red-banner-section {
+        padding: 50px 20px !important;
+      }
+
+      .red-banner-container {
+        flex-direction: column !important;
+        gap: 30px !important;
+      }
+
+      .red-banner-image-container {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .intro-container h1 {
+        font-size: 28px !important;
+      }
+
+      .intro-container h2 {
+        font-size: 16px !important;
+      }
+
+      .intro-container p {
+        font-size: 16px !important;
+      }
+
+      blockquote {
+        font-size: 18px !important;
+        padding: 15px !important;
+      }
+
+      .victims-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      #custom-filter-menu {
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
+
+      #custom-filter-menu h2 {
+        font-size: 20px !important;
+      }
+
+      #custom-filter-menu h3 {
+        font-size: 16px !important;
+      }
+
+      .filter-group label {
+        font-size: 14px !important;
+        padding: 10px 0;
+      }
+
+      .scroll-indicator {
+        font-size: 12px !important;
+        bottom: 20px !important;
+      }
+
+      .nav-bar {
+        padding: 15px 20px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="global-header">
+    <a href="index.html" data-i18n="nav.home">INÍCIO</a>
+    <a href="projeto.html" data-i18n="nav.project">O PROJETO</a>
+    <a href="comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
+    <a href="quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+  </header>
+
+  <main class="profile-container">
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-top">
+        <div
+          style="width: 45%; max-width: 450px; flex-shrink: 0; z-index: 1; display: flex; flex-direction: column; align-items: center;">
+          <img class="hero-image" style="width: 100%; max-width: 100%;" alt="Foto de Soledad"
+            src="images/imagens-soledad/SOLEDADE-foto01-perfil.png" />
+          <p class="image-caption" style="text-align: center;" data-i18n="soledad.hero_caption">Foto de Soledad disponível no Arquivo Nacional</p>
+        </div>
+        <div class="hero-header-right">
+          <h1 class="hero-title">SOLEDAD<br>BARRETT<br>VIEDMA</h1>
+          <div class="hero-meta-info" data-i18n-html="soledad.meta">
+            06/01/1945 - 1973<br />
+            Militante VPR
+          </div>
+        </div>
+      </div>
+      <p style="margin: 0; height: 20px;"></p>
+      <p class="hero-text" data-i18n-html="soledad.hero_text">Soledad nasceu no <span class="highlight-bold">Paraguai</span> e teve a sua vida muito
+        conturbada desde criança, uma vez que seus pais (<span class="highlight-bold">Deolinda Viedma Ortiz</span> e
+        <span class="highlight-bold">Alex Rafael Barrett</span>) e seu avô (<span class="highlight-bold">Rafael
+          Barrett</span>) eram militantes de esquerda e constantemente tinham que mudar de país por questões de
+        segurança.
+        <br><br>
+        Em razão das perseguições sofridas, a família fugiu do Paraguai para a <span
+          class="highlight-bold">Argentina</span>
+        quando Soledad tinha apenas três meses de idade, e lá permaneceu por quatro anos.
+      </p>
+    </div>
+
+    <!-- Quote & Photo Section -->
+    <div class="quote-photo-section" style="gap: 50px;">
+      <div class="quote-text-container" style="margin-right: 0; padding-top: 0;">
+        <p class="hero-text" style="margin-top: 0;" data-i18n-html="soledad.quote_text1">Regressaram então para o <span
+            class="highlight-bold">Paraguai</span>, mas voltaram a se exilar, dessa vez no Uruguai, para escapar da
+          ditadura de
+          Stroessner.</p>
+        <p class="hero-text" style="margin-top: 15px;" data-i18n="soledad.quote_text2">Desde a adolescência, Soledad militava no movimento estudantil e
+          se dedicava a atividades artísticas como dançarina folclórica.</p>
+        <p class="hero-text" style="margin-top: 15px;" data-i18n-html="soledad.quote_text3">Enquanto vivia em <span class="highlight-bold">Montevidéu</span>,
+          em 1962, com 17 anos, Soledad foi raptada por um grupo neonazista que tentou obrigá-la a gritar palavras de
+          ordem em exaltação a Hitler e contrárias à Revolução Cubana. Como Soledad resistiu, gravaram em sua pele uma
+          cruz gamada.
+        </p>
+      </div>
+      <div class="quote-image-container" style="display: flex; flex-direction: column; align-items: center;">
+        <img class="quote-image" alt="Soledad corpo" src="images/imagens-soledad/SOLEDADE-foto02-corpo.png" />
+        <p class="image-caption" style="text-align: center;" data-i18n="soledad.hero_caption">Foto de Soledad disponível no Arquivo Nacional</p>
+      </div>
+    </div>
+
+    <!-- Centralized large newspaper photo -->
+    <div
+      style="text-align: center; margin-top: 70px; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
+      <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img alt="Jornal referente a Soledad" src="images/imagens-soledad/SOLEDADE-foto03-jornal.png"
+          style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transform: none !important; transition: none !important; display: block; margin: 0 auto;" />
+        <p class="image-caption" style="text-align: center;" data-i18n="soledad.photo2_caption">Reportagem do Jornal Época de 1962</p>
+      </div>
+    </div>
+
+    <div class="content-photo-section" style="margin-top: 50px; margin-bottom: 20px;">
+      <div class="content-text-container" style="flex: 0 0 75%;">
+        <p data-i18n-html="soledad.content1_p1">A partir de então, Soledad passou a ser perseguida e resolveu seguir para <span
+            class="highlight-bold">Cuba</span> onde recebeu treinamento de guerrilha e conheceu <span
+            class="highlight-bg">José Maria de Araújo</span>, militante da Vanguarda Popular Revolucionária (VPR) que
+          tinha sido banido do Brasil por ter participado da mobilização dos marinheiros quando era um jovem oficial.
+        </p>
+      </div>
+      <div class="content-image-container" style="flex: 0 0 25%; visibility: hidden; pointer-events: none;"></div>
+    </div>
+
+    <!-- Section: Cuba, Treinamento & Casal (Text on Left, Image on Right) -->
+    <div class="content-photo-section" style="margin-top: 40px;">
+      <div class="content-text-container">
+        <p data-i18n="soledad.content2_p1">Soledad e José Maria se casaram e tiveram uma filha, a quem deram o nome de Ñasaindy de Araújo Barrett.</p>
+        <p data-i18n-html="soledad.content2_p2">Em 1970, José Maria retornou ao <span class="highlight-bold">Brasil</span> para atuar na resistência contra a
+          ditadura e, um ano depois, veio
+          Soledad. Quando chegou ao país, descobriu que José Maria tinha sido morto no <span
+            class="highlight-bold">DOI-CODI/SP</span>.</p>
+      </div>
+      <div class="content-image-container" style="display: flex; flex-direction: column; align-items: center;">
+        <img class="content-image" alt="Soledad e José Maria" src="images/imagens-soledad/SOLEDADE-foto04-casal.png" />
+        <p class="image-caption" style="text-align: center;" data-i18n="soledad.photo3_caption">Foto de Soledad com o seu companheiro, José Maria de
+          Araújo.</p>
+      </div>
+    </div>
+
+    <!-- Section: Relacionamento, Traição & Massacre (à direita) -->
+    <div class="content-photo-section" style="margin-top: 50px; margin-bottom: 50px;">
+      <div class="content-image-container" style="visibility: hidden; pointer-events: none;"></div>
+      <div class="content-text-container">
+        <p data-i18n-html="soledad.content3_p1">Soledad se estabeleceu em <span class="highlight-bold">Pernambuco</span> no contexto de reorganização da
+          <span class="highlight-bold">VPR</span> no Nordeste e passou a ter um relacionamento afetivo com o <span
+            class="highlight-black-bg">“Cabo Anselmo”</span>, com quem vivia em <span class="highlight-bold">Rio
+            Doce</span>.
+        </p>
+        <p data-i18n-html="soledad.content3_p2">Soledad foi uma das vítimas do episódio conhecido como <span class="highlight-bold">Massacre da Chácara São
+            Bento</span>, em operação articulada a partir da atuação do “Cabo
+          Anselmo” como agente infiltrado.</p>
+        <p data-i18n="soledad.content3_p3">Suspeita-se que, quando foi morta, Soledad esperava um filho de Anselmo.</p>
+      </div>
+    </div>
+
+    <!-- Section: Agentes (à direita) -->
+    <div class="content-photo-section">
+      <div class="content-image-container" style="visibility: hidden; pointer-events: none;"></div>
+      <div class="content-text-container">
+        <p data-i18n="soledad.agents_intro">Os principais agentes mencionados no caso são:</p>
+        <p data-i18n-html="soledad.agent1"><span class="highlight-black-bg">Sérgio Paranhos Fleury</span>, comandou a operação que capturou e matou sob
+          tortura militantes da VPR;</p>
+        <p data-i18n-html="soledad.agent2"><span class="highlight-black-bg">João Henrique de Carvalho</span>, na condição de agente duplo, delatou os
+          militantes e participou da operação de captura;</p>
+        <p data-i18n-html="soledad.agent3"><span class="highlight-black-bg">Carlos Alberto Augusto</span>, participou da operação que capturou os
+          militantes da VPR.</p>
+        <p data-i18n-html="soledad.mandate">Soledad morreu durante o mandato de <span class="highlight-black-bg">Emílio Garrastazu Médici</span>.</p>
+        <p style="margin-top: 30px; font-size: 16px; line-height: 1.8;" data-i18n-html="soledad.source">Texto baseado no <span
+            class="highlight-bold">Terceiro Volume do Relatório Final da Comissão Nacional da Verdade (CNV)</span>.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <iframe src="bandeira.html?v=17" scrolling="no"
+    style="width: 100%; height: 100vh; border: none; margin-top: 80px; display: block; overflow: hidden;"></iframe>
+
+  <!-- SECTION 4: FOOTER-->
+  <div style="background-color: #f5f2e6; text-align: center; overflow: hidden; padding-top: 50px;">
+    <h1
+      style="margin: 0; margin-bottom: -3vw; font-size: 7vw; font-weight: 700; color: #000000; letter-spacing: 1.5vw; padding-left: 1.5vw; white-space: nowrap;; padding-bottom: 0; border-bottom: none;" data-i18n="index.motto">
+      ORDEM E PROGRESSO
+    </h1>
+  </div>
+
+  <footer class="credits"
+    style="padding: 60px 5vw; text-align: left; background-color: #000000; color: #ffffff; font-family: 'Roboto Mono', monospace;">
+
+    <div style="margin-bottom: 40px;">
+      <span style="font-size: 28px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px;" data-i18n="footer.title">
+        HISTÓRIAS DA GUERRILHA
+      </span>
+      <span style="font-size: 18px; font-weight: bold; letter-spacing: 1px; display: block;" data-i18n="footer.subtitle">
+        VIDAS PERDIDAS NA DITADURA CIVIL MILITAR BRASILEIRA
+      </span>
+    </div>
+
+    <div style="font-size: 14px; line-height: 2.2;">
+      <span data-i18n="footer.developed">Projeto desenvolvido por Maria Eduarda Rocha</span><br>
+      <span data-i18n="footer.orientation">Orientação Barbara Castro</span><br>
+      <span data-i18n="footer.institution">Escola Superior de Desenho Industrial - ESDI, UERJ</span>
+    </div>
+
+  </footer>
+</body>
+
+</html>

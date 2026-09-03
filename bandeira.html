@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&amp;display=swap"
+        rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Exported from Figma" name="description" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Exported Figma Design</title>
+    <link href="styles.css?v=18" rel="stylesheet" />
+    <script src="i18n.js"></script>
+
+    <style>
+        /* GLOBAL FONT */
+        img {
+            opacity: 0.8 !important;
+        }
+
+        * {
+            font-family: "Roboto Mono", monospace !important;
+        }
+
+        :root {
+            /* O !important garante que o CSS do Figma (styles.css) seja ignorado */
+            --avail-w: calc((100vw - 80px) * 0.9);
+            --square-w: clamp(12px, calc((100vw - 120px) / 20), 65px) !important;
+            --square-h: clamp(8px, calc(var(--square-w) * 0.31), 20px) !important;
+            --gap: clamp(6px, calc((100vw - 120px) / 140), 15px) !important;
+        }
+
+        .click-7-6774 {
+            padding: 10px 16px 10px;
+            width: 100%;
+            max-width: 100%;
+            min-height: 100vh;
+            background-color: rgba(245, 242, 230, 1);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Remove qualquer barreira de largura das divs geradas pelo exportador */
+        .legenda-on,
+        .property-1-geral {
+            width: min(100%, calc(20 * var(--square-w) + 19 * var(--gap))) !important;
+            max-width: 100% !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100vw;
+            transform: none !important;
+            /* Evita escala dupla herdada de styles.css dentro do iframe */
+            transform-origin: unset !important;
+        }
+
+        html.in-iframe,
+        body.in-iframe {
+            overflow: hidden !important;
+        }
+
+        body.in-iframe footer.credits,
+        body.in-iframe .ordem-progresso-container {
+            display: none !important;
+        }
+
+        body.in-iframe .click-7-6774 {
+            justify-content: flex-start !important;
+            min-height: unset !important;
+            padding-top: 5px !important;
+        }
+
+
+
+        #custom-filter-menu h2 {
+            font-size: max(20px, 1.5vw);
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        #custom-filter-menu h3 {
+            font-size: max(14px, 1vw);
+            margin-top: 10px;
+            margin-bottom: 4px;
+        }
+
+        #custom-filter-menu label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: max(14px, 1vw);
+            cursor: pointer;
+        }
+
+        #custom-filter-menu input {
+            margin-right: 10px;
+        }
+
+
+        .flag-grid-container {
+            display: grid;
+            grid-template-columns: repeat(20, var(--square-w));
+            grid-template-rows: repeat(22, var(--square-h));
+            gap: var(--gap);
+            justify-content: center;
+            width: min(100%, calc(20 * var(--square-w) + 19 * var(--gap)));
+            max-width: 100%;
+            overflow: visible;
+        }
+
+        .empty-spacer {
+            width: var(--square-w);
+            height: var(--square-h);
+        }
+
+        /* Individual squares */
+        .flag-square {
+            box-sizing: border-box;
+            width: var(--square-w);
+            height: var(--square-h);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Colors */
+        div[class*="property-1-mortos"] {
+            background-color: var(--PCINZA);
+            border: 1px solid var(--PCINZA);
+        }
+
+        div[class*="property-1-desaparecidos"] {
+            background-color: var(--PVERMELHO);
+            border: 1px solid var(--PVERMELHO);
+        }
+
+        /* Dimmed state for JS */
+        .flag-square.dimmed {
+            opacity: 0.1;
+        }
+
+        /* Jovens - Replace SVG with horizontal line */
+        .flag-square[class*="jovem"]::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            width: 70%;
+            height: clamp(1px, calc(var(--square-h) * 0.2), 3px) !important;
+            background-color: black !important;
+            z-index: 5;
+            transform: translateY(-50%);
+        }
+
+        .flag-square[class*="property-1-desaparecidos"][class*="jovem"]::before {
+            background-color: white !important;
+            /* Only jovem turns white on red background */
+        }
+
+        /* Mulheres - Vertical line */
+        .flag-square[class*="mulher"]::after,
+        .legend-box[class*="mulher"]::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: clamp(1px, calc(var(--square-w) * 0.07), 3px);
+            height: clamp(10px, calc(var(--square-h) * 1.4), 30px);
+            background-color: black;
+            z-index: 5;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Legend Box styles */
+        .legend-box {
+            width: var(--square-w);
+            height: var(--square-h);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .legend-box[class*="jovem"]::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            width: 70%;
+            height: 4px;
+            background-color: black;
+            z-index: 5;
+            transform: translateY(-50%);
+        }
+
+
+        .custom-legend {
+            margin-top: 40px;
+            padding: max(20px, 2vw);
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            font-family: 'Roboto Mono', monospace;
+            color: #333;
+        }
+
+        .custom-legend h3 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        /* Top Controls Container */
+        .top-controls-container {
+            width: min(100%, calc(20 * var(--square-w) + 19 * var(--gap)));
+            max-width: 100%;
+            margin: 0 auto 20px auto;
+            z-index: 10005;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        #toggle-filters-btn {
+            background: transparent;
+            color: black;
+            border: none;
+            padding: 10px 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: none;
+            transition: opacity 0.3s;
+            height: auto;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        #toggle-filters-btn:hover {
+            opacity: 0.7;
+        }
+
+        /* Search Container */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            overflow: hidden;
+            height: auto;
+            box-sizing: border-box;
+        }
+
+        .search-container.active {
+            border: none;
+        }
+
+        .search-label {
+            font-weight: bold;
+        }
+
+        .search-container.active .search-label {
+            display: none;
+        }
+
+        #search-toggle-btn {
+            background: transparent;
+            color: black;
+            border: none;
+            padding: 10px 0;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            box-sizing: border-box;
+            font-family: 'Roboto Mono', monospace;
+            gap: 10px;
+            transition: opacity 0.3s;
+        }
+
+        #search-toggle-btn:hover {
+            opacity: 0.7;
+        }
+
+        #search-input {
+            border: none;
+            padding: 0;
+            width: 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 24px;
+            outline: none;
+            height: 40px;
+            background: transparent;
+            color: black;
+            box-sizing: border-box;
+        }
+
+        .search-container.active #search-input {
+            width: 250px;
+            padding: 0 10px;
+            border-bottom: 1px solid black;
+            margin-left: 15px;
+            transition: width 0.3s ease, padding 0.3s ease;
+        }
+
+        /* Hide search when filter menu is open */
+        body:not(.menu-closed) #search-container {
+            display: none !important;
+        }
+
+        #custom-filter-menu {
+            width: 420px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(245, 242, 230, 0.98);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Roboto Mono', monospace;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .filter-section {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .filter-section h3 {
+            width: 120px;
+            margin: 0 !important;
+            padding: 0;
+            font-size: 14px !important;
+            font-weight: bold;
+            flex-shrink: 0;
+            line-height: 1.5;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .filter-options label {
+            display: flex !important;
+            align-items: center;
+            margin: 0 !important;
+            padding: 0;
+            font-size: 14px !important;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .filter-options input {
+            margin: 0 10px 0 0 !important;
+        }
+
+        body.menu-closed #custom-filter-menu {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #close-filters-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: black;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        #close-filters-btn:hover {
+            opacity: 0.7;
+        }
+
+        .click-7-6774 {
+            padding: 65px 16px 40px;
+            width: 100%;
+            max-width: 100%;
+            min-height: 100vh;
+            background-color: rgba(245, 242, 230, 1);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* Modal Backdrop styling */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 20000;
+            display: none;
+        }
+
+        .modal-backdrop.active {
+            display: block;
+        }
+
+        /* Modal Content Wrapper */
+        .modal-content-wrapper {
+            position: absolute;
+            animation: modalFadeIn 0.2s ease-out;
+            box-sizing: border-box;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Modal Close Button */
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #000000;
+            font-size: 26px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10010;
+            font-family: Arial, sans-serif;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            color: #8a0e14;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .global-header {
+                padding: 15px 20px !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                gap: 15px !important;
+            }
+
+            .profile-container {
+                margin: 30px auto !important;
+            }
+
+            h1 {
+                font-size: 28px !important;
+            }
+
+            p {
+                font-size: 14px !important;
+            }
+
+            .intro-container h1 {
+                font-size: 28px !important;
+            }
+
+            .intro-container h2 {
+                font-size: 16px !important;
+            }
+
+            .intro-container p {
+                font-size: 16px !important;
+            }
+
+            blockquote {
+                font-size: 18px !important;
+                padding: 15px !important;
+            }
+
+            .victims-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            #custom-filter-menu {
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+
+            #custom-filter-menu h2 {
+                font-size: 20px !important;
+            }
+
+            #custom-filter-menu h3 {
+                font-size: 16px !important;
+            }
+
+            #custom-filter-menu label {
+                font-size: 14px !important;
+                padding: 10px 0;
+            }
+
+            .scroll-indicator {
+                font-size: 12px !important;
+                bottom: 20px !important;
+            }
+
+            .nav-bar {
+                padding: 15px 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="menu-closed">
+    <!-- Modal Backdrop -->
+    <div class="modal-backdrop" id="profile-modal-backdrop">
+        <div class="modal-content-wrapper">
+            <button class="modal-close-btn" id="modal-close-btn" title="Fechar Card" data-i18n-title="flag.close_card">×</button>
+            <div id="modal-card-placeholder"></div>
+        </div>
+    </div>
+    <div class="click-7-6774">
+        <div class="legenda-on">
+            <div class="property-1-geral">
+                <div class="top-controls-container">
+                    <button id="toggle-filters-btn">☰</button>
+                    <div class="search-container" id="search-container">
+                        <button id="search-toggle-btn" title="Buscar Vítima" data-i18n-title="flag.search_btn_title"><img src="images/ICON-search.svg"
+                                alt="Buscar" style="width: 28px; height: 28px; opacity: 1 !important;" /> <span
+                                class="search-label" data-i18n="flag.search_title">ORDEM E PROGRESSO</span></button>
+                        <input id="search-input" placeholder="Buscar vítima..." data-i18n-placeholder="flag.search_placeholder" type="text" />
+                    </div>
+                    <div id="custom-filter-menu">
+                        <button id="close-filters-btn" title="Fechar Filtros" data-i18n-title="flag.close_filters">×</button>
+                        <h2 data-i18n="flag.filters_title">Filtros</h2>
+
+                        <div class="filter-section">
+                            <h3 data-i18n="flag.loc_header">LOCALIDADE</h3>
+                            <div class="filter-options">
+                                <label><input data-group="loc" type="checkbox" value="norte" /> <span data-i18n="flag.loc_norte">Norte</span></label>
+                                <label><input data-group="loc" type="checkbox" value="nordeste" /> <span data-i18n="flag.loc_nordeste">Nordeste</span></label>
+                                <label><input data-group="loc" type="checkbox" value="sudeste" /> <span data-i18n="flag.loc_sudeste">Sudeste</span></label>
+                                <label><input data-group="loc" type="checkbox" value="sul" /> <span data-i18n="flag.loc_sul">Sul</span></label>
+                                <label><input data-group="loc" type="checkbox" value="centro-oeste" /> <span data-i18n="flag.loc_centro_oeste">Centro-Oeste</span></label>
+                                <label><input data-group="loc" type="checkbox" value="fora" /> <span data-i18n="flag.loc_fora">Fora do Brasil</span></label>
+                                <label><input data-group="loc" type="checkbox" value="na" /> <span data-i18n="flag.loc_na">Não Identificado</span></label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3 data-i18n="flag.period_header">PERÍODO</h3>
+                            <div class="filter-options">
+                                <label><input data-group="period" type="checkbox" value="castello" /> Castello Branco (1964-1966)</label>
+                                <label><input data-group="period" type="checkbox" value="costa" /> Costa e Silva (1967-1969)</label>
+                                <label><input data-group="period" type="checkbox" value="medici" /> Médici (1970-1974)</label>
+                                <label><input data-group="period" type="checkbox" value="geisel" /> Geisel (1973-1978)</label>
+                                <label><input data-group="period" type="checkbox" value="figueiredo" /> Figueiredo (1980-1985)</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3 data-i18n="flag.desc_header">DESCRIÇÃO</h3>
+                            <div class="filter-options">
+                                <label><input data-group="desc" type="checkbox" value="jovem" /> <span data-i18n="flag.desc_jovem">Jovens</span></label>
+                                <label><input data-group="desc" type="checkbox" value="mulher" /> <span data-i18n="flag.desc_mulher">Mulheres</span></label>
+                                <label><input data-group="desc" type="checkbox" value="homem" /> <span data-i18n="flag.desc_homem">Homens</span></label>
+                                <label><input data-group="desc" type="checkbox" value="d_" /> <span data-i18n="flag.desc_desaparecidos">Desaparecidos</span></label>
+                                <label><input data-group="desc" type="checkbox" value="m_" /> <span data-i18n="flag.desc_mortos">Mortos</span></label>
+                            </div>
+                        </div>
+
+                        <button id="clear-filters"
+                            style="margin-top: 20px; padding: 10px; background: black; color: white; border: none; font-family: 'Roboto Mono', monospace; cursor:pointer; width: 100%;" data-i18n="flag.clear_filters">LIMPAR
+                            SELEÇÃO</button>
+                    </div>
+                </div>
+
+                <div class="flag-grid-container">
+                    <div class="empty-spacer"></div>
+                    <div class="empty-spacer"></div>
+                    <div class="flag-square property-1-mortos centro-oeste jovem" data-victim="ismael-silva-de-jesus">
+                    </div>
+                    <div class="flag-square property-1-mortos centro-oeste jovem"
+                        data-victim="ornalino-candido-da-silva"></div>
+                    <div class="flag-square property-1-mortos centro-oeste" data-victim="cassimiro-luiz-de-freitas">
+                    </div>
+                    <div class="flag-square property-1-mortos centro-oeste" data-victim="james-allen-luz"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil jovem mulher" data-victim="soledad"
+                        style="border: 3px solid #F1C40F !important; z-index: 10;"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil mulher" data-victim="labibe-elias-abduch">
+                    </div>
+                    <div class="flag-square property-1-mortos fora-do-brasil jovem"
+                        data-victim="juan-antonio-carrasco-forrastal"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil jovem isaac"
+                        data-victim="alexander-jose-ibsen-voeroes"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil jovem alcides isaac"
+                        data-victim="manoel-jose-mendes-nunes-de-abreu"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil" data-victim="miguel-sabat-nuet"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil" data-victim="vladimir-herzog"></div>
+                    <div class="flag-square property-1-mortos fora-do-brasil isaac" data-victim="antonio-benetazzo">
+                    </div>
+                    <div class="flag-square property-1-mortos na jovem mulher" data-victim="maria-angela-ribeiro"></div>
+                    <div class="flag-square property-1-mortos na mulher" data-victim="eliane-martins"></div>
+                    <div class="flag-square property-1-mortos na jovem" data-victim="guido-leao"></div>
+                    <div class="flag-square property-1-mortos na jovem" data-victim="joao-mendes-araujo"></div>
+                    <div class="empty-spacer"></div>
+                    <div class="empty-spacer"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="ari-de-oliveira-mendes-cunha"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="bernardino-saraiva"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="eduardo-gonzalo-escabosa"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="geraldo-bernardo-da-silva"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="gilson-miranda"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="jose-de-souza"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="jose-sabino"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="paschoal-souza-lima"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="sabino-alves-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos centro-oeste jovem mulher"
+                        data-victim="jane-vanini"></div>
+                    <div class="flag-square property-1-desaparecidos centro-oeste jovem"
+                        data-victim="honestino-monteiro-guimaraes"></div>
+                    <div class="flag-square property-1-mortos na" data-victim="wilton-ferreira"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem mulher"
+                        data-victim="anatalia-de-souza-melo-alves"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem mulher"
+                        data-victim="ligia-maria-salgado-nobrega"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem mulher" data-victim="nilda-carvalho-cunha">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste mulher" data-victim="esmeraldina-carvalho-cunha">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste mulher" data-victim="margarida-maria-alves">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste mulher" data-victim="therezinha-viana-de-assis">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste jovem"
+                        data-victim="antonio-henrique-pereira-neto"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem"
+                        data-victim="gerardo-magela-fernandes-torres-da-costa"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem" data-victim="ivan-rocha-aguiar"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem" data-victim="joao-carlos-cavalcanti-reis">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste jovem"
+                        data-victim="joao-roberto-borges-de-souza"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem"
+                        data-victim="jonas-jose-de-albuquerque-barros"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem" data-victim="luiz-antonio-santa-barbara">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste jovem"
+                        data-victim="marcos-antonio-da-silva-lima"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem" data-victim="odijas-carvalho-de-souza">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste jovem" data-victim="zoe-lucas-de-brito-filho">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos centro-oeste jovem" data-victim="merival-araujo">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos centro-oeste jovem"
+                        data-victim="paulo-de-tarso-celestino-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos centro-oeste"
+                        data-victim="divino-ferreira-de-souza"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem mulher"
+                        data-victim="monica-suzana-pinus-de-binstock"></div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="zelmo-bosa"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem sergio"
+                        data-victim="otoniel-campos-barreto"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem sergio" data-victim="tito-de-alencar-lima">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste jovem sergio isaac"
+                        data-victim="gastone-lucia-de-carvalho-beltrao"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="adauto-freire-da-cruz"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="aderval-alves-coqueiro"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="afonso-henrique-martins-saldanha">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="amaro-luiz-de-carvalho"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="antonio-bem-cardoso"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="antonio-de-araujo-veloso"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="celio-augusto-guedes"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="dilermano-mello-do-nascimento">
+                    </div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="inocencio-pereira-alves"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="joao-lucas-alves"></div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="paulo-stuart-wright"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem mulher sergio"
+                        data-victim="pauline-philipe-reichstul"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem mulher sergio"
+                        data-victim="liliana-ines-goldemberg"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="david-eduardo-chab-tarab-baabour"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="enrique-ernesto-ruggia"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="jean-henri-raya-ribard"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="jorge-alberto-basso"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="jose-dalmo-guimaraes-lins"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="jose-inocencio-barreto"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="jose-milton-barbosa"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="jose-nobre-parente"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="lourenco-camelo-de-mesquita"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="luiz-gonzaga-dos-santos"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="manoel-aleixo-da-silva"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="manoel-alves-de-oliveira"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="manoel-fiel-filho"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="newton-eduardo-de-oliveira"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="pedro-domiense-de-oliveira"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="pedro-jeronimo-de-souza"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="pericles-gusmao-regis"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="libero-giancarlo-castiglia"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="lorenzo-ismael-vinas"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil jovem"
+                        data-victim="roberto-adolfo-val-cazorla"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil"
+                        data-victim="antonio-luciano-pregoni"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil" data-victim="ary-cabrera-prates">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil"
+                        data-victim="horacio-domingo-campiglia"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil" data-victim="jorge-oscar-adur">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil"
+                        data-victim="juvelino-andres-carneiro-da-fontoura-gularte"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="raimundo-nonato-paz"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="sebastiao-gomes-dos-santos"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="sebastiao-vieira-da-silva"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="severino-elias-de-mello"></div>
+                    <div class="flag-square property-1-mortos nordeste sergio" data-victim="carlos-marighella"></div>
+                    <div class="flag-square property-1-mortos nordeste sergio ustra" data-victim="luiz-jose-da-cunha">
+                    </div>
+                    <div class="flag-square property-1-mortos norte jovem mulher" data-victim="miriam-lopes-verbena">
+                    </div>
+                    <div class="flag-square property-1-mortos norte jovem" data-victim="ari-lopes-de-macedo"></div>
+                    <div class="flag-square property-1-mortos norte jovem" data-victim="edson-luiz-lima-souto"></div>
+                    <div class="flag-square property-1-mortos norte jovem" data-victim="eiraldo-de-palha-freire"></div>
+                    <div class="flag-square property-1-mortos norte" data-victim="antogildo-pascoal-viana"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil"
+                        data-victim="marcos-basilio-arocena-da-silva-guimaraes"></div>
+                    <div class="flag-square property-1-desaparecidos fora-do-brasil"
+                        data-victim="norberto-armando-habegger"></div>
+                    <div class="flag-square property-1-desaparecidos na jovem"
+                        data-victim="walter-kenneth-nelson-fleury"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="batista"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="francisco-manoel-chaves"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="joaquinzao"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="jose-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="juarez-rodrigues-coelho"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="luiz-carlos-de-almeida"></div>
+                    <div class="flag-square property-1-desaparecidos na" data-victim="pedro-carretel-"></div>
+                    <div class="flag-square property-1-mortos norte" data-victim="benedito-pereira-serra"></div>
+                    <div class="flag-square property-1-mortos norte" data-victim="joaquim-alencar-de-seixas"></div>
+                    <div class="flag-square property-1-mortos norte" data-victim="manoel-raimundo-soares"></div>
+                    <div class="flag-square property-1-mortos norte" data-victim="pedro-ventura-felipe-de-araujo-pomar">
+                    </div>
+                    <div class="flag-square property-1-mortos norte" data-victim="raimundo-ferreira-lima"></div>
+                    <div class="flag-square property-1-mortos norte" data-victim="wilson-souza-pinheiro"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher"
+                        data-victim="aurora-maria-nascimento-furtado"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher"
+                        data-victim="catarina-helena-abi-ecab"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher" data-victim="iara-iavelberg"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem mulher"
+                        data-victim="dinaelza-santana-coqueiro"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem mulher"
+                        data-victim="dinalva-conceicao-oliveira-teixeira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem mulher"
+                        data-victim="jana-moroni-barroso"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem mulher"
+                        data-victim="lourdes-maria-wanderley-pontes"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem mulher"
+                        data-victim="ranusia-alves-rodrigues"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="almir-custodio-de-lima"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="antonio-carlos-monteiro-teixeira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="antonio-teodoro-de-castro"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="bergson-gurjao-farias"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="custodio-saraiva-neto"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="dermeval-da-silva-pereira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="eduardo-collier-filho"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher" data-victim="iris-amaral"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher"
+                        data-victim="marilena-villas-boas-pinto"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher" data-victim="valdir-salles-saboia">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem mulher ustra isaac"
+                        data-victim="ana-maria-nacinovic-correa"></div>
+                    <div class="flag-square property-1-mortos sudeste mulher"
+                        data-victim="maria-auxiliadora-lara-barcellos"></div>
+                    <div class="flag-square property-1-mortos sudeste mulher"
+                        data-victim="maria-regina-lobo-leite-de-figueiredo"></div>
+                    <div class="flag-square property-1-mortos sudeste mulher" data-victim="neide-alves-dos-santos">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="ezequias-bezerra-da-rocha"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="fernando-augusto-de-santa-cruz-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="joel-vasconcelos-santos"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="jose-bartolomeu-rodrigues-de-souza"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem" data-victim="jose-campos-barreto">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="jose-lima-piauhy-dourado"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem" data-victim="jose-silton-pinheiro">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="miguel-pereira-dos-santos"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="ramires-maranhao-do-valle"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="sergio-landulfo-furtado"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="stuart-edgar-angel-jones"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="tulio-roberto-cardoso-quintiliano"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="uirassu-de-assis-batista"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="umberto-de-albuquerque-camara-neto"></div>
+                    <div class="flag-square property-1-mortos sudeste mulher" data-victim="solange-lourenco-gomes">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste mulher" data-victim="zuleika-angel-jones"></div>
+                    <div class="flag-square property-1-mortos sudeste mulher" data-victim="santo-dias-da-silva"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="aldo-de-sa-brito-souza-neto">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="antonio-carlos-bicalho-lana">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="vandick-reidner-pereira-coqueiro"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem"
+                        data-victim="vitorino-alves-moitinho"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem ustra"
+                        data-victim="luiz-almeida-araujo"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem alcides ustra"
+                        data-victim="jose-maria-ferreira-de-araujo"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem sergio"
+                        data-victim="eudaldo-gomes-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem sergio"
+                        data-victim="jarbas-pereira-marques"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste jovem sergio"
+                        data-victim="manoel-lisboa-de-moura"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="albertino-jose-de-farias">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="amaro-felix-pereira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="antonio-de-padua-costa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="antonio-ferreira-pinto">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="antonio-raymundo-de-lucena">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="david-capistrano-da-costa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="edson-neves-quaresma"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="epaminondas-gomes-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="francisco-das-chagas-pereira"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem"
+                        data-victim="antonio-carlos-nogueira-cabral"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem"
+                        data-victim="antonio-marcos-pinto-de-oliveira"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="carlos-eduardo-pires-fleury">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="hiran-de-lima-pereira">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="israel-tavares-roque"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="jayme-amorim-de-miranda">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="joao-alfredo-dias"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="joao-leonardo-da-silva-rocha"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="joao-massena-melo"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="jorge-leal-goncalves-pereira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="jose-gomes-teixeira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="jose-mendes-de-sa-roriz">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="jose-montenegro-de-lima">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="jose-raimundo-da-costa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="lucindo-costa"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="luis-alberto-andrade-de-sa-e-benevides"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="luiz-ignacio-maranhao-filho"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="luiz-vieira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="mariano-joaquim-da-silva">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste"
+                        data-victim="mario-alves-de-souza-vieira"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="mauricio-grabois"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="chael-charles-schreier"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="nelson-lima-piauhy-dourado">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="pedro-inacio-de-araujo">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="rosalindo-sousa"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="ruy-frasao-soares"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="severino-viana-colou"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="virgilio-gomes-da-silva">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste" data-victim="walter-ribeiro-novaes">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste ustra" data-victim="jose-carlos-da-costa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos nordeste alcides ustra"
+                        data-victim="grenaldo-de-jesus-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste sergio"
+                        data-victim="jose-manoel-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos nordeste sergio alcides ustra"
+                        data-victim="edgar-de-aquino-duarte"></div>
+                    <div class="flag-square property-1-desaparecidos norte jovem"
+                        data-victim="durvalino-porfirio-de-souza"></div>
+                    <div class="flag-square property-1-desaparecidos norte" data-victim="antonio-alfredo-de-lima"></div>
+                    <div class="flag-square property-1-desaparecidos norte" data-victim="jose-porfirio-de-souza"></div>
+                    <div class="flag-square property-1-desaparecidos norte" data-victim="lourival-moura-paulino"></div>
+                    <div class="flag-square property-1-desaparecidos norte"
+                        data-victim="thomaz-antonio-da-silva-meirelles-netto"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="aurea-eliza-pereira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="helenira-resende-de-souza-nazareth"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="ieda-santos-delgado"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="lucia-maria-de-souza"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="maria-augusta-thomaz"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="maria-celia-correa"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="maria-lucia-petit-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="suely-yumiko-kanayama"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="telma-regina-cordeiro-correa"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem mulher"
+                        data-victim="walkiria-afonso-costa"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste mulher"
+                        data-victim="izis-dias-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste mulher"
+                        data-victim="luisa-augusta-garlippe"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste mulher"
+                        data-victim="maria-regina-marcondes-pinto"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste mulher ustra"
+                        data-victim="heleny-ferreira-telles-guariba"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste mulher sergio"
+                        data-victim="ana-rosa-kucinski-ana-rosa-silva"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="abilio-clemente-filho">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="adriano-fonseca-filho">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="andre-grabois"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="antonio-dos-tres-reis-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="antonio-guilherme-ribeiro-ribas"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="arildo-valadao"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="carlos-roberto-zanirato"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="ciro-flavio-salazar-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="daniel-jose-de-carvalho"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="cloves-dias-de-amorim"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="elmo-correa"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="eremias-delizoicov">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="francisco-jose-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="gildo-macedo-lacerda">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="guilherme-gomes-lund">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="hamilton-pereira-damasceno"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="helio-luiz-navarro-de-magalhaes"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="idalisio-soares-aranha-filho"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="issami-nakamura-okano">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="ivan-mota-dias"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="jaime-petit-da-silva">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="jeova-assis-gomes">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="joao-gualberto-calatrone"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="joel-jose-de-carvalho">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="joelson-crispim"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="luiz-renato-do-lago-faria"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="luiz-rene-silveira-e-silva"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="marco-antonio-dias-baptista"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="david-de-souza-meira"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="fernando-augusto-da-fonseca">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem"
+                        data-victim="fernando-borges-de-paula-ferreira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="marcos-jose-de-lima">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="mario-de-souza-prata">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="nelson-jose-de-almeida"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="paulo-cesar-botelho-massa"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="paulo-costa-ribeiro-bastos"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="paulo-roberto-pereira-marques"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="paulo-torres-goncalves"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="pedro-alexandrino-oliveira-filho"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="roberto-rascado-rodriguez"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="rodolfo-de-carvalho-troiano"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="ruy-carlos-vieira-berbert"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem"
+                        data-victim="sergio-fernando-tula-silberberg"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="sergio-roberto-correa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="tobias-pereira-junior">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem" data-victim="yoshitane-fujimori">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem isaac"
+                        data-victim="jose-julio-de-araujo"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="fernando-da-silva-lembo">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="geraldo-da-rocha-gualberto">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="gerson-theodoro-de-oliveira">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="helber-jose-gomes-goulart">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="ichiro-nagami"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem ustra"
+                        data-victim="aylton-adalberto-mortati"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem ustra"
+                        data-victim="flavio-carvalho-molina"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem ustra isaac"
+                        data-victim="francisco-emanuel-penteado"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem ustra isaac"
+                        data-victim="iuri-xavier-pereira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem alcides"
+                        data-victim="dimas-antonio-casemiro"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem alcides ustra"
+                        data-victim="hiroaki-torigoe"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste jovem sergio" data-victim="luiz-hirata">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="antonio-joaquim-de-souza-machado"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="armando-teixeira-fructuoso">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="boanerges-de-souza-massa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="caiupy-alves-de-castro">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="carlos-alberto-soares-de-freitas"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="daniel-ribeiro-callado">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="edmur-pericles-camargo">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="joao-antonio-santos-abi-ecab">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem"
+                        data-victim="jose-carlos-novaes-da-mata-machado"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="jose-guimaraes"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="jose-roberto-spiegner"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="jose-wilson-lessa-sabbag">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="lincoln-bicalho-roque"></div>
+                    <div class="flag-square property-1-desaparecidos sul sergio"
+                        data-victim="evaldo-luiz-ferreira-de-souza"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="elson-costa"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="felix-escobar"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="francisco-tenorio-cerqueira-junior"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="getulio-de-oliveira-cabral">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="gilberto-olimpio-maria">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="henrique-cintra-ferreira-de-ornellas"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="itair-jose-veloso"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="jose-lavecchia"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="jose-maurilio-patricio">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="jose-roman"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="jose-toledo-de-oliveira">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="kleber-lemos-da-silva"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="luiz-carlos-augusto"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="luiz-paulo-da-cruz-nunes">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="manoel-rodrigues-ferreira">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem"
+                        data-victim="marco-antonio-braz-de-carvalho"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="massafumi-yoshinaga"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem"
+                        data-victim="mauricio-guilherme-da-silveira"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="orocilio-martins-goncalves">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="raimundo-eduardo-da-silva">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="raul-amaro-nin-ferreira">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="lucio-petit-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="luiz-ghilardini"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="marcio-beck-machado"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="nelson-de-souza-kohl"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="nestor-vera"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="odair-jose-brunocilla"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="olavo-hanssen"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="onofre-pinto"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="orlando-da-silva-rosa-bomfim-junior"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="orlando-momente"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="reinaldo-silveira-pimenta">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="roberto-macarini"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="sebastiao-tome-da-silva">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem isaac" data-victim="lauriberto-jose-reyes">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem isaac" data-victim="gelson-reicher"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem isaac" data-victim="ronaldo-mouth-queiroz">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem isaac"
+                        data-victim="alexandre-vannucchi-leme"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem ustra" data-victim="arnaldo"
+                        style="border: 3px solid #F1C40F !important; z-index: 10;"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem ustra" data-victim="helcio-pereira-fortes">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem ustra isaac"
+                        data-victim="alex-de-paula-xavier-pereira"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem ustra isaac"
+                        data-victim="francisco-seiko-okama"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="oswaldo-orlando-da-costa">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="raimundo-goncalves-de-figueiredo"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="rubens-beyrodt-paiva"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste"
+                        data-victim="sidney-fix-marques-dos-santos"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="vitor-carlos-ramos"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste" data-victim="walter-de-souza-ribeiro">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sudeste ustra"
+                        data-victim="aluizio-palhano-pedreira-ferreira"></div>
+                    <div class="flag-square property-1-desaparecidos sudeste sergio" data-victim="wilson-silva"></div>
+                    <div class="flag-square property-1-desaparecidos sul sergio" data-victim="joaquim-pires-cerveira">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem alcides"
+                        data-victim="jose-roberto-arantes-de-almeida"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem alcides isaac"
+                        data-victim="antonio-sergio-de-mattos"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem alcides ustra isaac"
+                        data-victim="luiz-eduardo-da-rocha-merlino"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem sergio" data-victim="eduardo-collen-leite">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem sergio" data-victim="luiz-fogaca-balboni">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem sergio isaac"
+                        data-victim="marcos-nonato-da-fonseca"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem sergio alcides"
+                        data-victim="denis-casemiro"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem sergio alcides"
+                        data-victim="devanir-jose-de-carvalho"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="abelardo-rausch-de-alcantara"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="aides-dias-de-carvalho"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="alberto-aleixo"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="alvino-ferreira-felipe"></div>
+                    <div class="flag-square property-1-desaparecidos sul jovem"
+                        data-victim="alceri-maria-gomes-da-silva"></div>
+                    <div class="flag-square property-1-desaparecidos sul jovem"
+                        data-victim="celso-gilberto-de-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos sul jovem" data-victim="jose-idesio-brianezi">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sul jovem"
+                        data-victim="luiz-renato-pires-de-almeida"></div>
+                    <div class="flag-square property-1-desaparecidos sul jovem" data-victim="milton-soares-de-castro">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sul jovem ustra"
+                        data-victim="luiz-eurico-tejera-lisboa"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="angelo-arroyo"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="antonio-jose-dos-reis"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="augusto-soares-da-cunha"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="benedito-goncalves"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="carlos-antunes-da-silva"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="carlos-lamarca"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="carlos-nicolau-danielli"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="carlos-schirmer"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="feliciano-eugenio-neto"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="flavio-ferreira-da-silva"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="gustavo-buarque-schiller"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="joao-barcellos-martins"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="joao-batista-franco-drumond"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="joao-bosco-penido-burnier"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="jorge-aprigio-de-paula"></div>
+                    <div class="flag-square property-1-desaparecidos sul jovem sergio" data-victim="joao-batista-rita">
+                    </div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="cilon-cunha-brum"></div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="divo-fernandes-d-oliveira"></div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="joao-carlos-haas-sobrinho"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="jose-ferreira-de-almeida"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="jose-isabel-do-nascimento"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="jose-maximino-de-andrade-netto">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="jose-pinheiro-jobim"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="juares-guimaraes-de-brito"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="lincoln-cordeiro-oest"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="lyda-monteiro-da-silva"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="manoel-jose-nurchis"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="napoleao-felipe-biscaldi"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="nativo-da-natividade-de-oliveira">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="otavio-soares-ferreira-da-cunha">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="paulo-guerra-tavares"></div>
+                    <div class="flag-square property-1-mortos sudeste" data-victim="roberto-cietto"></div>
+                    <div class="flag-square property-1-mortos sudeste alcides" data-victim="dorival-ferreira"></div>
+                    <div class="flag-square property-1-mortos sudeste sergio" data-victim="joaquim-camara-ferreira">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste sergio" data-victim="norberto-nehring"></div>
+                    <div class="flag-square property-1-mortos sul jovem mulher"
+                        data-victim="sonia-maria-de-moraes-angel-jones"></div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="jose-huberto-bronca"></div>
+                    <div class="flag-square property-1-desaparecidos sul" data-victim="paulo-mendes-rodrigues"></div>
+                    <div class="flag-square property-1-mortos sul mulher" data-victim="angelina-goncalves"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="angelo-cardoso-da-silva"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="ary-abreu-lima-da-rosa"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="edu-barreto-leite"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="hamilton-fernando-cunha"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="iguatemi-zuchi-teixeira"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="joao-domingos-da-silva"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="jose-soares-dos-santos"></div>
+                    <div class="flag-square property-1-mortos sul jovem" data-victim="nilton-rosa-da-silva"></div>
+                    <div class="empty-spacer"></div>
+                    <div class="flag-square property-1-mortos sul jovem ustra isaac"
+                        data-victim="frederico-eduardo-mayr"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="alfeu-de-alcantara-monteiro"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="arno-preis"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="avelmar-moreira-de-barros"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="darcy-jose-dos-santos-mariante"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="elvaristo-alves-da-silva"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="higino-joao-pio"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="joao-de-carvalho-barros"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="leopoldo-chiapetti"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="manoel-custodio-martins"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="onofre-ilha-dornelles"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="rui-osvaldo-aguiar-pfutzenreuter"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="silvano-soares-dos-santos"></div>
+                    <div class="flag-square property-1-mortos sul" data-victim="wanio-jose-de-mattos"></div>
+                    <div class="flag-square property-1-mortos nordeste" data-victim="joao-pedro-teixeira"></div>
+                    <div class="flag-square property-1-mortos nordeste jovem sergio"
+                        data-victim="emmanuel-bezerra-dos-santos"></div>
+                    <div class="flag-square property-1-mortos sudeste jovem" data-victim="lucimar-brandao-guimaraes">
+                    </div>
+                    <div class="flag-square property-1-mortos sudeste jovem alcides"
+                        data-victim="eduardo-antonio-da-fonseca"></div>
+                    <div class="empty-spacer"></div>
+                </div>
+                <div class="custom-legend">
+                    <h3 data-i18n="flag.legend_title">LEGENDA</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-box property-1-desaparecidos"></div> <span data-i18n="flag.legend_disappeared">Desaparecidos</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box property-1-mortos"></div> <span data-i18n="flag.legend_deceased">Mortos</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box property-1-mortos jovem"></div> <span data-i18n="flag.legend_young">Jovens</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-box property-1-mortos mulher"></div> <span data-i18n="flag.legend_women">Mulheres</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-8826"><span class="text-black" data-i18n="flag.cnv_footnote">*Dados da Comissão Nacional da Verdade</span></p>
+            <a class="prototype-link" href="arnaldo-perfil.html" target="_top">
+                <div class="vinho-false">
+                    <div class="property-1-verde">
+                        <div class="rectangle-1-8838"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkboxes = document.querySelectorAll('#custom-filter-menu input[type="checkbox"]');
+                const clearBtn = document.getElementById('clear-filters');
+                const searchInput = document.getElementById('search-input');
+                const searchContainer = document.getElementById('search-container');
+                const searchToggleBtn = document.getElementById('search-toggle-btn');
+
+                function updateFilters() {
+                    let checkedLoc = [];
+                    let checkedPeriod = [];
+                    let checkedAge = [];
+                    let checkedGender = [];
+                    let checkedStatus = [];
+
+                    checkboxes.forEach(cb => {
+                        if (cb.checked) {
+                            if (cb.dataset.group === 'loc') {
+                                checkedLoc.push(cb.value);
+                            } else if (cb.dataset.group === 'period') {
+                                checkedPeriod.push(cb.value);
+                            } else if (cb.dataset.group === 'desc') {
+                                if (cb.value === 'jovem') {
+                                    checkedAge.push(cb.value);
+                                } else if (cb.value === 'mulher' || cb.value === 'homem') {
+                                    checkedGender.push(cb.value);
+                                } else if (cb.value === 'd_' || cb.value === 'm_') {
+                                    checkedStatus.push(cb.value);
+                                }
+                            }
+                        }
+                    });
+
+                    const victimNames = {
+                        "arnaldo": "Arnaldo Cardoso Rocha",
+                        "soledad": "Soledad Barrett Viedma",
+                        "abelardo-rausch-de-alcantara": "Abelardo Rausch de Alcântara",
+                        "abilio-clemente-filho": "Abílio Clemente Filho",
+                        "adauto-freire-da-cruz": "Adauto Freire da Cruz",
+                        "aderval-alves-coqueiro": "Aderval Alves Coqueiro",
+                        "adriano-fonseca-filho": "Adriano Fonseca Filho",
+                        "afonso-henrique-martins-saldanha": "Afonso Henrique Martins Saldanha",
+                        "aides-dias-de-carvalho": "Aides Dias de Carvalho",
+                        "albertino-jose-de-farias": "Albertino José de Farias",
+                        "alberto-aleixo": "Alberto Aleixo",
+                        "alceri-maria-gomes-da-silva": "Alceri Maria Gomes da Silva",
+                        "aldo-de-sa-brito-souza-neto": "Aldo de Sá Brito Souza Neto",
+                        "alex-de-paula-xavier-pereira": "Alex de Paula Xavier Pereira",
+                        "alexander-jose-ibsen-voeroes": "Alexander José Ibsen Voerões",
+                        "alexandre-vannucchi-leme": "Alexandre Vannucchi Leme",
+                        "alfeu-de-alcantara-monteiro": "Alfeu de Alcântara Monteiro",
+                        "almir-custodio-de-lima": "Almir Custódio de Lima",
+                        "aluizio-palhano-pedreira-ferreira": "Aluízio Palhano Pedreira Ferreira",
+                        "alvino-ferreira-felipe": "Alvino Ferreira Felipe",
+                        "amaro-felix-pereira": "Amaro Félix Pereira",
+                        "amaro-luiz-de-carvalho": "Amaro Luiz de Carvalho",
+                        "ana-maria-nacinovic-correa": "Ana Maria Nacinovic Corrêa",
+                        "ana-rosa-kucinski-ana-rosa-silva": "Ana Rosa Kucinski/Ana Rosa Silva",
+                        "anatalia-de-souza-melo-alves": "Anatália de Souza Melo Alves",
+                        "andre-grabois": "André Grabois",
+                        "angelina-goncalves": "Angelina Gonçalves",
+                        "angelo-arroyo": "Ângelo Arroyo",
+                        "angelo-cardoso-da-silva": "Ângelo Cardoso da Silva",
+                        "antogildo-pascoal-viana": "Antogildo Pascoal Viana",
+                        "antonio-alfredo-de-lima": "Antônio Alfredo de Lima",
+                        "antonio-bem-cardoso": "Antônio Bem Cardoso",
+                        "antonio-benetazzo": "Antônio Benetazzo",
+                        "antonio-carlos-bicalho-lana": "Antônio Carlos Bicalho Lana",
+                        "antonio-carlos-monteiro-teixeira": "Antônio Carlos Monteiro Teixeira",
+                        "antonio-carlos-nogueira-cabral": "Antônio Carlos Nogueira Cabral",
+                        "antonio-de-araujo-veloso": "Antônio de Araújo Veloso",
+                        "antonio-de-padua-costa": "Antônio de Pádua Costa",
+                        "antonio-dos-tres-reis-de-oliveira": "Antônio dos Três Reis de Oliveira",
+                        "antonio-ferreira-pinto": "Antônio Ferreira Pinto",
+                        "antonio-guilherme-ribeiro-ribas": "Antonio Guilherme Ribeiro Ribas",
+                        "antonio-henrique-pereira-neto": "Antônio Henrique Pereira Neto",
+                        "antonio-joaquim-de-souza-machado": "Antônio Joaquim de Souza Machado",
+                        "antonio-jose-dos-reis": "Antônio José dos Reis",
+                        "antonio-luciano-pregoni": "Antonio Luciano Pregoni",
+                        "antonio-marcos-pinto-de-oliveira": "Antônio Marcos Pinto de Oliveira",
+                        "antonio-raymundo-de-lucena": "Antônio Raymundo de Lucena",
+                        "antonio-sergio-de-mattos": "Antônio Sérgio de Mattos",
+                        "antonio-teodoro-de-castro": "Antônio Teodoro de Castro",
+                        "ari-de-oliveira-mendes-cunha": "Ari de Oliveira Mendes Cunha",
+                        "ari-lopes-de-macedo": "Ari Lopes de Macedo",
+                        "arildo-valadao": "Arildo Valadão",
+                        "armando-teixeira-fructuoso": "Armando Teixeira Fructuoso",
+                        "arnaldo-cardoso-rocha": "Arnaldo Cardoso Rocha",
+                        "arno-preis": "Arno Preis",
+                        "ary-abreu-lima-da-rosa": "Ary Abreu Lima da Rosa",
+                        "ary-cabrera-prates": "Ary Cabrera Prates",
+                        "augusto-soares-da-cunha": "Augusto Soares da Cunha",
+                        "aurea-eliza-pereira": "Aurea Eliza Pereira",
+                        "aurora-maria-nascimento-furtado": "Aurora Maria Nascimento Furtado",
+                        "avelmar-moreira-de-barros": "Avelmar Moreira de Barros",
+                        "aylton-adalberto-mortati": "Aylton Adalberto Mortati",
+                        "batista": "Batista",
+                        "benedito-goncalves": "Benedito Gonçalves",
+                        "benedito-pereira-serra": "Benedito Pereira Serra",
+                        "bergson-gurjao-farias": "Bergson Gurjão Farias",
+                        "bernardino-saraiva": "Bernardino Saraiva",
+                        "boanerges-de-souza-massa": "Boanerges de Souza Massa",
+                        "caiupy-alves-de-castro": "Caiupy Alves de Castro",
+                        "carlos-alberto-soares-de-freitas": "Carlos Alberto Soares de Freitas",
+                        "carlos-antunes-da-silva": "Carlos Antunes da Silva",
+                        "carlos-eduardo-pires-fleury": "Carlos Eduardo Pires Fleury",
+                        "carlos-lamarca": "Carlos Lamarca",
+                        "carlos-marighella": "Carlos Marighella",
+                        "carlos-nicolau-danielli": "Carlos Nicolau Danielli",
+                        "carlos-roberto-zanirato": "Carlos Roberto Zanirato",
+                        "carlos-schirmer": "Carlos Schirmer",
+                        "cassimiro-luiz-de-freitas": "Cassimiro Luiz de Freitas",
+                        "catarina-helena-abi-ecab": "Catarina Helena Abi Eçab",
+                        "celio-augusto-guedes": "Célio Augusto Guedes",
+                        "celso-gilberto-de-oliveira": "Celso Gilberto de Oliveira",
+                        "chael-charles-schreier": "Chael Charles Schreier",
+                        "cilon-cunha-brum": "Cilon Cunha Brum",
+                        "ciro-flavio-salazar-de-oliveira": "Ciro Flávio Salazar de Oliveira",
+                        "cloves-dias-de-amorim": "Cloves Dias de Amorim",
+                        "custodio-saraiva-neto": "Custódio Saraiva Neto",
+                        "daniel-jose-de-carvalho": "Daniel José de Carvalho",
+                        "daniel-ribeiro-callado": "Daniel Ribeiro Callado",
+                        "darcy-jose-dos-santos-mariante": "Darcy José dos Santos Mariante",
+                        "david-capistrano-da-costa": "David Capistrano da Costa",
+                        "david-de-souza-meira": "David de Souza Meira",
+                        "david-eduardo-chab-tarab-baabour": "David Eduardo Chab Tarab Baabour",
+                        "denis-casemiro": "Dênis Casemiro",
+                        "dermeval-da-silva-pereira": "Dermeval da Silva Pereira",
+                        "devanir-jose-de-carvalho": "Devanir José de Carvalho",
+                        "dilermano-mello-do-nascimento": "Dilermano Mello do Nascimento",
+                        "dimas-antonio-casemiro": "Dimas Antônio Casemiro",
+                        "dinaelza-santana-coqueiro": "Dinaelza Santana Coqueiro",
+                        "dinalva-conceicao-oliveira-teixeira": "Dinalva Conceição Oliveira Teixeira",
+                        "divino-ferreira-de-souza": "Divino Ferreira de Souza",
+                        "divo-fernandes-d-oliveira": "Divo Fernandes D’ Oliveira",
+                        "dorival-ferreira": "Dorival Ferreira",
+                        "durvalino-porfirio-de-souza": "Durvalino Porfírio de Souza",
+                        "edgar-de-aquino-duarte": "Edgar de Aquino Duarte",
+                        "edmur-pericles-camargo": "Edmur Péricles Camargo",
+                        "edson-luiz-lima-souto": "Edson Luiz Lima Souto",
+                        "edson-neves-quaresma": "Edson Neves Quaresma",
+                        "edu-barreto-leite": "Edu Barreto Leite",
+                        "eduardo-antonio-da-fonseca": "Eduardo Antônio da Fonseca",
+                        "eduardo-collen-leite": "Eduardo Collen Leite",
+                        "eduardo-collier-filho": "Eduardo Collier Filho",
+                        "eduardo-gonzalo-escabosa": "Eduardo Gonzalo Escabosa",
+                        "eiraldo-de-palha-freire": "Eiraldo de Palha Freire",
+                        "eliane-martins": "Eliane Martins",
+                        "elmo-correa": "Elmo Corrêa",
+                        "elson-costa": "Elson Costa",
+                        "elvaristo-alves-da-silva": "Elvaristo Alves da Silva",
+                        "emmanuel-bezerra-dos-santos": "Emmanuel Bezerra dos Santos",
+                        "enrique-ernesto-ruggia": "Enrique Ernesto Ruggia",
+                        "epaminondas-gomes-de-oliveira": "Epaminondas Gomes de Oliveira",
+                        "eremias-delizoicov": "Eremias Delizoicov",
+                        "esmeraldina-carvalho-cunha": "Esmeraldina Carvalho Cunha",
+                        "eudaldo-gomes-da-silva": "Eudaldo Gomes da Silva",
+                        "evaldo-luiz-ferreira-de-souza": "Evaldo Luiz Ferreira de Souza",
+                        "ezequias-bezerra-da-rocha": "Ezequias Bezerra da Rocha",
+                        "feliciano-eugenio-neto": "Feliciano Eugênio Neto",
+                        "felix-escobar": "Felix Escobar",
+                        "fernando-augusto-da-fonseca": "Fernando Augusto da Fonseca",
+                        "fernando-augusto-de-santa-cruz-oliveira": "Fernando Augusto de Santa Cruz Oliveira",
+                        "fernando-borges-de-paula-ferreira": "Fernando Borges de Paula Ferreira",
+                        "fernando-da-silva-lembo": "Fernando da Silva Lembo",
+                        "flavio-carvalho-molina": "Flávio Carvalho Molina",
+                        "flavio-ferreira-da-silva": "Flávio Ferreira da Silva",
+                        "francisco-das-chagas-pereira": "Francisco das Chagas Pereira",
+                        "francisco-emanuel-penteado": "Francisco Emanuel Penteado",
+                        "francisco-jose-de-oliveira": "Francisco José de Oliveira",
+                        "francisco-manoel-chaves": "Francisco Manoel Chaves",
+                        "francisco-seiko-okama": "Francisco Seiko Okama",
+                        "francisco-tenorio-cerqueira-junior": "Francisco Tenório Cerqueira Júnior",
+                        "frederico-eduardo-mayr": "Frederico Eduardo Mayr",
+                        "gastone-lucia-de-carvalho-beltrao": "Gastone Lúcia de Carvalho Beltrão",
+                        "gelson-reicher": "Gelson Reicher",
+                        "geraldo-bernardo-da-silva": "Geraldo Bernardo da Silva",
+                        "geraldo-da-rocha-gualberto": "Geraldo da Rocha Gualberto",
+                        "gerardo-magela-fernandes-torres-da-costa": "Gerardo Magela Fernandes Torres da Costa",
+                        "gerson-theodoro-de-oliveira": "Gerson Theodoro de Oliveira",
+                        "getulio-de-oliveira-cabral": "Getúlio de Oliveira Cabral",
+                        "gilberto-olimpio-maria": "Gilberto Olímpio Maria",
+                        "gildo-macedo-lacerda": "Gildo Macedo Lacerda",
+                        "gilson-miranda": "Gilson Miranda",
+                        "grenaldo-de-jesus-da-silva": "Grenaldo de Jesus da Silva",
+                        "guido-leao": "Guido Leão",
+                        "guilherme-gomes-lund": "Guilherme Gomes Lund",
+                        "gustavo-buarque-schiller": "Gustavo Buarque Schiller",
+                        "hamilton-fernando-cunha": "Hamilton Fernando Cunha",
+                        "hamilton-pereira-damasceno": "Hamilton Pereira Damasceno",
+                        "helber-jose-gomes-goulart": "Helber José Gomes Goulart",
+                        "helcio-pereira-fortes": "Hélcio Pereira Fortes",
+                        "helenira-resende-de-souza-nazareth": "Helenira Resende de Souza Nazareth",
+                        "heleny-ferreira-telles-guariba": "Heleny Ferreira Telles Guariba",
+                        "helio-luiz-navarro-de-magalhaes": "Hélio Luiz Navarro de Magalhães",
+                        "henrique-cintra-ferreira-de-ornellas": "Henrique Cintra Ferreira de Ornellas",
+                        "higino-joao-pio": "Higino João Pio",
+                        "hiran-de-lima-pereira": "Hiran de Lima Pereira",
+                        "hiroaki-torigoe": "Hiroaki Torigoe",
+                        "honestino-monteiro-guimaraes": "Honestino Monteiro Guimarães",
+                        "horacio-domingo-campiglia": "Horacio Domingo Campiglia",
+                        "iara-iavelberg": "Iara Iavelberg",
+                        "ichiro-nagami": "Ichiro Nagami",
+                        "idalisio-soares-aranha-filho": "Idalísio Soares Aranha Filho",
+                        "ieda-santos-delgado": "Ieda Santos Delgado",
+                        "iguatemi-zuchi-teixeira": "Iguatemi Zuchi Teixeira",
+                        "inocencio-pereira-alves": "Inocêncio Pereira Alves",
+                        "iris-amaral": "Íris Amaral",
+                        "ismael-silva-de-jesus": "Ismael Silva de Jesus",
+                        "israel-tavares-roque": "Israel Tavares Roque",
+                        "issami-nakamura-okano": "Issami Nakamura Okano",
+                        "itair-jose-veloso": "Itair José Veloso",
+                        "iuri-xavier-pereira": "Iuri Xavier Pereira",
+                        "ivan-mota-dias": "Ivan Mota Dias",
+                        "ivan-rocha-aguiar": "Ivan Rocha Aguiar",
+                        "izis-dias-de-oliveira": "Izis Dias de Oliveira",
+                        "jaime-petit-da-silva": "Jaime Petit da Silva",
+                        "james-allen-luz": "James Allen Luz",
+                        "jana-moroni-barroso": "Jana Moroni Barroso",
+                        "jane-vanini": "Jane Vanini",
+                        "jarbas-pereira-marques": "Jarbas Pereira Marques",
+                        "jayme-amorim-de-miranda": "Jayme Amorim de Miranda",
+                        "jean-henri-raya-ribard": "Jean Henri Raya Ribard",
+                        "jeova-assis-gomes": "Jeová Assis Gomes",
+                        "joao-alfredo-dias": "João Alfredo Dias",
+                        "joao-antonio-santos-abi-ecab": "João Antônio Santos Abi Eçab",
+                        "joao-barcellos-martins": "João Barcellos Martins",
+                        "joao-batista-franco-drumond": "João Batista Franco Drumond",
+                        "joao-batista-rita": "João Batista Rita",
+                        "joao-bosco-penido-burnier": "João Bosco Penido Burnier",
+                        "joao-carlos-cavalcanti-reis": "João Carlos Cavalcanti Reis",
+                        "joao-carlos-haas-sobrinho": "João Carlos Haas Sobrinho",
+                        "joao-de-carvalho-barros": "João de Carvalho Barros",
+                        "joao-domingos-da-silva": "João Domingos da Silva",
+                        "joao-gualberto-calatrone": "João Gualberto Calatrone",
+                        "joao-leonardo-da-silva-rocha": "João Leonardo da Silva Rocha",
+                        "joao-lucas-alves": "João Lucas Alves",
+                        "joao-massena-melo": "João Massena Melo",
+                        "joao-mendes-araujo": "João Mendes Araújo",
+                        "joao-pedro-teixeira": "João Pedro Teixeira",
+                        "joao-roberto-borges-de-souza": "João Roberto Borges de Souza",
+                        "joaquim-alencar-de-seixas": "Joaquim Alencar de Seixas",
+                        "joaquim-camara-ferreira": "Joaquim Câmara Ferreira",
+                        "joaquim-pires-cerveira": "Joaquim Pires Cerveira",
+                        "joaquinzao": "Joaquinzão",
+                        "joel-jose-de-carvalho": "Joel José de Carvalho",
+                        "joel-vasconcelos-santos": "Joel Vasconcelos Santos",
+                        "joelson-crispim": "Joelson Crispim",
+                        "jonas-jose-de-albuquerque-barros": "Jonas José de Albuquerque Barros",
+                        "jorge-alberto-basso": "Jorge Alberto Basso",
+                        "jorge-aprigio-de-paula": "Jorge Aprígio de Paula",
+                        "jorge-leal-goncalves-pereira": "Jorge Leal Gonçalves Pereira",
+                        "jorge-oscar-adur": "Jorge Oscar Adur",
+                        "jose-bartolomeu-rodrigues-de-souza": "José Bartolomeu Rodrigues de Souza",
+                        "jose-campos-barreto": "José Campos Barreto",
+                        "jose-carlos-da-costa": "José Carlos da Costa",
+                        "jose-carlos-novaes-da-mata-machado": "José Carlos Novaes da Mata Machado",
+                        "jose-dalmo-guimaraes-lins": "José Dalmo Guimarães Lins",
+                        "jose-de-oliveira": "José de Oliveira",
+                        "jose-de-souza": "José de Souza",
+                        "jose-ferreira-de-almeida": "José Ferreira de Almeida",
+                        "jose-gomes-teixeira": "José Gomes Teixeira",
+                        "jose-guimaraes": "José Guimarães",
+                        "jose-huberto-bronca": "José Huberto Bronca",
+                        "jose-idesio-brianezi": "José Idésio Brianezi",
+                        "jose-inocencio-barreto": "José Inocêncio Barreto",
+                        "jose-isabel-do-nascimento": "José Isabel do Nascimento",
+                        "jose-julio-de-araujo": "José Júlio de Araújo",
+                        "jose-lavecchia": "José Lavecchia",
+                        "jose-lima-piauhy-dourado": "José Lima Piauhy Dourado",
+                        "jose-manoel-da-silva": "José Manoel da Silva",
+                        "jose-maria-ferreira-de-araujo": "José Maria Ferreira de Araújo",
+                        "jose-maurilio-patricio": "José Maurílio Patrício",
+                        "jose-maximino-de-andrade-netto": "José Maximino de Andrade Netto",
+                        "jose-mendes-de-sa-roriz": "José Mendes de Sá Roriz",
+                        "jose-milton-barbosa": "José Milton Barbosa",
+                        "jose-montenegro-de-lima": "José Montenegro de Lima",
+                        "jose-nobre-parente": "José Nobre Parente",
+                        "jose-pinheiro-jobim": "José Pinheiro Jobim",
+                        "jose-porfirio-de-souza": "José Porfírio de Souza",
+                        "jose-raimundo-da-costa": "José Raimundo da Costa",
+                        "jose-roberto-arantes-de-almeida": "José Roberto Arantes de Almeida",
+                        "jose-roberto-spiegner": "José Roberto Spiegner",
+                        "jose-roman": "José Roman",
+                        "jose-sabino": "José Sabino",
+                        "jose-silton-pinheiro": "José Silton Pinheiro",
+                        "jose-soares-dos-santos": "José Soares dos Santos",
+                        "jose-toledo-de-oliveira": "José Toledo de Oliveira",
+                        "jose-wilson-lessa-sabbag": "José Wilson Lessa Sabbag",
+                        "juan-antonio-carrasco-forrastal": "Juan Antônio Carrasco Forrastal",
+                        "juares-guimaraes-de-brito": "Juares Guimarães de Brito",
+                        "juarez-rodrigues-coelho": "Juarez Rodrigues Coelho",
+                        "juvelino-andres-carneiro-da-fontoura-gularte": "Juvelino Andrés Carneiro da Fontoura Gularte",
+                        "kleber-lemos-da-silva": "Kleber Lemos da Silva",
+                        "labibe-elias-abduch": "Labibe Elias Abduch",
+                        "lauriberto-jose-reyes": "Lauriberto José Reyes",
+                        "leopoldo-chiapetti": "Leopoldo Chiapetti",
+                        "libero-giancarlo-castiglia": "Líbero Giancarlo Castiglia",
+                        "ligia-maria-salgado-nobrega": "Lígia Maria Salgado Nóbrega",
+                        "liliana-ines-goldemberg": "Liliana Inés Goldemberg",
+                        "lincoln-bicalho-roque": "Lincoln Bicalho Roque",
+                        "lincoln-cordeiro-oest": "Lincoln Cordeiro Oest",
+                        "lorenzo-ismael-vinas": "Lorenzo Ismael Viñas",
+                        "lourdes-maria-wanderley-pontes": "Lourdes Maria Wanderley Pontes",
+                        "lourenco-camelo-de-mesquita": "Lourenço Camelo de Mesquita",
+                        "lourival-moura-paulino": "Lourival Moura Paulino",
+                        "lucia-maria-de-souza": "Lucia Maria de Souza",
+                        "lucimar-brandao-guimaraes": "Lucimar Brandão Guimarães",
+                        "lucindo-costa": "Lucindo Costa",
+                        "lucio-petit-da-silva": "Lucio Petit da Silva",
+                        "luis-alberto-andrade-de-sa-e-benevides": "Luís Alberto Andrade de Sá e Benevides",
+                        "luisa-augusta-garlippe": "Luisa Augusta Garlippe",
+                        "luiz-almeida-araujo": "Luiz Almeida Araújo",
+                        "luiz-antonio-santa-barbara": "Luiz Antônio Santa Barbára",
+                        "luiz-carlos-augusto": "Luiz Carlos Augusto",
+                        "luiz-carlos-de-almeida": "Luiz Carlos de Almeida",
+                        "luiz-eduardo-da-rocha-merlino": "Luiz Eduardo da Rocha Merlino",
+                        "luiz-eurico-tejera-lisboa": "Luiz Eurico Tejera Lisbôa",
+                        "luiz-fogaca-balboni": "Luiz Fogaça Balboni",
+                        "luiz-ghilardini": "Luiz Ghilardini",
+                        "luiz-gonzaga-dos-santos": "Luiz Gonzaga dos Santos",
+                        "luiz-hirata": "Luiz Hirata",
+                        "luiz-ignacio-maranhao-filho": "Luiz Ignácio Maranhão Filho",
+                        "luiz-jose-da-cunha": "Luiz José da Cunha",
+                        "luiz-paulo-da-cruz-nunes": "Luiz Paulo da Cruz Nunes",
+                        "luiz-renato-do-lago-faria": "Luiz Renato do Lago Faria",
+                        "luiz-renato-pires-de-almeida": "Luiz Renato Pires de Almeida",
+                        "luiz-rene-silveira-e-silva": "Luiz René Silveira e Silva",
+                        "luiz-vieira": "Luiz Vieira",
+                        "lyda-monteiro-da-silva": "Lyda Monteiro da Silva",
+                        "manoel-aleixo-da-silva": "Manoel Aleixo da Silva",
+                        "manoel-alves-de-oliveira": "Manoel Alves de Oliveira",
+                        "manoel-custodio-martins": "Manoel Custódio Martins",
+                        "manoel-fiel-filho": "Manoel Fiel Filho",
+                        "manoel-jose-mendes-nunes-de-abreu": "Manoel José Mendes Nunes de Abreu",
+                        "manoel-jose-nurchis": "Manoel José Nurchis",
+                        "manoel-lisboa-de-moura": "Manoel Lisbôa de Moura",
+                        "manoel-raimundo-soares": "Manoel Raimundo Soares",
+                        "manoel-rodrigues-ferreira": "Manoel Rodrigues Ferreira",
+                        "marcio-beck-machado": "Márcio Beck Machado",
+                        "marco-antonio-braz-de-carvalho": "Marco Antônio Braz de Carvalho",
+                        "marco-antonio-dias-baptista": "Marco Antônio Dias Baptista",
+                        "marcos-antonio-da-silva-lima": "Marcos Antônio da Silva Lima",
+                        "marcos-basilio-arocena-da-silva-guimaraes": "Marcos Basílio Arocena da Silva Guimarães",
+                        "marcos-jose-de-lima": "Marcos José de Lima",
+                        "marcos-nonato-da-fonseca": "Marcos Nonato da Fonseca",
+                        "margarida-maria-alves": "Margarida Maria Alves",
+                        "maria-angela-ribeiro": "Maria Ângela Ribeiro",
+                        "maria-augusta-thomaz": "Maria Augusta Thomaz",
+                        "maria-auxiliadora-lara-barcellos": "Maria Auxiliadora Lara Barcellos",
+                        "maria-celia-correa": "Maria Célia Corrêa",
+                        "maria-lucia-petit-da-silva": "Maria Lúcia Petit da Silva",
+                        "maria-regina-lobo-leite-de-figueiredo": "Maria Regina Lobo Leite de Figueiredo",
+                        "maria-regina-marcondes-pinto": "Maria Regina Marcondes Pinto",
+                        "mariano-joaquim-da-silva": "Mariano Joaquim da Silva",
+                        "marilena-villas-boas-pinto": "Marilena Villas Boas Pinto",
+                        "mario-alves-de-souza-vieira": "Mário Alves de Souza Vieira",
+                        "mario-de-souza-prata": "Mário de Souza Prata",
+                        "massafumi-yoshinaga": "Massafumi Yoshinaga",
+                        "mauricio-grabois": "Maurício Grabois",
+                        "mauricio-guilherme-da-silveira": "Maurício Guilherme da Silveira",
+                        "merival-araujo": "Merival Araújo",
+                        "miguel-pereira-dos-santos": "Miguel Pereira dos Santos",
+                        "miguel-sabat-nuet": "Miguel Sabat Nuet",
+                        "milton-soares-de-castro": "Milton Soares de Castro",
+                        "miriam-lopes-verbena": "Miriam Lopes Verbena",
+                        "monica-suzana-pinus-de-binstock": "Mónica Suzana Pinus de Binstock",
+                        "napoleao-felipe-biscaldi": "Napoleão Felipe Biscaldi",
+                        "nativo-da-natividade-de-oliveira": "Nativo da Natividade de Oliveira",
+                        "neide-alves-dos-santos": "Neide Alves dos Santos",
+                        "nelson-de-souza-kohl": "Nelson de Souza Kohl",
+                        "nelson-jose-de-almeida": "Nelson José de Almeida",
+                        "nelson-lima-piauhy-dourado": "Nelson Lima Piauhy Dourado",
+                        "nestor-vera": "Nestor Vera",
+                        "newton-eduardo-de-oliveira": "Newton Eduardo de Oliveira",
+                        "nilda-carvalho-cunha": "Nilda Carvalho Cunha",
+                        "nilton-rosa-da-silva": "Nilton Rosa da Silva",
+                        "norberto-armando-habegger": "Norberto Armando Habegger",
+                        "norberto-nehring": "Norberto Nehring",
+                        "odair-jose-brunocilla": "Odair José Brunocilla",
+                        "odijas-carvalho-de-souza": "Odijas Carvalho de Souza",
+                        "olavo-hanssen": "Olavo Hanssen",
+                        "onofre-ilha-dornelles": "Onofre Ilha Dornelles",
+                        "onofre-pinto": "Onofre Pinto",
+                        "orlando-da-silva-rosa-bomfim-junior": "Orlando da Silva Rosa Bomfim Junior",
+                        "orlando-momente": "Orlando Momente",
+                        "ornalino-candido-da-silva": "Ornalino Cândido da Silva",
+                        "orocilio-martins-goncalves": "Orocílio Martins Gonçalves",
+                        "oswaldo-orlando-da-costa": "Oswaldo Orlando da Costa",
+                        "otavio-soares-ferreira-da-cunha": "Otávio Soares Ferreira da Cunha",
+                        "otoniel-campos-barreto": "Otoniel Campos Barreto",
+                        "paschoal-souza-lima": "Paschoal Souza Lima",
+                        "pauline-philipe-reichstul": "Pauline Philipe Reichstul",
+                        "paulo-cesar-botelho-massa": "Paulo César Botelho Massa",
+                        "paulo-costa-ribeiro-bastos": "Paulo Costa Ribeiro Bastos",
+                        "paulo-de-tarso-celestino-da-silva": "Paulo de Tarso Celestino da Silva",
+                        "paulo-guerra-tavares": "Paulo Guerra Tavares",
+                        "paulo-mendes-rodrigues": "Paulo Mendes Rodrigues",
+                        "paulo-roberto-pereira-marques": "Paulo Roberto Pereira Marques",
+                        "paulo-stuart-wright": "Paulo Stuart Wright",
+                        "paulo-torres-goncalves": "Paulo Torres Gonçalves",
+                        "pedro-carretel-": "Pedro “Carretel”",
+                        "pedro-alexandrino-oliveira-filho": "Pedro Alexandrino Oliveira Filho",
+                        "pedro-domiense-de-oliveira": "Pedro Domiense de Oliveira",
+                        "pedro-inacio-de-araujo": "Pedro Inácio de Araújo",
+                        "pedro-jeronimo-de-souza": "Pedro Jerônimo de Souza",
+                        "pedro-ventura-felipe-de-araujo-pomar": "Pedro Ventura Felipe de Araújo Pomar",
+                        "pericles-gusmao-regis": "Péricles Gusmão Regis",
+                        "raimundo-eduardo-da-silva": "Raimundo Eduardo da Silva",
+                        "raimundo-ferreira-lima": "Raimundo Ferreira Lima",
+                        "raimundo-goncalves-de-figueiredo": "Raimundo Gonçalves de Figueiredo",
+                        "raimundo-nonato-paz": "Raimundo Nonato Paz",
+                        "ramires-maranhao-do-valle": "Ramires Maranhão do Valle",
+                        "ranusia-alves-rodrigues": "Ranúsia Alves Rodrigues",
+                        "raul-amaro-nin-ferreira": "Raul Amaro Nin Ferreira",
+                        "reinaldo-silveira-pimenta": "Reinaldo Silveira Pimenta",
+                        "roberto-adolfo-val-cazorla": "Roberto Adolfo Val Cazorla",
+                        "roberto-cietto": "Roberto Cietto",
+                        "roberto-macarini": "Roberto Macarini",
+                        "roberto-rascado-rodriguez": "Roberto Rascado Rodriguez",
+                        "rodolfo-de-carvalho-troiano": "Rodolfo de Carvalho Troiano",
+                        "ronaldo-mouth-queiroz": "Ronaldo Mouth Queiroz",
+                        "rosalindo-sousa": "Rosalindo Sousa",
+                        "rubens-beyrodt-paiva": "Rubens Beyrodt Paiva",
+                        "rui-osvaldo-aguiar-pfutzenreuter": "Rui Osvaldo Aguiar Pfútzenreuter",
+                        "ruy-carlos-vieira-berbert": "Ruy Carlos Vieira Berbert",
+                        "ruy-frasao-soares": "Ruy Frasão Soares",
+                        "sabino-alves-da-silva": "Sabino Alves da Silva",
+                        "santo-dias-da-silva": "Santo Dias da Silva",
+                        "sebastiao-gomes-dos-santos": "Sebastião Gomes dos Santos",
+                        "sebastiao-tome-da-silva": "Sebastião Tomé da Silva",
+                        "sebastiao-vieira-da-silva": "Sebastião Vieira da Silva",
+                        "sergio-fernando-tula-silberberg": "Sérgio Fernando Tula Silberberg",
+                        "sergio-landulfo-furtado": "Sérgio Landulfo Furtado",
+                        "sergio-roberto-correa": "Sérgio Roberto Corrêa",
+                        "severino-elias-de-mello": "Severino Elias de Mello",
+                        "severino-viana-colou": "Severino Viana Colou",
+                        "sidney-fix-marques-dos-santos": "Sidney Fix Marques dos Santos",
+                        "silvano-soares-dos-santos": "Silvano Soares dos Santos",
+                        "solange-lourenco-gomes": "Solange Lourenço Gomes",
+                        "soledad-barrett-viedma": "Soledad Barrett Viedma",
+                        "sonia-maria-de-moraes-angel-jones": "Sônia Maria de Moraes Angel Jones",
+                        "stuart-edgar-angel-jones": "Stuart Edgar Angel Jones",
+                        "suely-yumiko-kanayama": "Suely Yumiko Kanayama",
+                        "telma-regina-cordeiro-correa": "Telma Regina Cordeiro Corrêa",
+                        "therezinha-viana-de-assis": "Therezinha Viana de Assis",
+                        "thomaz-antonio-da-silva-meirelles-netto": "Thomaz Antônio da Silva Meirelles Netto",
+                        "tito-de-alencar-lima": "Tito de Alencar Lima",
+                        "tobias-pereira-junior": "Tobias Pereira Júnior",
+                        "tulio-roberto-cardoso-quintiliano": "Túlio Roberto Cardoso Quintiliano",
+                        "uirassu-de-assis-batista": "Uirassu de Assis Batista",
+                        "umberto-de-albuquerque-camara-neto": "Umberto de Albuquerque Câmara Neto",
+                        "valdir-salles-saboia": "Valdir Salles Saboia",
+                        "vandick-reidner-pereira-coqueiro": "Vandick Reidner Pereira Coqueiro",
+                        "virgilio-gomes-da-silva": "Virgílio Gomes da Silva",
+                        "vitor-carlos-ramos": "Vitor Carlos Ramos",
+                        "vitorino-alves-moitinho": "Vitorino Alves Moitinho",
+                        "vladimir-herzog": "Vladimir Herzog",
+                        "walkiria-afonso-costa": "Walkíria Afonso Costa",
+                        "walter-de-souza-ribeiro": "Walter de Souza Ribeiro",
+                        "walter-kenneth-nelson-fleury": "Walter Kenneth Nelson Fleury",
+                        "walter-ribeiro-novaes": "Walter Ribeiro Novaes",
+                        "wanio-jose-de-mattos": "Wânio José de Mattos",
+                        "wilson-silva": "Wilson Silva",
+                        "wilson-souza-pinheiro": "Wilson Souza Pinheiro",
+                        "wilton-ferreira": "Wilton Ferreira",
+                        "yoshitane-fujimori": "Yoshitane Fujimori",
+                        "zelmo-bosa": "Zelmo Bosa",
+                        "zoe-lucas-de-brito-filho": "Zoé Lucas de Brito Filho",
+                        "zuleika-angel-jones": "Zuleika Angel Jones"
+                    };
+                    
+                    const victimYears = {"paulo-costa-ribeiro-bastos": 1972, "felix-escobar": 1971, "paulo-de-tarso-celestino-da-silva": 1971, "helber-jose-gomes-goulart": 1973, "luiz-renato-pires-de-almeida": 1970, "jose-isabel-do-nascimento": 1963, "almir-custodio-de-lima": 1973, "geraldo-bernardo-da-silva": 1969, "antonio-de-araujo-veloso": 1976, "geraldo-da-rocha-gualberto": 1963, "zelmo-bosa": 1976, "idalisio-soares-aranha-filho": 1972, "norberto-nehring": 1970, "luiz-fogaca-balboni": 1969, "eduardo-collen-leite": 1970, "miguel-sabat-nuet": 1973, "roberto-cietto": 1969, "raimundo-ferreira-lima": 1980, "guilherme-gomes-lund": 1973, "luiz-ignacio-maranhao-filho": 1974, "paulo-stuart-wright": 1973, "maria-regina-marcondes-pinto": 1976, "eudaldo-gomes-da-silva": 1973, "gustavo-buarque-schiller": 1985, "dinaelza-santana-coqueiro": 1974, "jose-de-souza": 1964, "daniel-ribeiro-callado": 1974, "jose-gomes-teixeira": 1971, "jorge-oscar-adur": 1980, "walter-ribeiro-novaes": 1971, "fernando-augusto-da-fonseca": 1972, "francisco-seiko-okama": 1973, "vitorino-alves-moitinho": 1973, "marcos-nonato-da-fonseca": 1972, "jose-mendes-de-sa-roriz": 1973, "arnaldo-cardoso-rocha": 1973, "andre-grabois": 1973, "aldo-de-sa-brito-souza-neto": 1971, "elson-costa": 1975, "angelo-arroyo": 1976, "jorge-alberto-basso": 1976, "augusto-soares-da-cunha": 1964, "sebastiao-vieira-da-silva": 1972, "rubens-beyrodt-paiva": 1971, "arno-preis": 1972, "jose-de-oliveira": 1972, "eiraldo-de-palha-freire": 1970, "david-de-souza-meira": 1968, "ichiro-nagami": 1969, "jose-milton-barbosa": 1971, "antonio-carlos-nogueira-cabral": 1972, "marcio-beck-machado": 1973, "gerardo-magela-fernandes-torres-da-costa": 1973, "aurora-maria-nascimento-furtado": 1972, "divino-ferreira-de-souza": 1973, "antonio-alfredo-de-lima": 1973, "maria-auxiliadora-lara-barcellos": 1976, "sonia-maria-de-moraes-angel-jones": 1973, "jean-henri-raya-ribard": 1973, "antonio-ferreira-pinto": 1974, "jose-soares-dos-santos": 1977, "marcos-jose-de-lima": 1973, "raimundo-eduardo-da-silva": 1971, "yoshitane-fujimori": 1970, "frederico-eduardo-mayr": 1972, "juares-guimaraes-de-brito": 1970, "thomaz-antonio-da-silva-meirelles-netto": 1974, "lourdes-maria-wanderley-pontes": 1972, "heleny-ferreira-telles-guariba": 1971, "wanio-jose-de-mattos": 1973, "jose-idesio-brianezi": 1970, "luiz-ghilardini": 1973, "rui-osvaldo-aguiar-pfutzenreuter": 1972, "marcos-antonio-da-silva-lima": 1970, "neide-alves-dos-santos": 1976, "izis-dias-de-oliveira": 1972, "carlos-alberto-soares-de-freitas": 1971, "ary-abreu-lima-da-rosa": 1970, "james-allen-luz": 1973, "edson-luiz-lima-souto": 1968, "luis-alberto-andrade-de-sa-e-benevides": 1972, "ari-de-oliveira-mendes-cunha": 1964, "joao-de-carvalho-barros": 1964, "antonio-teodoro-de-castro": 1974, "dilermano-mello-do-nascimento": 1964, "albertino-jose-de-farias": 1964, "jaime-petit-da-silva": 1973, "jose-guimaraes": 1968, "nestor-vera": 1975, "celso-gilberto-de-oliveira": 1970, "jarbas-pereira-marques": 1973, "liliana-ines-goldemberg": 1980, "raimundo-goncalves-de-figueiredo": 1971, "joaquim-camara-ferreira": 1970, "norberto-armando-habegger": 1978, "onofre-ilha-dornelles": 1964, "pedro-domiense-de-oliveira": 1964, "ivan-mota-dias": 1971, "otavio-soares-ferreira-da-cunha": 1964, "wilson-silva": 1974, "joao-antonio-santos-abi-ecab": 1968, "marcos-basilio-arocena-da-silva-guimaraes": 1976, "lourival-moura-paulino": 1972, "carlos-eduardo-pires-fleury": 1971, "horacio-domingo-campiglia": 1980, "afonso-henrique-martins-saldanha": 1974, "edson-neves-quaresma": 1970, "maria-angela-ribeiro": 1968, "paulo-roberto-pereira-marques": 1973, "santo-dias-da-silva": 1979, "luiz-eduardo-da-rocha-merlino": 1971, "david-capistrano-da-costa": 1974, "elmo-correa": 1974, "joao-bosco-penido-burnier": 1976, "antonio-bem-cardoso": 1970, "roberto-macarini": 1970, "oswaldo-orlando-da-costa": 1974, "feliciano-eugenio-neto": 1976, "antonio-marcos-pinto-de-oliveira": 1972, "daniel-jose-de-carvalho": 1974, "ornalino-candido-da-silva": 1968, "honestino-monteiro-guimaraes": 1973, "joao-leonardo-da-silva-rocha": 1975, "devanir-jose-de-carvalho": 1971, "walter-de-souza-ribeiro": 1974, "jose-silton-pinheiro": 1972, "luiz-antonio-santa-barbara": 1971, "jayme-amorim-de-miranda": 1975, "nilton-rosa-da-silva": 1973, "joao-carlos-cavalcanti-reis": 1972, "silvano-soares-dos-santos": 1970, "sebastiao-gomes-dos-santos": 1969, "walter-kenneth-nelson-fleury": 1976, "mariano-joaquim-da-silva": 1971, "tulio-roberto-cardoso-quintiliano": 1973, "lucio-petit-da-silva": 1974, "ranusia-alves-rodrigues": 1973, "mario-alves-de-souza-vieira": 1970, "lyda-monteiro-da-silva": 1980, "joaquim-alencar-de-seixas": 1971, "ciro-flavio-salazar-de-oliveira": 1972, "joao-barcellos-martins": 1964, "luiz-vieira": 1973, "luiz-hirata": 1971, "evaldo-luiz-ferreira-de-souza": 1973, "labibe-elias-abduch": 1964, "stuart-edgar-angel-jones": 1971, "jose-lima-piauhy-dourado": 1974, "roberto-adolfo-val-cazorla": 1976, "emmanuel-bezerra-dos-santos": 1973, "sergio-fernando-tula-silberberg": 1976, "massafumi-yoshinaga": 1976, "raimundo-nonato-paz": 1971, "wilson-souza-pinheiro": 1980, "jose-porfirio-de-souza": 1973, "luiz-carlos-de-almeida": 1973, "luiz-paulo-da-cruz-nunes": 1968, "helio-luiz-navarro-de-magalhaes": 1974, "aderval-alves-coqueiro": 1971, "jeova-assis-gomes": 1972, "divo-fernandes-d-oliveira": 1965, "antonio-carlos-monteiro-teixeira": 1972, "manoel-custodio-martins": 1978, "leopoldo-chiapetti": 1965, "maria-augusta-thomaz": 1973, "gilberto-olimpio-maria": 1973, "catarina-helena-abi-ecab": 1968, "manoel-rodrigues-ferreira": 1968, "abilio-clemente-filho": 1971, "lincoln-bicalho-roque": 1973, "ezequias-bezerra-da-rocha": 1969, "jana-moroni-barroso": 1974, "antonio-henrique-pereira-neto": 1969, "jose-roberto-spiegner": 1970, "ary-cabrera-prates": 1976, "flavio-ferreira-da-silva": 1975, "tobias-pereira-junior": 1974, "eduardo-collier-filho": 1974, "hiran-de-lima-pereira": 1975, "epaminondas-gomes-de-oliveira": 1971, "edmur-pericles-camargo": 1971, "maria-lucia-petit-da-silva": 1972, "joao-mendes-araujo": 1972, "eduardo-antonio-da-fonseca": 1971, "arildo-valadao": 1973, "kleber-lemos-da-silva": 1972, "ismael-silva-de-jesus": 1972, "adriano-fonseca-filho": 1973, "henrique-cintra-ferreira-de-ornellas": 1973, "mario-de-souza-prata": 1971, "francisco-jose-de-oliveira": 1971, "rodolfo-de-carvalho-troiano": 1974, "durvalino-porfirio-de-souza": 1973, "joao-domingos-da-silva": 1969, "joao-carlos-haas-sobrinho": 1972, "cassimiro-luiz-de-freitas": 1970, "helenira-resende-de-souza-nazareth": 1972, "luiz-rene-silveira-e-silva": 1974, "orlando-momente": 1974, "paulo-cesar-botelho-massa": 1972, "batista": 1974, "elvaristo-alves-da-silva": 1965, "sergio-landulfo-furtado": 1972, "mauricio-grabois": 1973, "bernardino-saraiva": 1964, "carlos-marighella": 1969, "amaro-luiz-de-carvalho": 1971, "gildo-macedo-lacerda": 1973, "jose-maximino-de-andrade-netto": 1975, "alexander-jose-ibsen-voeroes": 1972, "uirassu-de-assis-batista": 1974, "david-eduardo-chab-tarab-baabour": 1976, "odair-jose-brunocilla": 1978, "sabino-alves-da-silva": 1972, "caiupy-alves-de-castro": 1973, "jose-pinheiro-jobim": 1979, "odijas-carvalho-de-souza": 1971, "ana-rosa-kucinski-ana-rosa-silva": 1974, "jose-inocencio-barreto": 1972, "umberto-de-albuquerque-camara-neto": 1973, "iguatemi-zuchi-teixeira": 1968, "otoniel-campos-barreto": 1971, "alexandre-vannucchi-leme": 1973, "ruy-frasao-soares": 1974, "wilton-ferreira": 1972, "aluizio-palhano-pedreira-ferreira": 1971, "nelson-de-souza-kohl": 1973, "virgilio-gomes-da-silva": 1969, "alvino-ferreira-felipe": 1963, "merival-araujo": 1973, "manoel-alves-de-oliveira": 1964, "luiz-carlos-augusto": 1968, "cloves-dias-de-amorim": 1968, "denis-casemiro": 1971, "jose-julio-de-araujo": 1972, "carlos-lamarca": 1971, "lucimar-brandao-guimaraes": 1970, "edu-barreto-leite": 1964, "dermeval-da-silva-pereira": 1974, "adauto-freire-da-cruz": 1979, "dorival-ferreira": 1970, "raul-amaro-nin-ferreira": 1971, "ligia-maria-salgado-nobrega": 1972, "antonio-luciano-pregoni": 1973, "joao-gualberto-calatrone": 1973, "maria-regina-lobo-leite-de-figueiredo": 1972, "joao-batista-rita": 1973, "israel-tavares-roque": 1964, "juan-antonio-carrasco-forrastal": 1972, "pedro-inacio-de-araujo": 1964, "jose-roberto-arantes-de-almeida": 1971, "antonio-de-padua-costa": 1974, "joel-vasconcelos-santos": 1971, "nilda-carvalho-cunha": 1971, "guido-leao": 1979, "jose-toledo-de-oliveira": 1972, "helcio-pereira-fortes": 1972, "fernando-da-silva-lembo": 1968, "manoel-jose-nurchis": 1972, "lorenzo-ismael-vinas": 1980, "jose-ferreira-de-almeida": 1975, "jose-wilson-lessa-sabbag": 1969, "rosalindo-sousa": 1973, "edgar-de-aquino-duarte": 1973, "dimas-antonio-casemiro": 1971, "benedito-pereira-serra": 1964, "jose-carlos-novaes-da-mata-machado": 1973, "boanerges-de-souza-massa": 1972, "lauriberto-jose-reyes": 1972, "jose-nobre-parente": 1966, "onofre-pinto": 1974, "bergson-gurjao-farias": 1972, "jorge-aprigio-de-paula": 1968, "cilon-cunha-brum": 1974, "chael-charles-schreier": 1969, "hamilton-pereira-damasceno": 1972, "soledad-barrett-viedma": 1973, "itair-jose-veloso": 1975, "francisco-emanuel-penteado": 1973, "antonio-guilherme-ribeiro-ribas": 1973, "aylton-adalberto-mortati": 1971, "sidney-fix-marques-dos-santos": 1976, "joao-batista-franco-drumond": 1976, "paulo-guerra-tavares": 1972, "alceri-maria-gomes-da-silva": 1970, "joaquinzao": 1973, "aurea-eliza-pereira": 1974, "pericles-gusmao-regis": 1964, "gastone-lucia-de-carvalho-beltrao": 1972, "roberto-rascado-rodriguez": 1977, "issami-nakamura-okano": 1974, "jose-carlos-da-costa": 1973, "carlos-antunes-da-silva": 1970, "francisco-manoel-chaves": 1972, "antonio-jose-dos-reis": 1963, "reinaldo-silveira-pimenta": 1969, "marco-antonio-dias-baptista": 1970, "avelmar-moreira-de-barros": 1970, "sebastiao-tome-da-silva": 1963, "joao-pedro-teixeira": 1962, "benedito-goncalves": 1979, "aides-dias-de-carvalho": 1963, "margarida-maria-alves": 1983, "jonas-jose-de-albuquerque-barros": 1964, "jose-lavecchia": 1974, "newton-eduardo-de-oliveira": 1964, "lucindo-costa": 1967, "antonio-sergio-de-mattos": 1971, "eremias-delizoicov": 1969, "marilena-villas-boas-pinto": 1971, "gilson-miranda": 1963, "pedro-alexandrino-oliveira-filho": 1974, "joaquim-pires-cerveira": 1973, "luiz-gonzaga-dos-santos": 1967, "getulio-de-oliveira-cabral": 1972, "paschoal-souza-lima": 1964, "lincoln-cordeiro-oest": 1972, "fernando-augusto-de-santa-cruz-oliveira": 1974, "alfeu-de-alcantara-monteiro": 1964, "eduardo-gonzalo-escabosa": 1980, "lourenco-camelo-de-mesquita": 1977, "dinalva-conceicao-oliveira-teixeira": 1974, "orocilio-martins-goncalves": 1979, "paulo-mendes-rodrigues": 1973, "jose-maurilio-patricio": 1974, "jose-roman": 1974, "pedro-jeronimo-de-souza": 1975, "enrique-ernesto-ruggia": 1974, "jose-maria-ferreira-de-araujo": 1970, "manoel-lisboa-de-moura": 1973, "carlos-schirmer": 1964, "libero-giancarlo-castiglia": 1973, "ronaldo-mouth-queiroz": 1973, "nativo-da-natividade-de-oliveira": 1985, "ramires-maranhao-do-valle": 1973, "zuleika-angel-jones": 1976, "antonio-carlos-bicalho-lana": 1973, "luisa-augusta-garlippe": 1974, "vladimir-herzog": 1975, "angelina-goncalves": 1950, "marco-antonio-braz-de-carvalho": 1969, "severino-viana-colou": 1969, "ieda-santos-delgado": 1974, "manoel-aleixo-da-silva": 1973, "severino-elias-de-mello": 1965, "antonio-dos-tres-reis-de-oliveira": 1970, "luiz-renato-do-lago-faria": 1980, "maria-celia-correa": 1974, "orlando-da-silva-rosa-bomfim-junior": 1975, "ruy-carlos-vieira-berbert": 1972, "iuri-xavier-pereira": 1972, "jose-bartolomeu-rodrigues-de-souza": 1972, "grenaldo-de-jesus-da-silva": 1972, "telma-regina-cordeiro-correa": 1974, "valdir-salles-saboia": 1972, "angelo-cardoso-da-silva": 1970, "gelson-reicher": 1972, "vandick-reidner-pereira-coqueiro": 1974, "joelson-crispim": 1970, "jorge-leal-goncalves-pereira": 1970, "iris-amaral": 1972, "hamilton-fernando-cunha": 1969, "mauricio-guilherme-da-silveira": 1971, "fernando-borges-de-paula-ferreira": 1969, "lucia-maria-de-souza": 1973, "miguel-pereira-dos-santos": 1972, "joao-alfredo-dias": 1964, "pedro-ventura-felipe-de-araujo-pomar": 1976, "jose-huberto-bronca": 1974, "carlos-nicolau-danielli": 1972, "francisco-tenorio-cerqueira-junior": 1976, "pauline-philipe-reichstul": 1973, "manoel-jose-mendes-nunes-de-abreu": 1971, "celio-augusto-guedes": 1972, "antonio-raymundo-de-lucena": 1970, "juarez-rodrigues-coelho": 1972, "luiz-eurico-tejera-lisboa": 1972, "hiroaki-torigoe": 1972, "anatalia-de-souza-melo-alves": 1973, "custodio-saraiva-neto": 1974, "joao-roberto-borges-de-souza": 1969, "manoel-fiel-filho": 1976, "jose-campos-barreto": 1971, "luiz-jose-da-cunha": 1973, "suely-yumiko-kanayama": 1974, "esmeraldina-carvalho-cunha": 1972, "miriam-lopes-verbena": 1972, "tito-de-alencar-lima": 1974, "jose-sabino": 1966, "jose-montenegro-de-lima": 1975, "milton-soares-de-castro": 1967, "iara-iavelberg": 1971, "jose-raimundo-da-costa": 1971, "joao-lucas-alves": 1969, "jane-vanini": 1974, "therezinha-viana-de-assis": 1978, "jose-dalmo-guimaraes-lins": 1971, "antogildo-pascoal-viana": 1964, "walkiria-afonso-costa": 1974, "paulo-torres-goncalves": 1969, "eliane-martins": 1963, "napoleao-felipe-biscaldi": 1972, "antonio-joaquim-de-souza-machado": 1971, "jose-manoel-da-silva": 1973, "vitor-carlos-ramos": 1974, "pedro-carretel-": 1974, "gerson-theodoro-de-oliveira": 1971, "abelardo-rausch-de-alcantara": 1970, "nelson-lima-piauhy-dourado": 1974, "ari-lopes-de-macedo": 1963, "solange-lourenco-gomes": 1982, "inocencio-pereira-alves": 1967, "juvelino-andres-carneiro-da-fontoura-gularte": 1977, "flavio-carvalho-molina": 1971, "armando-teixeira-fructuoso": 1975, "ivan-rocha-aguiar": 1964, "amaro-felix-pereira": 1972, "higino-joao-pio": 1969, "nelson-jose-de-almeida": 1969, "manoel-raimundo-soares": 1966, "ana-maria-nacinovic-correa": 1972, "alberto-aleixo": 1975, "antonio-benetazzo": 1972, "sergio-roberto-correa": 1969, "alex-de-paula-xavier-pereira": 1972, "carlos-roberto-zanirato": 1969, "joao-massena-melo": 1974, "olavo-hanssen": 1970, "darcy-jose-dos-santos-mariante": 1966, "monica-suzana-pinus-de-binstock": 1980, "luiz-almeida-araujo": 1971, "joel-jose-de-carvalho": 1974, "arnaldo": 1972, "soledad": 1973};
+                    const totalChecked = Array.from(checkboxes).filter(cb => cb.checked).length;
+                    if (clearBtn) {
+                        const lang = typeof i18n !== 'undefined' ? i18n.getCurrentLanguage() : 'pt';
+                        const trans = typeof i18n !== 'undefined' ? i18n.translations[lang] : null;
+                        if (totalChecked > 0) {
+                            clearBtn.setAttribute('data-i18n', 'flag.clear_filters');
+                            clearBtn.textContent = trans ? trans['flag.clear_filters'] : 'LIMPAR SELEÇÃO';
+                        } else {
+                            clearBtn.setAttribute('data-i18n', 'flag.select_all');
+                            clearBtn.textContent = trans ? trans['flag.select_all'] : 'SELECIONAR TUDO';
+                        }
+                    }
+
+                    const searchQuery = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
+                    const bypassLoc = (checkedLoc.length === 0 || checkedLoc.length === 7);
+                    const bypassPeriod = (checkedPeriod.length === 0 || checkedPeriod.length === 5);
+                    
+                    const descCheckboxes = document.querySelectorAll('#custom-filter-menu input[data-group="desc"]');
+                    const totalDescChecked = Array.from(descCheckboxes).filter(cb => cb.checked).length;
+                    const allDescChecked = (totalDescChecked === 5);
+                    
+                    const bypassAge = (checkedAge.length === 0 || allDescChecked);
+                    const bypassGender = (checkedGender.length === 0 || checkedGender.length === 2);
+                    const bypassStatus = (checkedStatus.length === 0 || checkedStatus.length === 2);
+
+                    const allSquares = document.querySelectorAll('.flag-square');
+                    allSquares.forEach(sq => {
+                        // Check search query match
+                        let matchSearch = true;
+                        if (searchQuery) {
+                            const victimSlug = sq.getAttribute('data-victim');
+                            if (victimSlug) {
+                                const fullName = (victimNames[victimSlug] || '').toLowerCase();
+                                const nameParts = fullName.split(/\s+/);
+                                matchSearch = nameParts.some(part => part.startsWith(searchQuery));
+                            } else {
+                                matchSearch = false;
+                            }
+                        }
+
+                        if (checkedLoc.length === 0 &&
+                            checkedPeriod.length === 0 &&
+                            checkedAge.length === 0 &&
+                            checkedGender.length === 0 &&
+                            checkedStatus.length === 0 &&
+                            !searchQuery) {
+                            if (document.body.classList.contains('menu-closed')) {
+                                sq.classList.remove('dimmed');
+                            } else {
+                                sq.classList.add('dimmed');
+                            }
+                            return;
+                        }
+
+                        const classStr = sq.className;
+
+                        // Localidade
+                        let matchLoc = bypassLoc || checkedLoc.some(val => {
+                            if (val === 'fora') return classStr.includes('fora-do-brasil');
+                            return classStr.includes(val);
+                        });
+
+                        // Período
+                        const victimSlug = sq.getAttribute('data-victim');
+                        const victimYear = victimYears[victimSlug];
+                        let matchPeriod = bypassPeriod || checkedPeriod.some(p => {
+                            if (!victimYear) return false;
+                            if (p === 'castello') return victimYear >= 1964 && victimYear <= 1966;
+                            if (p === 'costa') return victimYear >= 1967 && victimYear <= 1969;
+                            if (p === 'medici') return victimYear >= 1970 && victimYear <= 1974;
+                            if (p === 'geisel') return victimYear >= 1973 && victimYear <= 1978;
+                            if (p === 'figueiredo') return victimYear >= 1980 && victimYear <= 1985;
+                            return false;
+                        });
+
+                        // Idade (Jovem)
+                        let matchAge = bypassAge || checkedAge.some(val => classStr.includes(val));
+
+                        // Gênero (Mulher / Homem)
+                        let matchGender = bypassGender || checkedGender.some(val => {
+                            if (val === 'homem') return !classStr.includes('mulher');
+                            if (val === 'mulher') return classStr.includes('mulher');
+                            return false;
+                        });
+
+                        // Status (Morto / Desaparecido)
+                        let matchStatus = bypassStatus || checkedStatus.some(val => {
+                            if (val === 'd_') return classStr.includes('property-1-desaparecidos');
+                            if (val === 'm_') return classStr.includes('property-1-mortos');
+                            return false;
+                        });
+
+                        if (matchLoc && matchPeriod && matchAge && matchGender && matchStatus && matchSearch) {
+                            sq.classList.remove('dimmed');
+                        } else {
+                            sq.classList.add('dimmed');
+                        }
+                    });
+                }
+
+                checkboxes.forEach(cb => cb.addEventListener('change', updateFilters));
+                if (clearBtn) {
+                    clearBtn.addEventListener('click', () => {
+                        
+                    const victimYears = {"paulo-costa-ribeiro-bastos": 1972, "felix-escobar": 1971, "paulo-de-tarso-celestino-da-silva": 1971, "helber-jose-gomes-goulart": 1973, "luiz-renato-pires-de-almeida": 1970, "jose-isabel-do-nascimento": 1963, "almir-custodio-de-lima": 1973, "geraldo-bernardo-da-silva": 1969, "antonio-de-araujo-veloso": 1976, "geraldo-da-rocha-gualberto": 1963, "zelmo-bosa": 1976, "idalisio-soares-aranha-filho": 1972, "norberto-nehring": 1970, "luiz-fogaca-balboni": 1969, "eduardo-collen-leite": 1970, "miguel-sabat-nuet": 1973, "roberto-cietto": 1969, "raimundo-ferreira-lima": 1980, "guilherme-gomes-lund": 1973, "luiz-ignacio-maranhao-filho": 1974, "paulo-stuart-wright": 1973, "maria-regina-marcondes-pinto": 1976, "eudaldo-gomes-da-silva": 1973, "gustavo-buarque-schiller": 1985, "dinaelza-santana-coqueiro": 1974, "jose-de-souza": 1964, "daniel-ribeiro-callado": 1974, "jose-gomes-teixeira": 1971, "jorge-oscar-adur": 1980, "walter-ribeiro-novaes": 1971, "fernando-augusto-da-fonseca": 1972, "francisco-seiko-okama": 1973, "vitorino-alves-moitinho": 1973, "marcos-nonato-da-fonseca": 1972, "jose-mendes-de-sa-roriz": 1973, "arnaldo-cardoso-rocha": 1973, "andre-grabois": 1973, "aldo-de-sa-brito-souza-neto": 1971, "elson-costa": 1975, "angelo-arroyo": 1976, "jorge-alberto-basso": 1976, "augusto-soares-da-cunha": 1964, "sebastiao-vieira-da-silva": 1972, "rubens-beyrodt-paiva": 1971, "arno-preis": 1972, "jose-de-oliveira": 1972, "eiraldo-de-palha-freire": 1970, "david-de-souza-meira": 1968, "ichiro-nagami": 1969, "jose-milton-barbosa": 1971, "antonio-carlos-nogueira-cabral": 1972, "marcio-beck-machado": 1973, "gerardo-magela-fernandes-torres-da-costa": 1973, "aurora-maria-nascimento-furtado": 1972, "divino-ferreira-de-souza": 1973, "antonio-alfredo-de-lima": 1973, "maria-auxiliadora-lara-barcellos": 1976, "sonia-maria-de-moraes-angel-jones": 1973, "jean-henri-raya-ribard": 1973, "antonio-ferreira-pinto": 1974, "jose-soares-dos-santos": 1977, "marcos-jose-de-lima": 1973, "raimundo-eduardo-da-silva": 1971, "yoshitane-fujimori": 1970, "frederico-eduardo-mayr": 1972, "juares-guimaraes-de-brito": 1970, "thomaz-antonio-da-silva-meirelles-netto": 1974, "lourdes-maria-wanderley-pontes": 1972, "heleny-ferreira-telles-guariba": 1971, "wanio-jose-de-mattos": 1973, "jose-idesio-brianezi": 1970, "luiz-ghilardini": 1973, "rui-osvaldo-aguiar-pfutzenreuter": 1972, "marcos-antonio-da-silva-lima": 1970, "neide-alves-dos-santos": 1976, "izis-dias-de-oliveira": 1972, "carlos-alberto-soares-de-freitas": 1971, "ary-abreu-lima-da-rosa": 1970, "james-allen-luz": 1973, "edson-luiz-lima-souto": 1968, "luis-alberto-andrade-de-sa-e-benevides": 1972, "ari-de-oliveira-mendes-cunha": 1964, "joao-de-carvalho-barros": 1964, "antonio-teodoro-de-castro": 1974, "dilermano-mello-do-nascimento": 1964, "albertino-jose-de-farias": 1964, "jaime-petit-da-silva": 1973, "jose-guimaraes": 1968, "nestor-vera": 1975, "celso-gilberto-de-oliveira": 1970, "jarbas-pereira-marques": 1973, "liliana-ines-goldemberg": 1980, "raimundo-goncalves-de-figueiredo": 1971, "joaquim-camara-ferreira": 1970, "norberto-armando-habegger": 1978, "onofre-ilha-dornelles": 1964, "pedro-domiense-de-oliveira": 1964, "ivan-mota-dias": 1971, "otavio-soares-ferreira-da-cunha": 1964, "wilson-silva": 1974, "joao-antonio-santos-abi-ecab": 1968, "marcos-basilio-arocena-da-silva-guimaraes": 1976, "lourival-moura-paulino": 1972, "carlos-eduardo-pires-fleury": 1971, "horacio-domingo-campiglia": 1980, "afonso-henrique-martins-saldanha": 1974, "edson-neves-quaresma": 1970, "maria-angela-ribeiro": 1968, "paulo-roberto-pereira-marques": 1973, "santo-dias-da-silva": 1979, "luiz-eduardo-da-rocha-merlino": 1971, "david-capistrano-da-costa": 1974, "elmo-correa": 1974, "joao-bosco-penido-burnier": 1976, "antonio-bem-cardoso": 1970, "roberto-macarini": 1970, "oswaldo-orlando-da-costa": 1974, "feliciano-eugenio-neto": 1976, "antonio-marcos-pinto-de-oliveira": 1972, "daniel-jose-de-carvalho": 1974, "ornalino-candido-da-silva": 1968, "honestino-monteiro-guimaraes": 1973, "joao-leonardo-da-silva-rocha": 1975, "devanir-jose-de-carvalho": 1971, "walter-de-souza-ribeiro": 1974, "jose-silton-pinheiro": 1972, "luiz-antonio-santa-barbara": 1971, "jayme-amorim-de-miranda": 1975, "nilton-rosa-da-silva": 1973, "joao-carlos-cavalcanti-reis": 1972, "silvano-soares-dos-santos": 1970, "sebastiao-gomes-dos-santos": 1969, "walter-kenneth-nelson-fleury": 1976, "mariano-joaquim-da-silva": 1971, "tulio-roberto-cardoso-quintiliano": 1973, "lucio-petit-da-silva": 1974, "ranusia-alves-rodrigues": 1973, "mario-alves-de-souza-vieira": 1970, "lyda-monteiro-da-silva": 1980, "joaquim-alencar-de-seixas": 1971, "ciro-flavio-salazar-de-oliveira": 1972, "joao-barcellos-martins": 1964, "luiz-vieira": 1973, "luiz-hirata": 1971, "evaldo-luiz-ferreira-de-souza": 1973, "labibe-elias-abduch": 1964, "stuart-edgar-angel-jones": 1971, "jose-lima-piauhy-dourado": 1974, "roberto-adolfo-val-cazorla": 1976, "emmanuel-bezerra-dos-santos": 1973, "sergio-fernando-tula-silberberg": 1976, "massafumi-yoshinaga": 1976, "raimundo-nonato-paz": 1971, "wilson-souza-pinheiro": 1980, "jose-porfirio-de-souza": 1973, "luiz-carlos-de-almeida": 1973, "luiz-paulo-da-cruz-nunes": 1968, "helio-luiz-navarro-de-magalhaes": 1974, "aderval-alves-coqueiro": 1971, "jeova-assis-gomes": 1972, "divo-fernandes-d-oliveira": 1965, "antonio-carlos-monteiro-teixeira": 1972, "manoel-custodio-martins": 1978, "leopoldo-chiapetti": 1965, "maria-augusta-thomaz": 1973, "gilberto-olimpio-maria": 1973, "catarina-helena-abi-ecab": 1968, "manoel-rodrigues-ferreira": 1968, "abilio-clemente-filho": 1971, "lincoln-bicalho-roque": 1973, "ezequias-bezerra-da-rocha": 1969, "jana-moroni-barroso": 1974, "antonio-henrique-pereira-neto": 1969, "jose-roberto-spiegner": 1970, "ary-cabrera-prates": 1976, "flavio-ferreira-da-silva": 1975, "tobias-pereira-junior": 1974, "eduardo-collier-filho": 1974, "hiran-de-lima-pereira": 1975, "epaminondas-gomes-de-oliveira": 1971, "edmur-pericles-camargo": 1971, "maria-lucia-petit-da-silva": 1972, "joao-mendes-araujo": 1972, "eduardo-antonio-da-fonseca": 1971, "arildo-valadao": 1973, "kleber-lemos-da-silva": 1972, "ismael-silva-de-jesus": 1972, "adriano-fonseca-filho": 1973, "henrique-cintra-ferreira-de-ornellas": 1973, "mario-de-souza-prata": 1971, "francisco-jose-de-oliveira": 1971, "rodolfo-de-carvalho-troiano": 1974, "durvalino-porfirio-de-souza": 1973, "joao-domingos-da-silva": 1969, "joao-carlos-haas-sobrinho": 1972, "cassimiro-luiz-de-freitas": 1970, "helenira-resende-de-souza-nazareth": 1972, "luiz-rene-silveira-e-silva": 1974, "orlando-momente": 1974, "paulo-cesar-botelho-massa": 1972, "batista": 1974, "elvaristo-alves-da-silva": 1965, "sergio-landulfo-furtado": 1972, "mauricio-grabois": 1973, "bernardino-saraiva": 1964, "carlos-marighella": 1969, "amaro-luiz-de-carvalho": 1971, "gildo-macedo-lacerda": 1973, "jose-maximino-de-andrade-netto": 1975, "alexander-jose-ibsen-voeroes": 1972, "uirassu-de-assis-batista": 1974, "david-eduardo-chab-tarab-baabour": 1976, "odair-jose-brunocilla": 1978, "sabino-alves-da-silva": 1972, "caiupy-alves-de-castro": 1973, "jose-pinheiro-jobim": 1979, "odijas-carvalho-de-souza": 1971, "ana-rosa-kucinski-ana-rosa-silva": 1974, "jose-inocencio-barreto": 1972, "umberto-de-albuquerque-camara-neto": 1973, "iguatemi-zuchi-teixeira": 1968, "otoniel-campos-barreto": 1971, "alexandre-vannucchi-leme": 1973, "ruy-frasao-soares": 1974, "wilton-ferreira": 1972, "aluizio-palhano-pedreira-ferreira": 1971, "nelson-de-souza-kohl": 1973, "virgilio-gomes-da-silva": 1969, "alvino-ferreira-felipe": 1963, "merival-araujo": 1973, "manoel-alves-de-oliveira": 1964, "luiz-carlos-augusto": 1968, "cloves-dias-de-amorim": 1968, "denis-casemiro": 1971, "jose-julio-de-araujo": 1972, "carlos-lamarca": 1971, "lucimar-brandao-guimaraes": 1970, "edu-barreto-leite": 1964, "dermeval-da-silva-pereira": 1974, "adauto-freire-da-cruz": 1979, "dorival-ferreira": 1970, "raul-amaro-nin-ferreira": 1971, "ligia-maria-salgado-nobrega": 1972, "antonio-luciano-pregoni": 1973, "joao-gualberto-calatrone": 1973, "maria-regina-lobo-leite-de-figueiredo": 1972, "joao-batista-rita": 1973, "israel-tavares-roque": 1964, "juan-antonio-carrasco-forrastal": 1972, "pedro-inacio-de-araujo": 1964, "jose-roberto-arantes-de-almeida": 1971, "antonio-de-padua-costa": 1974, "joel-vasconcelos-santos": 1971, "nilda-carvalho-cunha": 1971, "guido-leao": 1979, "jose-toledo-de-oliveira": 1972, "helcio-pereira-fortes": 1972, "fernando-da-silva-lembo": 1968, "manoel-jose-nurchis": 1972, "lorenzo-ismael-vinas": 1980, "jose-ferreira-de-almeida": 1975, "jose-wilson-lessa-sabbag": 1969, "rosalindo-sousa": 1973, "edgar-de-aquino-duarte": 1973, "dimas-antonio-casemiro": 1971, "benedito-pereira-serra": 1964, "jose-carlos-novaes-da-mata-machado": 1973, "boanerges-de-souza-massa": 1972, "lauriberto-jose-reyes": 1972, "jose-nobre-parente": 1966, "onofre-pinto": 1974, "bergson-gurjao-farias": 1972, "jorge-aprigio-de-paula": 1968, "cilon-cunha-brum": 1974, "chael-charles-schreier": 1969, "hamilton-pereira-damasceno": 1972, "soledad-barrett-viedma": 1973, "itair-jose-veloso": 1975, "francisco-emanuel-penteado": 1973, "antonio-guilherme-ribeiro-ribas": 1973, "aylton-adalberto-mortati": 1971, "sidney-fix-marques-dos-santos": 1976, "joao-batista-franco-drumond": 1976, "paulo-guerra-tavares": 1972, "alceri-maria-gomes-da-silva": 1970, "joaquinzao": 1973, "aurea-eliza-pereira": 1974, "pericles-gusmao-regis": 1964, "gastone-lucia-de-carvalho-beltrao": 1972, "roberto-rascado-rodriguez": 1977, "issami-nakamura-okano": 1974, "jose-carlos-da-costa": 1973, "carlos-antunes-da-silva": 1970, "francisco-manoel-chaves": 1972, "antonio-jose-dos-reis": 1963, "reinaldo-silveira-pimenta": 1969, "marco-antonio-dias-baptista": 1970, "avelmar-moreira-de-barros": 1970, "sebastiao-tome-da-silva": 1963, "joao-pedro-teixeira": 1962, "benedito-goncalves": 1979, "aides-dias-de-carvalho": 1963, "margarida-maria-alves": 1983, "jonas-jose-de-albuquerque-barros": 1964, "jose-lavecchia": 1974, "newton-eduardo-de-oliveira": 1964, "lucindo-costa": 1967, "antonio-sergio-de-mattos": 1971, "eremias-delizoicov": 1969, "marilena-villas-boas-pinto": 1971, "gilson-miranda": 1963, "pedro-alexandrino-oliveira-filho": 1974, "joaquim-pires-cerveira": 1973, "luiz-gonzaga-dos-santos": 1967, "getulio-de-oliveira-cabral": 1972, "paschoal-souza-lima": 1964, "lincoln-cordeiro-oest": 1972, "fernando-augusto-de-santa-cruz-oliveira": 1974, "alfeu-de-alcantara-monteiro": 1964, "eduardo-gonzalo-escabosa": 1980, "lourenco-camelo-de-mesquita": 1977, "dinalva-conceicao-oliveira-teixeira": 1974, "orocilio-martins-goncalves": 1979, "paulo-mendes-rodrigues": 1973, "jose-maurilio-patricio": 1974, "jose-roman": 1974, "pedro-jeronimo-de-souza": 1975, "enrique-ernesto-ruggia": 1974, "jose-maria-ferreira-de-araujo": 1970, "manoel-lisboa-de-moura": 1973, "carlos-schirmer": 1964, "libero-giancarlo-castiglia": 1973, "ronaldo-mouth-queiroz": 1973, "nativo-da-natividade-de-oliveira": 1985, "ramires-maranhao-do-valle": 1973, "zuleika-angel-jones": 1976, "antonio-carlos-bicalho-lana": 1973, "luisa-augusta-garlippe": 1974, "vladimir-herzog": 1975, "angelina-goncalves": 1950, "marco-antonio-braz-de-carvalho": 1969, "severino-viana-colou": 1969, "ieda-santos-delgado": 1974, "manoel-aleixo-da-silva": 1973, "severino-elias-de-mello": 1965, "antonio-dos-tres-reis-de-oliveira": 1970, "luiz-renato-do-lago-faria": 1980, "maria-celia-correa": 1974, "orlando-da-silva-rosa-bomfim-junior": 1975, "ruy-carlos-vieira-berbert": 1972, "iuri-xavier-pereira": 1972, "jose-bartolomeu-rodrigues-de-souza": 1972, "grenaldo-de-jesus-da-silva": 1972, "telma-regina-cordeiro-correa": 1974, "valdir-salles-saboia": 1972, "angelo-cardoso-da-silva": 1970, "gelson-reicher": 1972, "vandick-reidner-pereira-coqueiro": 1974, "joelson-crispim": 1970, "jorge-leal-goncalves-pereira": 1970, "iris-amaral": 1972, "hamilton-fernando-cunha": 1969, "mauricio-guilherme-da-silveira": 1971, "fernando-borges-de-paula-ferreira": 1969, "lucia-maria-de-souza": 1973, "miguel-pereira-dos-santos": 1972, "joao-alfredo-dias": 1964, "pedro-ventura-felipe-de-araujo-pomar": 1976, "jose-huberto-bronca": 1974, "carlos-nicolau-danielli": 1972, "francisco-tenorio-cerqueira-junior": 1976, "pauline-philipe-reichstul": 1973, "manoel-jose-mendes-nunes-de-abreu": 1971, "celio-augusto-guedes": 1972, "antonio-raymundo-de-lucena": 1970, "juarez-rodrigues-coelho": 1972, "luiz-eurico-tejera-lisboa": 1972, "hiroaki-torigoe": 1972, "anatalia-de-souza-melo-alves": 1973, "custodio-saraiva-neto": 1974, "joao-roberto-borges-de-souza": 1969, "manoel-fiel-filho": 1976, "jose-campos-barreto": 1971, "luiz-jose-da-cunha": 1973, "suely-yumiko-kanayama": 1974, "esmeraldina-carvalho-cunha": 1972, "miriam-lopes-verbena": 1972, "tito-de-alencar-lima": 1974, "jose-sabino": 1966, "jose-montenegro-de-lima": 1975, "milton-soares-de-castro": 1967, "iara-iavelberg": 1971, "jose-raimundo-da-costa": 1971, "joao-lucas-alves": 1969, "jane-vanini": 1974, "therezinha-viana-de-assis": 1978, "jose-dalmo-guimaraes-lins": 1971, "antogildo-pascoal-viana": 1964, "walkiria-afonso-costa": 1974, "paulo-torres-goncalves": 1969, "eliane-martins": 1963, "napoleao-felipe-biscaldi": 1972, "antonio-joaquim-de-souza-machado": 1971, "jose-manoel-da-silva": 1973, "vitor-carlos-ramos": 1974, "pedro-carretel-": 1974, "gerson-theodoro-de-oliveira": 1971, "abelardo-rausch-de-alcantara": 1970, "nelson-lima-piauhy-dourado": 1974, "ari-lopes-de-macedo": 1963, "solange-lourenco-gomes": 1982, "inocencio-pereira-alves": 1967, "juvelino-andres-carneiro-da-fontoura-gularte": 1977, "flavio-carvalho-molina": 1971, "armando-teixeira-fructuoso": 1975, "ivan-rocha-aguiar": 1964, "amaro-felix-pereira": 1972, "higino-joao-pio": 1969, "nelson-jose-de-almeida": 1969, "manoel-raimundo-soares": 1966, "ana-maria-nacinovic-correa": 1972, "alberto-aleixo": 1975, "antonio-benetazzo": 1972, "sergio-roberto-correa": 1969, "alex-de-paula-xavier-pereira": 1972, "carlos-roberto-zanirato": 1969, "joao-massena-melo": 1974, "olavo-hanssen": 1970, "darcy-jose-dos-santos-mariante": 1966, "monica-suzana-pinus-de-binstock": 1980, "luiz-almeida-araujo": 1971, "joel-jose-de-carvalho": 1974, "arnaldo": 1972, "soledad": 1973};
+                    const totalChecked = Array.from(checkboxes).filter(cb => cb.checked).length;
+                        if (totalChecked > 0) {
+                            checkboxes.forEach(cb => cb.checked = false);
+                        } else {
+                            checkboxes.forEach(cb => cb.checked = true);
+                        }
+                        if (searchInput) searchInput.value = '';
+                        updateFilters();
+                    });
+                }
+
+                // Initialize all checkboxes to checked on load
+                checkboxes.forEach(cb => cb.checked = true);
+                updateFilters();
+
+                const toggleBtn = document.getElementById('toggle-filters-btn');
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', () => {
+                        document.body.classList.toggle('menu-closed');
+                        if (document.body.classList.contains('menu-closed')) {
+                            toggleBtn.innerHTML = '☰';
+                        }
+                    });
+                }
+
+                const closeFiltersBtn = document.getElementById('close-filters-btn');
+                if (closeFiltersBtn) {
+                    closeFiltersBtn.addEventListener('click', () => {
+                        document.body.classList.add('menu-closed');
+                        if (toggleBtn) toggleBtn.innerHTML = '☰';
+                    });
+                }
+
+                if (searchToggleBtn && searchContainer && searchInput) {
+                    searchToggleBtn.addEventListener('click', () => {
+                        searchContainer.classList.toggle('active');
+                        if (searchContainer.classList.contains('active')) {
+                            searchInput.focus();
+                        } else {
+                            searchInput.value = '';
+                            updateFilters();
+                        }
+                    });
+
+                    searchInput.addEventListener('input', updateFilters);
+
+                    document.addEventListener('click', (event) => {
+                        if (searchContainer.classList.contains('active') && !searchContainer.contains(event.target)) {
+                            searchContainer.classList.remove('active');
+                            searchInput.value = '';
+                            updateFilters();
+                        }
+                    });
+                }
+
+                document.addEventListener('click', (event) => {
+                    const filterMenu = document.getElementById('custom-filter-menu');
+                    if (filterMenu && !document.body.classList.contains('menu-closed')) {
+                        const clickedFilterMenu = filterMenu.contains(event.target);
+                        const clickedToggleBtn = toggleBtn && toggleBtn.contains(event.target);
+                        const clickedFlagSquare = event.target.closest('.flag-square');
+                        
+                        const modalBackdrop = document.getElementById('profile-modal-backdrop');
+                        const clickedModal = modalBackdrop && (modalBackdrop === event.target || modalBackdrop.contains(event.target));
+
+                        if (!clickedFilterMenu && !clickedToggleBtn && !clickedFlagSquare && !clickedModal) {
+                            document.body.classList.add('menu-closed');
+                            if (toggleBtn) toggleBtn.innerHTML = '☰';
+                        }
+                    }
+                });
+
+                if (window.self !== window.top) {
+                    try {
+                        window.parent.document.addEventListener('click', () => {
+                            const filterMenu = document.getElementById('custom-filter-menu');
+                            if (filterMenu && !document.body.classList.contains('menu-closed')) {
+                                document.body.classList.add('menu-closed');
+                                if (toggleBtn) toggleBtn.innerHTML = '☰';
+                            }
+                            if (searchContainer && searchContainer.classList.contains('active')) {
+                                searchContainer.classList.remove('active');
+                                if (searchInput) searchInput.value = '';
+                                updateFilters();
+                            }
+                        });
+                    } catch (e) {
+                        console.warn("Parent document click listener not registered due to cross-origin restrictions:", e);
+                    }
+                }
+
+                // Profile modal click interception
+                const flagSquares = document.querySelectorAll('.flag-square[data-victim]');
+                const modalBackdrop = document.getElementById('profile-modal-backdrop');
+                const cardPlaceholder = document.getElementById('modal-card-placeholder');
+                const closeBtn = document.getElementById('modal-close-btn');
+
+                function closeModal() {
+                    if (modalBackdrop) {
+                        modalBackdrop.classList.remove('active');
+                    }
+                    if (cardPlaceholder) {
+                        cardPlaceholder.innerHTML = '';
+                    }
+                }
+
+                function openProfileModal(victimSlug, clickedElement) {
+                    if (!modalBackdrop || !cardPlaceholder) return;
+
+                    cardPlaceholder.innerHTML = '<div style="font-family:\'Roboto Mono\', monospace; color:#000; background:#fffdf5; padding:20px; border:2px solid #000; border-radius:10px; width:312px; text-align:center; box-sizing:border-box;">Carregando perfil...</div>';
+                    modalBackdrop.classList.add('active');
+
+                    // Position the modal wrapper close to the clicked element if provided
+                    if (clickedElement) {
+                        const rect = clickedElement.getBoundingClientRect();
+                        const cardWidth = 312;
+                        let left = rect.left + (rect.width / 2) - (cardWidth / 2);
+
+                        // Clamp left positioning to keep it on screen
+                        const minLeft = 10;
+                        const maxLeft = window.innerWidth - cardWidth - 10;
+                        left = Math.max(minLeft, Math.min(left, maxLeft));
+
+                        const wrapper = document.querySelector('.modal-content-wrapper');
+                        if (wrapper) {
+                            wrapper.style.left = `${left}px`;
+
+                            // Check vertical placement: if rectangle is in lower half of screen, place it above
+                            if (rect.top > window.innerHeight / 2) {
+                                const bottom = window.innerHeight - rect.top + 8;
+                                wrapper.style.bottom = `${bottom}px`;
+                                wrapper.style.top = 'auto';
+                            } else {
+                                const top = rect.bottom + 8;
+                                wrapper.style.top = `${top}px`;
+                                wrapper.style.bottom = 'auto';
+                            }
+                        }
+                    }
+
+                    const targetUrl = `overlays/overlay-${victimSlug}.html`;
+
+                    fetch(targetUrl)
+                        .then(response => {
+                            if (!response.ok) throw new Error('Não foi possível carregar o perfil.');
+                            return response.text();
+                        })
+                        .then(htmlText => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(htmlText, 'text/html');
+                            let selector = `.overlay-${victimSlug}`;
+                            if (victimSlug === 'arnaldo') {
+                                selector = '.overlay-arnaldo-8851';
+                            } else if (victimSlug === 'soledad') {
+                                selector = '.overlay-soleda-19609';
+                            }
+                            const cardElement = doc.querySelector(selector);
+
+                            if (cardElement) {
+                                cardPlaceholder.innerHTML = '';
+                                cardPlaceholder.appendChild(cardElement);
+                            } else {
+                                cardPlaceholder.innerHTML = '<div style="font-family:\'Roboto Mono\', monospace; color:#000; background:#fffdf5; padding:20px; border:2px solid #000; border-radius:10px; width:312px; text-align:center; box-sizing:border-box;">Perfil não encontrado.</div>';
+                            }
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            cardPlaceholder.innerHTML = `<div style="font-family:\'Roboto Mono\', monospace; color:#000; background:#fffdf5; padding:20px; border:2px solid #000; border-radius:10px; width:312px; text-align:center; box-sizing:border-box;">Erro ao carregar card: ${err.message}</div>`;
+                        });
+                }
+
+                flagSquares.forEach(square => {
+                    square.addEventListener('click', (e) => {
+                        const victimSlug = square.getAttribute('data-victim');
+                        if (victimSlug) {
+                            e.preventDefault();
+                            openProfileModal(victimSlug, square);
+                        }
+                    });
+                });
+
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeModal);
+                }
+
+                if (modalBackdrop) {
+                    modalBackdrop.addEventListener('click', (e) => {
+                        if (e.target === modalBackdrop) {
+                            closeModal();
+                        }
+                    });
+                }
+
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        closeModal();
+                    }
+                });
+            });
+
+            if (window.self !== window.top) {
+                document.documentElement.classList.add('in-iframe');
+                document.body.classList.add('in-iframe');
+            }
+
+        </script>
+        <!-- SECTION 4: FOOTER-->
+        <!-- Wrapper to create the cut-off effect for the text -->
+        <div class="ordem-progresso-container"
+            style="background-color: #f5f2e6; text-align: center; overflow: hidden; padding-top: 50px;">
+            <!-- Negative bottom margin pulls the container's bottom edge up, hiding the lower half of the text -->
+            <h1 data-i18n="index.motto"
+                style="margin: 0; margin-bottom: -2vw; font-size: 7vw; font-weight: 700; color: #000000; letter-spacing: 1.5vw; padding-left: 1.5vw; white-space: nowrap;; padding-bottom: 0; border-bottom: none;">
+                ORDEM E PROGRESSO
+            </h1>
+        </div>
+        <footer class="credits"
+            style="padding: 60px 5vw; text-align: left; background-color: #000000; color: #ffffff; font-family: 'Roboto Mono', monospace;">
+            <div style="margin-bottom: 40px;">
+                <span
+                    style="font-size: 28px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px;">
+                    HISTÓRIAS DA GUERRILHA
+                </span>
+                <span style="font-size: 18px; font-weight: bold; letter-spacing: 1px; display: block;">
+                    VIDAS PERDIDAS NA DITADURA CIVIL MILITAR BRASILEIRA
+                </span>
+            </div>
+            <div style="font-size: 14px; line-height: 2.2;">
+                Projeto desenvolvido por Maria Eduarda Rocha<br />
+                Orientação Barbara Castro<br />
+                Escola Superior de Desenho Industrial - ESDI, UERJ
+            </div>
+        </footer>
+        <script>
+            // Send content height to parent so iframe auto-resizes
+            function sendHeight() {
+                const h = document.documentElement.scrollHeight;
+                window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
+            }
+            // Send on load and on any resize
+            window.addEventListener('load', sendHeight);
+            window.addEventListener('resize', sendHeight);
+            // Also send after a short delay to catch late-rendering elements
+            setTimeout(sendHeight, 500);
+        </script>
+    </div>
+</body>
+
+</html>

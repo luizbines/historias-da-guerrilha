@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <title>A Comissão</title>
+  <script src="i18n.js"></script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap"
+    rel="stylesheet" />
+  <style>
+    /* GLOBAL FONT */
+    img {
+      opacity: 0.8 !important;
+    }
+
+    * {
+      font-family: "Roboto Mono", monospace !important;
+    }
+
+    :root {
+      --bg-color: #f5f2e6;
+      --text-main: #2b2b2b;
+      --text-highlight: #8a0e14;
+      --accent: #a8080e;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Roboto Mono', monospace;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .global-header {
+      background-color: var(--text-highlight);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 40px;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .global-header a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: opacity 0.3s ease;
+    }
+
+    .global-header a:hover {
+      opacity: 0.7;
+    }
+
+    .profile-container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 36px;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      color: var(--text-highlight);
+      border-bottom: 2px solid var(--text-highlight);
+      padding-bottom: 10px;
+      text-align: center;
+    }
+
+    .image-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .image-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .caption {
+      font-size: 14px;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    blockquote {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--text-highlight);
+      border-left: 4px solid var(--text-highlight);
+      padding-left: 20px;
+      margin: 20px 0;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .global-header {
+        padding: 15px 20px !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+      }
+
+      .profile-container {
+        margin: 30px auto !important;
+      }
+
+      h1 {
+        font-size: 28px !important;
+      }
+
+      p {
+        font-size: 14px !important;
+      }
+
+      .intro-container h1 {
+        font-size: 28px !important;
+      }
+
+      .intro-container h2 {
+        font-size: 16px !important;
+      }
+
+      .intro-container p {
+        font-size: 16px !important;
+      }
+
+      blockquote {
+        font-size: 18px !important;
+        padding: 15px !important;
+      }
+
+      .victims-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      #custom-filter-menu {
+        width: 100vw !important;
+        max-width: 100vw !important;
+      }
+
+      #custom-filter-menu h2 {
+        font-size: 20px !important;
+      }
+
+      #custom-filter-menu h3 {
+        font-size: 16px !important;
+      }
+
+      .filter-group label {
+        font-size: 14px !important;
+        padding: 10px 0;
+      }
+
+      .scroll-indicator {
+        font-size: 12px !important;
+        bottom: 20px !important;
+      }
+
+      .nav-bar {
+        padding: 15px 20px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="global-header">
+    <a href="index.html" data-i18n="nav.home">INÍCIO</a>
+    <a href="projeto.html" data-i18n="nav.project">O PROJETO</a>
+    <a href="comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
+    <a href="quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+  </header>
+  <main class="profile-container">
+    <h1 data-i18n="commission.title">COMISSÃO NACIONAL DA VERDADE</h1>
+    <p data-i18n="commission.p1">A Comissão Nacional da Verdade (CNV) foi instituída em maio de 2012, com o objetivo de investigar e esclarecer as
+      graves violações de direitos humanos cometidas durante a ditadura civil-militar (1964-1985) e o período de 1946 a
+      1988.</p>
+    <p data-i18n="commission.p2">Em seu mandato de dois anos e sete meses, a CNV realizou investigações, coletou depoimentos e apurou
+      responsabilidades, focando no direito à memória e à verdade.</p>
+    <p><span data-i18n="commission.report_intro">O Relatório Final da CNV, entregue em dezembro de 2014, foi organizado em três volumes principais:</span><br />
+      <span data-i18n-html="commission.vol1"><strong>Volume I:</strong> Panorama histórico das estruturas de repressão e métodos de violação.</span><br />
+      <span data-i18n-html="commission.vol2"><strong>Volume II:</strong> Investigações temáticas sobre grupos específicos e padrões de violência estatal.</span><br />
+      <span data-i18n-html="commission.vol3"><strong>Volume III:</strong> Registro dos casos de 434 pessoas mortas ou desaparecidas identificadas.</span>
+    </p>
+    <p data-i18n="commission.recommendations">O relatório finalizou com 29 recomendações ao Estado brasileiro para evitar a repetição de abusos e consolidar a
+      democracia.</p>
+    <div class="image-wrapper">
+      <img alt="Assinatura do Relatório Final pela então presidenta, Dilma Rousseff" src="images/node-19598.png" />
+      <div class="caption" data-i18n="commission.caption">Assinatura do Relatório Final pela então presidenta, Dilma Rousseff.</div>
+    </div>
+  </main>
+
+
+
+
+
+
+  <iframe src="bandeira.html?v=17" scrolling="no"
+    style="width: 100%; height: 100vh; border: none; margin-top: 80px; display: block; overflow: hidden;"></iframe>
+
+  <!-- SECTION 4: FOOTER-->
+  <!-- Wrapper to create the cut-off effect for the text -->
+  <div style="background-color: #f5f2e6; text-align: center; overflow: hidden; padding-top: 50px;">
+    <!-- Negative bottom margin pulls the container's bottom edge up, hiding the lower half of the text -->
+    <h1
+      style="margin: 0; margin-bottom: -3vw; font-size: 7vw; font-weight: 700; color: #000000; letter-spacing: 1.5vw; padding-left: 1.5vw; white-space: nowrap;; padding-bottom: 0; border-bottom: none;">
+      ORDEM E PROGRESSO
+    </h1>
+  </div>
+
+  <footer class="credits"
+    style="padding: 60px 5vw; text-align: left; background-color: #000000; color: #ffffff; font-family: 'Roboto Mono', monospace;">
+
+    <div style="margin-bottom: 40px;">
+      <span style="font-size: 28px; font-weight: bold; letter-spacing: 1px; display: block; margin-bottom: 10px;">
+        HISTÓRIAS DA GUERRILHA
+      </span>
+      <span style="font-size: 18px; font-weight: bold; letter-spacing: 1px; display: block;">
+        VIDAS PERDIDAS NA DITADURA CIVIL MILITAR BRASILEIRA
+      </span>
+    </div>
+
+    <div style="font-size: 14px; line-height: 2.2;">
+      Projeto desenvolvido por Maria Eduarda Rocha<br>
+      Orientação Barbara Castro<br>
+      Escola Superior de Desenho Industrial - ESDI, UERJ
+    </div>
+
+  </footer>
+</body>
+
+</html>

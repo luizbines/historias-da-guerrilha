@@ -1,0 +1,86 @@
+sexo,tipo_evento,regiao_nascimento,jovem,sergio,alcides,ustra,isaac,n
+F,desaparecimento,CENTRO-OESTE,jovem,Não,Não,Não,Não,1
+F,desaparecimento,FORA DO BRASIL,jovem,Não,Não,Não,Não,1
+F,desaparecimento,FORA DO BRASIL,jovem,Sim,Não,Não,Não,2
+F,desaparecimento,NORDESTE,jovem,Não,Não,Não,Não,5
+F,desaparecimento,SUDESTE,jovem,Não,Não,Não,Não,10
+F,desaparecimento,SUDESTE,velho,Não,Não,Não,Não,3
+F,desaparecimento,SUDESTE,velho,Não,Não,Sim,Não,1
+F,desaparecimento,SUDESTE,velho,Sim,Não,Não,Não,1
+F,morte,FORA DO BRASIL,jovem,Não,Não,Não,Não,1
+F,morte,FORA DO BRASIL,velho,Não,Não,Não,Não,1
+F,morte,NA,jovem,Não,Não,Não,Não,1
+F,morte,NA,velho,Não,Não,Não,Não,1
+F,morte,NORDESTE,jovem,Não,Não,Não,Não,3
+F,morte,NORDESTE,velho,Não,Não,Não,Não,3
+F,morte,NORTE,jovem,Não,Não,Não,Não,1
+F,morte,SUDESTE,jovem,Não,Não,Não,Não,6
+F,morte,SUDESTE,jovem,Não,Não,Sim,Sim,1
+F,morte,SUDESTE,velho,Não,Não,Não,Não,6
+F,morte,SUL,jovem,Não,Não,Não,Não,1
+F,morte,SUL,velho,Não,Não,Não,Não,1
+M,desaparecimento,CENTRO-OESTE,jovem,Não,Não,Não,Não,3
+M,desaparecimento,CENTRO-OESTE,velho,Não,Não,Não,Não,1
+M,desaparecimento,FORA DO BRASIL,jovem,Não,Não,Não,Não,7
+M,desaparecimento,FORA DO BRASIL,velho,Não,Não,Não,Não,7
+M,desaparecimento,NA,jovem,Não,Não,Não,Não,1
+M,desaparecimento,NA,velho,Não,Não,Não,Não,7
+M,desaparecimento,NORDESTE,jovem,Não,Não,Não,Não,23
+M,desaparecimento,NORDESTE,jovem,Não,Não,Sim,Não,1
+M,desaparecimento,NORDESTE,jovem,Não,Sim,Sim,Não,1
+M,desaparecimento,NORDESTE,jovem,Sim,Não,Não,Não,3
+M,desaparecimento,NORDESTE,velho,Não,Não,Não,Não,34
+M,desaparecimento,NORDESTE,velho,Não,Não,Sim,Não,1
+M,desaparecimento,NORDESTE,velho,Não,Sim,Sim,Não,1
+M,desaparecimento,NORDESTE,velho,Sim,Não,Não,Não,1
+M,desaparecimento,NORDESTE,velho,Sim,Sim,Sim,Não,1
+M,desaparecimento,NORTE,jovem,Não,Não,Não,Não,1
+M,desaparecimento,NORTE,velho,Não,Não,Não,Não,4
+M,desaparecimento,SUDESTE,jovem,Não,Não,Não,Não,42
+M,desaparecimento,SUDESTE,jovem,Não,Não,Não,Sim,1
+M,desaparecimento,SUDESTE,jovem,Não,Não,Sim,Não,2
+M,desaparecimento,SUDESTE,jovem,Não,Não,Sim,Sim,2
+M,desaparecimento,SUDESTE,jovem,Não,Sim,Não,Não,1
+M,desaparecimento,SUDESTE,jovem,Não,Sim,Sim,Não,1
+M,desaparecimento,SUDESTE,jovem,Sim,Não,Não,Não,1
+M,desaparecimento,SUDESTE,velho,Não,Não,Não,Não,35
+M,desaparecimento,SUDESTE,velho,Não,Não,Sim,Não,1
+M,desaparecimento,SUDESTE,velho,Sim,Não,Não,Não,1
+M,desaparecimento,SUL,jovem,Não,Não,Não,Não,5
+M,desaparecimento,SUL,jovem,Não,Não,Sim,Não,1
+M,desaparecimento,SUL,jovem,Sim,Não,Não,Não,1
+M,desaparecimento,SUL,velho,Não,Não,Não,Não,7
+M,desaparecimento,SUL,velho,Sim,Não,Não,Não,2
+M,morte,CENTRO-OESTE,jovem,Não,Não,Não,Não,2
+M,morte,CENTRO-OESTE,velho,Não,Não,Não,Não,2
+M,morte,FORA DO BRASIL,jovem,Não,Não,Não,Não,1
+M,morte,FORA DO BRASIL,jovem,Não,Não,Não,Sim,1
+M,morte,FORA DO BRASIL,jovem,Não,Sim,Não,Sim,1
+M,morte,FORA DO BRASIL,velho,Não,Não,Não,Não,2
+M,morte,FORA DO BRASIL,velho,Não,Não,Não,Sim,1
+M,morte,NA,jovem,Não,Não,Não,Não,2
+M,morte,NA,velho,Não,Não,Não,Não,10
+M,morte,NORDESTE,jovem,Não,Não,Não,Não,10
+M,morte,NORDESTE,jovem,Sim,Não,Não,Não,3
+M,morte,NORDESTE,jovem,Sim,Não,Não,Sim,1
+M,morte,NORDESTE,velho,Não,Não,Não,Não,28
+M,morte,NORDESTE,velho,Sim,Não,Não,Não,1
+M,morte,NORDESTE,velho,Sim,Não,Sim,Não,1
+M,morte,NORTE,jovem,Não,Não,Não,Não,3
+M,morte,NORTE,velho,Não,Não,Não,Não,7
+M,morte,SUDESTE,jovem,Não,Não,Não,Não,34
+M,morte,SUDESTE,jovem,Não,Não,Não,Sim,4
+M,morte,SUDESTE,jovem,Não,Não,Sim,Não,2
+M,morte,SUDESTE,jovem,Não,Não,Sim,Sim,2
+M,morte,SUDESTE,jovem,Não,Sim,Não,Não,2
+M,morte,SUDESTE,jovem,Não,Sim,Não,Sim,1
+M,morte,SUDESTE,jovem,Não,Sim,Sim,Sim,1
+M,morte,SUDESTE,jovem,Sim,Não,Não,Não,2
+M,morte,SUDESTE,jovem,Sim,Não,Não,Sim,1
+M,morte,SUDESTE,jovem,Sim,Sim,Não,Não,2
+M,morte,SUDESTE,velho,Não,Não,Não,Não,32
+M,morte,SUDESTE,velho,Não,Sim,Não,Não,1
+M,morte,SUDESTE,velho,Sim,Não,Não,Não,2
+M,morte,SUL,jovem,Não,Não,Não,Não,8
+M,morte,SUL,jovem,Não,Não,Sim,Sim,1
+M,morte,SUL,velho,Não,Não,Não,Não,13
