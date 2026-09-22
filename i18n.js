@@ -26,6 +26,11 @@
       "footer.orientation": "Orientação Barbara Castro",
       "footer.institution": "Escola Superior de Desenho Industrial - ESDI, UERJ",
 
+      // Victim profile pages (generated)
+      "profile.biography": "BIOGRAFIA",
+      "profile.circumstances": "CIRCUNSTÂNCIAS DA MORTE",
+      "profile.cnv_conclusion": "CONCLUSÃO DA CNV",
+
       // Projeto Page
       "project.title": "SOBRE O PROJETO",
       "project.p1": "Este projeto foi desenvolvido como trabalho de conclusão do curso de Design na ESDI/UERJ por Maria Eduarda Rocha, sob orientação da professora doutora Bárbara Castro. A iniciativa é motivada por Arnaldo Cardoso Rocha, tio-avô da autora, envolvido na guerrilha e assassinado em 1972, episódio que marcou profundamente sua família e que evidencia a necessidade de preservar e divulgar as narrativas de cidadãos assassinados pela ditadura civil-militar. Assim, o projeto dedica-se à transmissão de memória da vida das vítimas do Estado brasileiro.",
@@ -176,6 +181,11 @@
       "footer.orientation": "Advised by Barbara Castro",
       "footer.institution": "Higher School of Industrial Design - ESDI, UERJ",
 
+      // Victim profile pages (generated)
+      "profile.biography": "BIOGRAPHY",
+      "profile.circumstances": "CIRCUMSTANCES OF DEATH",
+      "profile.cnv_conclusion": "CNV CONCLUSION",
+
       // Projeto Page
       "project.title": "ABOUT THE PROJECT",
       "project.p1": "This project was developed as a graduation thesis for the Design course at ESDI/UERJ by Maria Eduarda Rocha, under the guidance of Professor Dr. Bárbara Castro. The initiative is inspired by Arnaldo Cardoso Rocha, the author's great-uncle, involved in the guerrilla movement and murdered in 1972—an event that deeply affected her family and highlights the need to preserve and share the stories of citizens killed by the civil-military dictatorship. Thus, the project is dedicated to conveying the memory of the lives of the victims of the Brazilian State.",
@@ -321,6 +331,11 @@
       "footer.developed": "Proyecto desarrollado por Maria Eduarda Rocha",
       "footer.orientation": "Orientación de Barbara Castro",
       "footer.institution": "Escuela Superior de Diseño Industrial - ESDI, UERJ",
+
+      // Victim profile pages (generated)
+      "profile.biography": "BIOGRAFÍA",
+      "profile.circumstances": "CIRCUNSTANCIAS DE LA MUERTE",
+      "profile.cnv_conclusion": "CONCLUSIÓN DE LA CNV",
 
       "project.title": "SOBRE EL PROYECTO",
       "project.p1": "Este proyecto fue desarrollado como Trabajo de Conclusión del Curso de Diseño en la ESDI/UERJ por Maria Eduarda Rocha, bajo la orientación de la profesora Dra. Bárbara Castro. La iniciativa está inspirada en Arnaldo Cardoso Rocha, tío abuelo de la autora, involucrado en la guerrilla y asesinado en 1972, un evento que afectó profundamente a su familia y resalta la necesidad de preservar y compartir las historias de los ciudadanos asesinados por la dictadura civil-militar. Así, el proyecto se dedica a transmitir la memoria de las vidas de las víctimas del Estado brasileño.",
