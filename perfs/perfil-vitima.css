@@ -23,6 +23,8 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  /* .red-banner-section is 100vw wide, which includes the scrollbar */
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -71,6 +73,18 @@ p {
 .highlight-bold {
   color: var(--text-highlight);
   font-weight: 700;
+}
+
+/* Source line at the end of the profile */
+.source-note {
+  font-size: 16px;
+  color: #666666;
+}
+
+.source-note a {
+  color: var(--text-highlight);
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .highlight-bg,

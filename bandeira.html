@@ -15,7 +15,7 @@
     <meta http-equiv="Expires" content="0" />
     <title>Exported Figma Design</title>
     <link href="styles.css?v=18" rel="stylesheet" />
-    <script src="i18n.js"></script>
+    <script src="i18n.js?v=11"></script>
 
     <style>
         /* GLOBAL FONT */
@@ -30,7 +30,9 @@
         :root {
             /* O !important garante que o CSS do Figma (styles.css) seja ignorado */
             --avail-w: calc((100vw - 80px) * 0.9);
-            --square-w: clamp(12px, calc((100vw - 120px) / 20), 65px) !important;
+            /* 20 squares + 19 gaps must fit in 100vw minus the 16px side padding of .click-7-6774,
+               otherwise the flag overflows and the page scrolls sideways on mobile */
+            --square-w: clamp(8px, calc((100vw - 32px - 19 * var(--gap)) / 20), 65px) !important;
             --square-h: clamp(8px, calc(var(--square-w) * 0.31), 20px) !important;
             --gap: clamp(6px, calc((100vw - 120px) / 140), 15px) !important;
         }
@@ -140,6 +142,21 @@
             transition: opacity 0.3s ease;
         }
 
+        .flag-square.flag-highlight-blink {
+            animation: flag-highlight-blink 1s steps(1, end) infinite;
+            z-index: 10;
+        }
+
+        @keyframes flag-highlight-blink {
+            0%, 49.9% {
+                box-shadow: inset 0 0 0 9999px #795548;
+            }
+
+            50%, 100% {
+                box-shadow: none;
+            }
+        }
+
         /* Colors */
         div[class*="property-1-mortos"] {
             background-color: var(--PCINZA);
@@ -216,7 +233,7 @@
         .custom-legend {
             margin-top: 40px;
             padding: max(20px, 2vw);
-            background: #fff;
+            background: rgba(245, 242, 230, 1);
             border-radius: 8px;
             border: 1px solid #ddd;
             display: inline-block;
@@ -319,6 +336,32 @@
 
         #search-toggle-btn:hover {
             opacity: 0.7;
+        }
+
+        /* Keep ☰, the magnifier and "Encontre Histórias" on a single line:
+           no wrapping, and the label and icons scale down on narrow screens */
+        .top-controls-container {
+            flex-wrap: nowrap;
+        }
+
+        #toggle-filters-btn {
+            flex-shrink: 0;
+            font-size: clamp(20px, 6vw, 28px);
+        }
+
+        .search-container {
+            min-width: 0;
+        }
+
+        #search-toggle-btn {
+            font-size: clamp(15px, 5vw, 28px);
+            white-space: nowrap;
+        }
+
+        #search-toggle-btn img {
+            width: clamp(20px, 6vw, 28px) !important;
+            height: clamp(20px, 6vw, 28px) !important;
+            flex-shrink: 0;
         }
 
         #search-input {
@@ -539,8 +582,13 @@
             }
 
             #custom-filter-menu {
-                width: 100vw !important;
-                max-width: 100vw !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .search-container.active #search-input {
+                width: min(250px, 50vw);
+                font-size: 18px;
             }
 
             #custom-filter-menu h2 {
@@ -584,7 +632,7 @@
                     <div class="search-container" id="search-container">
                         <button id="search-toggle-btn" title="Buscar Vítima" data-i18n-title="flag.search_btn_title"><img src="images/ICON-search.svg"
                                 alt="Buscar" style="width: 28px; height: 28px; opacity: 1 !important;" /> <span
-                                class="search-label" data-i18n="flag.search_title">ORDEM E PROGRESSO</span></button>
+                                class="search-label" data-i18n="flag.search_title">Encontre Histórias</span></button>
                         <input id="search-input" placeholder="Buscar vítima..." data-i18n-placeholder="flag.search_placeholder" type="text" />
                     </div>
                     <div id="custom-filter-menu">
@@ -642,8 +690,8 @@
                     <div class="flag-square property-1-mortos centro-oeste" data-victim="cassimiro-luiz-de-freitas">
                     </div>
                     <div class="flag-square property-1-mortos centro-oeste" data-victim="james-allen-luz"></div>
-                    <div class="flag-square property-1-mortos fora-do-brasil jovem mulher" data-victim="soledad"
-                        style="border: 3px solid #F1C40F !important; z-index: 10;"></div>
+                    <div class="flag-square flag-highlight-blink property-1-mortos fora-do-brasil jovem mulher"
+                        data-victim="soledad"></div>
                     <div class="flag-square property-1-mortos fora-do-brasil mulher" data-victim="labibe-elias-abduch">
                     </div>
                     <div class="flag-square property-1-mortos fora-do-brasil jovem"
@@ -1201,8 +1249,8 @@
                     </div>
                     <div class="flag-square property-1-mortos sudeste jovem isaac"
                         data-victim="alexandre-vannucchi-leme"></div>
-                    <div class="flag-square property-1-mortos sudeste jovem ustra" data-victim="arnaldo"
-                        style="border: 3px solid #F1C40F !important; z-index: 10;"></div>
+                    <div class="flag-square flag-highlight-blink property-1-mortos sudeste jovem ustra"
+                        data-victim="arnaldo"></div>
                     <div class="flag-square property-1-mortos sudeste jovem ustra" data-victim="helcio-pereira-fortes">
                     </div>
                     <div class="flag-square property-1-mortos sudeste jovem ustra isaac"
@@ -2081,7 +2129,7 @@
                         }
                     }
 
-                    const targetUrl = `overlays/overlay-${victimSlug}.html`;
+                    const targetUrl = `overlays/overlay-${victimSlug}.html?v=2`;
 
                     fetch(targetUrl)
                         .then(response => {
@@ -2169,10 +2217,22 @@
                 </span>
             </div>
             <div style="font-size: 14px; line-height: 2.2;">
-                Projeto desenvolvido por Maria Eduarda Rocha<br />
-                Orientação Barbara Castro<br />
-                Escola Superior de Desenho Industrial - ESDI, UERJ
+              Projeto desenvolvido por Maria Eduarda Rocha<br>
+              Orientação: Barbara Castro<br>
+              Desenvolvimento Web: Luiz Bines
             </div>
+
+            <style>
+              .footer-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+              .footer-nav a { display: inline-block; padding: 10px 18px; border: 1px solid #ffffff; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; transition: background-color 0.2s ease, color 0.2s ease; }
+              .footer-nav a:hover { background-color: #ffffff; color: #000000; }
+            </style>
+            <nav class="footer-nav">
+              <a href="index.html" target="_top" data-i18n="nav.home">INÍCIO</a>
+              <a href="projeto.html" target="_top" data-i18n="nav.project">O PROJETO</a>
+              <a href="comiss-o.html" target="_top" data-i18n="nav.commission">A COMISSÃO</a>
+              <a href="quem-pagina.html" target="_top" data-i18n="nav.others">OS OUTROS</a>
+            </nav>
         </footer>
         <script>
             // Send content height to parent so iframe auto-resizes

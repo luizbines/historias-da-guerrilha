@@ -23,39 +23,42 @@
       "footer.title": "HISTÓRIAS DA GUERRILHA",
       "footer.subtitle": "VIDAS PERDIDAS NA DITADURA CIVIL MILITAR BRASILEIRA",
       "footer.developed": "Projeto desenvolvido por Maria Eduarda Rocha",
-      "footer.orientation": "Orientação Barbara Castro",
-      "footer.institution": "Escola Superior de Desenho Industrial - ESDI, UERJ",
+      "footer.orientation": "Orientação: Barbara Castro",
+      "footer.webdev": "Desenvolvimento Web: Luiz Bines",
 
       // Victim profile pages (generated)
       "profile.biography": "BIOGRAFIA",
       "profile.circumstances": "CIRCUNSTÂNCIAS DA MORTE",
       "profile.cnv_conclusion": "CONCLUSÃO DA CNV",
+      "profile.source": "*Texto retirado de <a href=\"https://memoriasdaditadura.org.br\" target=\"_blank\" rel=\"noopener\">memoriasdaditadura.org.br</a>",
 
       // Projeto Page
       "project.title": "SOBRE O PROJETO",
-      "project.p1": "Este projeto foi desenvolvido como trabalho de conclusão do curso de Design na ESDI/UERJ por Maria Eduarda Rocha, sob orientação da professora doutora Bárbara Castro. A iniciativa é motivada por Arnaldo Cardoso Rocha, tio-avô da autora, envolvido na guerrilha e assassinado em 1972, episódio que marcou profundamente sua família e que evidencia a necessidade de preservar e divulgar as narrativas de cidadãos assassinados pela ditadura civil-militar. Assim, o projeto dedica-se à transmissão de memória da vida das vítimas do Estado brasileiro.",
-      "project.p2": "Os textos foram elaborados com base no terceiro volume do Relatório Final da Comissão Nacional da Verdade, bem como nos dossiês encaminhados à Comissão Especial sobre Mortos e Desaparecidos Políticos.",
-      "project.p3": "A base de dados utilizada foi produzida por Luiz Bines, a partir das informações disponibilizadas no Relatório Final da Comissão Nacional da Verdade.",
+      "project.p1": "Projeto desenvolvido como trabalho de conclusão do curso de Design na ESDI/UERJ por <span class=\"highlight-bold\">Maria Eduarda Rocha</span>, sob orientação da professora doutora <span class=\"highlight-bold\">Bárbara Castro</span>.",
+      "project.p2": "A iniciativa é motivada por <span class=\"highlight-bg\">Arnaldo Cardoso Rocha</span>, tio-avô da autora, envolvido na guerrilha e assassinado em 1972, episódio que marcou profundamente sua família e que evidencia a necessidade de preservar e divulgar as narrativas de cidadãos assassinados pela ditadura civil-militar. Assim, o projeto dedica-se à transmissão de memória da vida das vítimas do Estado brasileiro.",
+      "project.p3": "Os textos foram elaborados com base no terceiro volume do Relatório Final da Comissão Nacional da Verdade, bem como nos dossiês encaminhados à Comissão Especial sobre Mortos e Desaparecidos Políticos.",
+      "project.p4": "A base de dados utilizada foi produzida por <span class=\"highlight-bold\">Luiz Bines</span>, a partir das informações disponibilizadas no Relatório Final da Comissão Nacional da Verdade.",
 
       // Comissão Page
       "commission.title": "COMISSÃO NACIONAL DA VERDADE",
-      "commission.p1": "A Comissão Nacional da Verdade (CNV) foi instituída em maio de 2012, com o objetivo de investigar e esclarecer as graves violações de direitos humanos cometidas durante a ditadura civil-militar (1964-1985) e o período de 1946 a 1988.",
-      "commission.p2": "Em seu mandato de dois anos e sete meses, a CNV realizou investigações, coletou depoimentos e apurou responsabilidades, focando no direito à memória e à verdade.",
+      "commission.p1": "A Comissão Nacional da Verdade (CNV) foi instituída em maio de 2012, com o <span class=\"highlight-bold\">objetivo de investigar e esclarecer as graves violações de direitos humanos cometidas durante a ditadura civil-militar</span> (1964-1985) e o período de 1946 a 1988.",
+      "commission.p2": "Em seu mandato de dois anos e sete meses, a CNV realizou investigações, coletou depoimentos e apurou responsabilidades, focando <span class=\"highlight-bold\">no direito à memória e à verdade.</span>",
       "commission.report_intro": "O Relatório Final da CNV, entregue em dezembro de 2014, foi organizado em três volumes principais:",
-      "commission.vol1": "<strong>Volume I:</strong> Panorama histórico das estruturas de repressão e métodos de violação.",
-      "commission.vol2": "<strong>Volume II:</strong> Investigações temáticas sobre grupos específicos e padrões de violência estatal.",
-      "commission.vol3": "<strong>Volume III:</strong> Registro dos casos de 434 pessoas mortas ou desaparecidas identificadas.",
+      "commission.vol1": "<strong>Volume I:</strong> <span class=\"highlight-bold\">Panorama histórico</span> das estruturas de repressão e métodos de violação.",
+      "commission.vol2": "<strong>Volume II:</strong> Investigações temáticas sobre grupos <span class=\"highlight-bold\">específicos e padrões de violência estatal.</span>",
+      "commission.vol3": "<strong>Volume III:</strong> Registro dos casos de <span class=\"highlight-bold\">434 pessoas mortas ou desaparecidas</span> identificadas.",
       "commission.recommendations": "O relatório finalizou com 29 recomendações ao Estado brasileiro para evitar a repetição de abusos e consolidar a democracia.",
       "commission.caption": "Assinatura do Relatório Final pela então presidenta, Dilma Rousseff.",
 
       // Os Outros Page
       "others.title": "QUEM NÃO PERTENCE À BANDEIRA",
-      "others.p1": "Embora o Segundo Volume dedique um capítulo à morte de trabalhadores, camponeses e indígenas, a Comissão apresenta lacunas na identificação dessas pessoas, que, em sua maioria, permanecem sem nome, rosto ou história.",
+      "others.p1": "Embora o <span class=\"highlight-bold\">Segundo Volume</span> dedique um capítulo à morte de trabalhadores, camponeses e indígenas, a Comissão apresenta lacunas na identificação dessas pessoas, que, em sua maioria, permanecem sem nome, rosto ou história.",
       "others.p2": "Moradores de favelas e periferias foram especialmente afetados por remoções em massa de suas casas; um exemplo disso é a destruição da Favela da Catacumba em 1968. A população negra também se destacou como alvo das ações repressivas das polícias políticas estaduais. Embora algumas comissões da verdade estaduais tenham buscado preencher essas lacunas, muitas dessas vítimas continuam ausentes no Terceiro Relatório.",
-      "others.p3": "A maior parte das vítimas identificadas no Terceiro Volume do Relatório Final da CNV corresponde a um perfil específico das vítimas da ditadura.",
+      "others.p3": "A maior parte das vítimas identificadas no <span class=\"highlight-bold\">Terceiro Volume do Relatório Final da CNV</span> corresponde a um perfil específico das vítimas da ditadura.",
       "others.p4": "Nesse sentido, o relatório final narra as histórias das vítimas fatais da ditadura, ao mesmo tempo em que inscreve em seu texto, através de lacunas e silêncios, uma série de biografias faltantes. Nomeia, reconhece e publiciza graves violações de direitos humanos, ao mesmo tempo em que oculta, e exclui violências e vítimas.",
       "others.quote": "“Fomos tirados dessas comunidades [Favela da Praia do Pinto, Ilha das Dragas e Ilha dos Caiçaras] como animais. Na época, a COMLURB tinha caminhões com janelinhas iguais as dos trens. O governo, a Polícia Militar e a COMLURB iam botando nossas coisas pra cima dos caminhões de lixo, metendo pé de cabra e marreta nos barracos, derrubando. Não respeitavam as crianças, não respeitavam os mais velhos e não é diferente hoje. A mesma coisa que acontecia na época da ditadura, acontece hoje.”",
-      "others.quote_author": "Andrea Schettini, para a Revista Histórias Públicas, 2023.<br />Altair Guimarães para Comissão da Verdade do Rio de Janeiro",
+      "others.p4_source": "Andrea Schettini, para a Revista Histórias Públicas, 2023.",
+      "others.quote_author": "Altair Guimarães para Comissão da Verdade do Rio de Janeiro",
       "others.back_btn": "← VOLTAR PARA A BANDEIRA",
 
       // Arnaldo Perfil
@@ -125,7 +128,7 @@
       "massacre.back_btn": "&larr; VOLTAR",
 
       // Bandeira Page
-      "flag.search_title": "ORDEM E PROGRESSO",
+      "flag.search_title": "Encontre Histórias",
       "flag.search_placeholder": "Buscar vítima...",
       "flag.search_btn_title": "Buscar Vítima",
       "flag.filters_title": "Filtros",
@@ -178,39 +181,42 @@
       "footer.title": "STORIES OF THE GUERRILLA",
       "footer.subtitle": "LIVES LOST IN THE BRAZILIAN CIVIL-MILITARY DICTATORSHIP",
       "footer.developed": "Project developed by Maria Eduarda Rocha",
-      "footer.orientation": "Advised by Barbara Castro",
-      "footer.institution": "Higher School of Industrial Design - ESDI, UERJ",
+      "footer.orientation": "Advisor: Barbara Castro",
+      "footer.webdev": "Web Development: Luiz Bines",
 
       // Victim profile pages (generated)
       "profile.biography": "BIOGRAPHY",
       "profile.circumstances": "CIRCUMSTANCES OF DEATH",
       "profile.cnv_conclusion": "CNV CONCLUSION",
+      "profile.source": "*Text taken from <a href=\"https://memoriasdaditadura.org.br\" target=\"_blank\" rel=\"noopener\">memoriasdaditadura.org.br</a>",
 
       // Projeto Page
       "project.title": "ABOUT THE PROJECT",
-      "project.p1": "This project was developed as a graduation thesis for the Design course at ESDI/UERJ by Maria Eduarda Rocha, under the guidance of Professor Dr. Bárbara Castro. The initiative is inspired by Arnaldo Cardoso Rocha, the author's great-uncle, involved in the guerrilla movement and murdered in 1972—an event that deeply affected her family and highlights the need to preserve and share the stories of citizens killed by the civil-military dictatorship. Thus, the project is dedicated to conveying the memory of the lives of the victims of the Brazilian State.",
-      "project.p2": "The texts were prepared based on the third volume of the Final Report of the National Truth Commission, as well as dossiers submitted to the Special Commission on Political Deaths and Disappearances.",
-      "project.p3": "The database used was produced by Luiz Bines, based on information made available in the Final Report of the National Truth Commission.",
+      "project.p1": "Project developed as a graduation thesis for the Design course at ESDI/UERJ by <span class=\"highlight-bold\">Maria Eduarda Rocha</span>, under the guidance of Professor Dr. <span class=\"highlight-bold\">Bárbara Castro</span>.",
+      "project.p2": "The initiative is inspired by <span class=\"highlight-bg\">Arnaldo Cardoso Rocha</span>, the author's great-uncle, involved in the guerrilla movement and murdered in 1972—an event that deeply affected her family and highlights the need to preserve and share the stories of citizens killed by the civil-military dictatorship. Thus, the project is dedicated to conveying the memory of the lives of the victims of the Brazilian State.",
+      "project.p3": "The texts were prepared based on the third volume of the Final Report of the National Truth Commission, as well as dossiers submitted to the Special Commission on Political Deaths and Disappearances.",
+      "project.p4": "The database used was produced by <span class=\"highlight-bold\">Luiz Bines</span>, based on information made available in the Final Report of the National Truth Commission.",
 
       // Comissão Page
       "commission.title": "NATIONAL TRUTH COMMISSION",
-      "commission.p1": "The National Truth Commission (CNV) was established in May 2012 to investigate and clarify grave human rights violations committed during the civil-military dictatorship (1964-1985) and the period from 1946 to 1988.",
-      "commission.p2": "During its mandate of two years and seven months, the CNV conducted investigations, gathered testimonies, and determined responsibilities, focusing on the right to memory and truth.",
+      "commission.p1": "The National Truth Commission (CNV) was established in May 2012 <span class=\"highlight-bold\">to investigate and clarify grave human rights violations committed during the civil-military dictatorship</span> (1964-1985) and the period from 1946 to 1988.",
+      "commission.p2": "During its mandate of two years and seven months, the CNV conducted investigations, gathered testimonies, and determined responsibilities, focusing <span class=\"highlight-bold\">on the right to memory and truth.</span>",
       "commission.report_intro": "The Final Report of the CNV, delivered in December 2014, was organized into three main volumes:",
-      "commission.vol1": "<strong>Volume I:</strong> Historical overview of repression structures and violation methods.",
-      "commission.vol2": "<strong>Volume II:</strong> Thematic investigations into specific groups and patterns of state violence.",
-      "commission.vol3": "<strong>Volume III:</strong> Record of the cases of 434 identified deceased or disappeared persons.",
+      "commission.vol1": "<strong>Volume I:</strong> <span class=\"highlight-bold\">Historical overview</span> of repression structures and violation methods.",
+      "commission.vol2": "<strong>Volume II:</strong> Thematic investigations into <span class=\"highlight-bold\">specific groups and patterns of state violence.</span>",
+      "commission.vol3": "<strong>Volume III:</strong> Record of the cases of <span class=\"highlight-bold\">434 identified deceased or disappeared persons</span>.",
       "commission.recommendations": "The report concluded with 29 recommendations to the Brazilian State to prevent the recurrence of abuses and consolidate democracy.",
       "commission.caption": "Signing of the Final Report by then-President Dilma Rousseff.",
 
       // Os Outros Page
       "others.title": "THOSE WHO DO NOT BELONG TO THE FLAG",
-      "others.p1": "Although the Second Volume dedicates a chapter to the deaths of workers, peasants, and indigenous peoples, the Commission has gaps in identifying these individuals, who mostly remain without a name, face, or story.",
+      "others.p1": "Although the <span class=\"highlight-bold\">Second Volume</span> dedicates a chapter to the deaths of workers, peasants, and indigenous peoples, the Commission has gaps in identifying these individuals, who mostly remain without a name, face, or story.",
       "others.p2": "Residents of favelas and peripheries were especially affected by mass evictions; an example of this is the destruction of the Catacumba Favela in 1968. The Black population was also a primary target of repressive actions by state political police. Although some state truth commissions sought to address these gaps, many of these victims remain absent from the Third Report.",
-      "others.p3": "The majority of victims identified in the Third Volume of the CNV Final Report correspond to a specific profile of dictatorship victims.",
+      "others.p3": "The majority of victims identified in the <span class=\"highlight-bold\">Third Volume of the CNV Final Report</span> correspond to a specific profile of dictatorship victims.",
       "others.p4": "In this sense, the final report tells the stories of the fatal victims of the dictatorship, while simultaneously inscribing in its text, through gaps and silences, a series of missing biographies. It names, recognizes, and publicizes serious human rights violations, while concealing and excluding violence and victims.",
       "others.quote": "“We were removed from those communities [Favela da Praia do Pinto, Ilha das Dragas, and Ilha dos Caiçaras] like animals. At the time, COMLURB had trucks with small windows like trains. The government, the Military Police, and COMLURB threw our belongings into garbage trucks, taking crowbars and sledgehammers to our shacks, knocking them down. They did not respect children, they did not respect the elderly, and it is no different today. The same thing that happened during the dictatorship happens today.”",
-      "others.quote_author": "Andrea Schettini, for Revista Histórias Públicas, 2023.<br />Altair Guimarães for the Rio de Janeiro Truth Commission",
+      "others.p4_source": "Andrea Schettini, for Revista Histórias Públicas, 2023.",
+      "others.quote_author": "Altair Guimarães for the Rio de Janeiro Truth Commission",
       "others.back_btn": "← BACK TO THE FLAG",
 
       // Arnaldo Perfil
@@ -329,36 +335,39 @@
       "footer.title": "HISTORIAS DE LA GUERRILLA",
       "footer.subtitle": "VIDAS PERDIDAS EN LA DICTADURA CIVIL MILITAR BRASILEÑA",
       "footer.developed": "Proyecto desarrollado por Maria Eduarda Rocha",
-      "footer.orientation": "Orientación de Barbara Castro",
-      "footer.institution": "Escuela Superior de Diseño Industrial - ESDI, UERJ",
+      "footer.orientation": "Orientación: Barbara Castro",
+      "footer.webdev": "Desarrollo Web: Luiz Bines",
 
       // Victim profile pages (generated)
       "profile.biography": "BIOGRAFÍA",
       "profile.circumstances": "CIRCUNSTANCIAS DE LA MUERTE",
       "profile.cnv_conclusion": "CONCLUSIÓN DE LA CNV",
+      "profile.source": "*Texto extraído de <a href=\"https://memoriasdaditadura.org.br\" target=\"_blank\" rel=\"noopener\">memoriasdaditadura.org.br</a>",
 
       "project.title": "SOBRE EL PROYECTO",
-      "project.p1": "Este proyecto fue desarrollado como Trabajo de Conclusión del Curso de Diseño en la ESDI/UERJ por Maria Eduarda Rocha, bajo la orientación de la profesora Dra. Bárbara Castro. La iniciativa está inspirada en Arnaldo Cardoso Rocha, tío abuelo de la autora, involucrado en la guerrilla y asesinado en 1972, un evento que afectó profundamente a su familia y resalta la necesidad de preservar y compartir las historias de los ciudadanos asesinados por la dictadura civil-militar. Así, el proyecto se dedica a transmitir la memoria de las vidas de las víctimas del Estado brasileño.",
-      "project.p2": "Los textos fueron elaborados a partir del tercer volumen del Informe Final de la Comisión Nacional de la Verdad, así como de los expedientes enviados a la Comisión Especial sobre Muertos y Desaparecidos Políticos.",
-      "project.p3": "La base de datos utilizada fue producida por Luiz Bines, a partir de la información disponible en el Informe Final de la Comisión Nacional de la Verdad.",
+      "project.p1": "Proyecto desarrollado como Trabajo de Conclusión del Curso de Diseño en la ESDI/UERJ por <span class=\"highlight-bold\">Maria Eduarda Rocha</span>, bajo la orientación de la profesora Dra. <span class=\"highlight-bold\">Bárbara Castro</span>.",
+      "project.p2": "La iniciativa está inspirada en <span class=\"highlight-bg\">Arnaldo Cardoso Rocha</span>, tío abuelo de la autora, involucrado en la guerrilla y asesinado en 1972, un evento que afectó profundamente a su familia y resalta la necesidad de preservar y compartir las historias de los ciudadanos asesinados por la dictadura civil-militar. Así, el proyecto se dedica a transmitir la memoria de las vidas de las víctimas del Estado brasileño.",
+      "project.p3": "Los textos fueron elaborados a partir del tercer volumen del Informe Final de la Comisión Nacional de la Verdad, así como de los expedientes enviados a la Comisión Especial sobre Muertos y Desaparecidos Políticos.",
+      "project.p4": "La base de datos utilizada fue producida por <span class=\"highlight-bold\">Luiz Bines</span>, a partir de la información disponible en el Informe Final de la Comisión Nacional de la Verdad.",
 
       "commission.title": "COMISIÓN NACIONAL DE LA VERDAD",
-      "commission.p1": "La Comisión Nacional de la Verdad (CNV) fue creada en mayo de 2012 para investigar y esclarecer las graves violaciones de derechos humanos cometidas durante la dictadura civil-militar (1964-1985) y el período de 1946 a 1988.",
-      "commission.p2": "Durante sus dos años y siete meses de mandato, la CNV llevó a cabo investigaciones, recogió testimonios y determinó responsabilidades, enfocándose en el derecho a la memoria y la verdad.",
+      "commission.p1": "La Comisión Nacional de la Verdad (CNV) fue creada en mayo de 2012 <span class=\"highlight-bold\">para investigar y esclarecer las graves violaciones de derechos humanos cometidas durante la dictadura civil-militar</span> (1964-1985) y el período de 1946 a 1988.",
+      "commission.p2": "Durante sus dos años y siete meses de mandato, la CNV llevó a cabo investigaciones, recogió testimonios y determinó responsabilidades, enfocándose <span class=\"highlight-bold\">en el derecho a la memoria y la verdad.</span>",
       "commission.report_intro": "El Informe Final de la CNV, entregado en diciembre de 2014, se organizó en tres volúmenes principales:",
-      "commission.vol1": "<strong>Volumen I:</strong> Contexto histórico de las estructuras de represión y métodos de violación.",
-      "commission.vol2": "<strong>Volumen II:</strong> Investigaciones temáticas sobre grupos específicos y patrones de violencia estatal.",
-      "commission.vol3": "<strong>Volumen III:</strong> Registro de los casos de 434 muertos o desaparecidos identificados.",
+      "commission.vol1": "<strong>Volumen I:</strong> <span class=\"highlight-bold\">Contexto histórico</span> de las estructuras de represión y métodos de violación.",
+      "commission.vol2": "<strong>Volumen II:</strong> Investigaciones temáticas sobre grupos <span class=\"highlight-bold\">específicos y patrones de violencia estatal.</span>",
+      "commission.vol3": "<strong>Volumen III:</strong> Registro de los casos de <span class=\"highlight-bold\">434 muertos o desaparecidos</span> identificados.",
       "commission.recommendations": "El informe concluyó con 29 recomendaciones al Estado brasileño para prevenir la repetición de los abusos y consolidar la democracia.",
       "commission.caption": "Firma del Informe Final por la entonces presidenta Dilma Rousseff.",
 
       "others.title": "LOS QUE NO PERTENECEN A LA BANDERA",
-      "others.p1": "Aunque el Segundo Volumen dedica un capítulo a las muertes de trabajadores, campesinos e indígenas, la Comisión tiene lagunas en la identificación de estas personas, que en su mayoría siguen sin nombre, rostro o historia.",
+      "others.p1": "Aunque el <span class=\"highlight-bold\">Segundo Volumen</span> dedica un capítulo a las muertes de trabajadores, campesinos e indígenas, la Comisión tiene lagunas en la identificación de estas personas, que en su mayoría siguen sin nombre, rostro o historia.",
       "others.p2": "Los residentes de favelas y periferias se vieron especialmente afectados por los desalojos forzosos masivos; un ejemplo de esto fue la destrucción de la Favela da Catacumba en 1968. La población negra también fue un objetivo prioritario de las acciones represivas de la policía política estatal. Aunque algunas comisiones estatales de la verdad trataron de abordar estas lagunas, muchas de estas víctimas siguen ausentes del Tercer Informe.",
-      "others.p3": "La mayoría de las víctimas identificadas en el Tercer Volumen del Informe Final de la CNV corresponden a un perfil específico de víctimas de la dictadura.",
+      "others.p3": "La mayoría de las víctimas identificadas en el <span class=\"highlight-bold\">Tercer Volumen del Informe Final de la CNV</span> corresponden a un perfil específico de víctimas de la dictadura.",
       "others.p4": "En este sentido, el informe final cuenta las historias de las víctimas fatales de la dictadura, mientras inscribe simultáneamente en su texto, a través de vacíos y silencios, una serie de biografías desaparecidas. Nombra, reconoce y divulga violaciones graves a los derechos humanos, al tiempo que oculta y excluye otras violencias y víctimas.",
       "others.quote": "“Fuimos sacados de esas comunidades [Favela da Praia do Pinto, Ilha das Dragas e Ilha dos Caiçaras] como animales. En ese momento, COMLURB tenía camiones con ventanas pequeñas como las de los trenes. El gobierno, la Policía Militar y COMLURB tiraban nuestras cosas en camiones de basura, tomando barras de hierro y mazos contra nuestras casas, derribándolas. No respetaban a los niños, no respetaban a los ancianos, y hoy no es diferente. Lo mismo que sucedió durante la dictadura sucede hoy.”",
-      "others.quote_author": "Andrea Schettini, para la Revista Histórias Públicas, 2023.<br />Altair Guimarães para la Comisión de la Verdad de Río de Janeiro",
+      "others.p4_source": "Andrea Schettini, para la Revista Histórias Públicas, 2023.",
+      "others.quote_author": "Altair Guimarães para la Comisión de la Verdad de Río de Janeiro",
       "others.back_btn": "← VOLVER A LA BANDERA",
 
       "arnaldo.meta": "28/04/1949 - 1972<br>Militante del PCB y ALN",
@@ -798,18 +807,66 @@
     "Não se Aplica": { en: "Not applicable", es: "No aplica" },
     "Sem Informacoes": { en: "No information", es: "Sin información" },
     "Sem Informações": { en: "No information", es: "Sin información" },
+    // Occupations shortened by scripts/corrigir_acentos.py
+    "Advogado Criminalista": { en: "Criminal Lawyer", es: "Abogado Penalista" },
+    "Médica": { en: "Doctor", es: "Médica" },
+    "Funcionário de Frigorífico": { en: "Slaughterhouse Worker", es: "Empleado de Frigorífico" },
+    "Advogado e Capitão da Força Pública": { en: "Lawyer and Captain of the Public Force", es: "Abogado y Capitán de la Fuerza Pública" },
+    "Jornalista e Dirigente do PCBR": { en: "Journalist and PCBR Leader", es: "Periodista y Dirigente del PCBR" },
+    "Ex-Militar e Corretor de Imóveis": { en: "Former Military and Real Estate Broker", es: "Ex Militar y Corredor de Inmuebles" },
+    "Tenente da Reserva da Polícia Militar": { en: "Military Police Reserve Lieutenant", es: "Teniente de la Reserva de la Policía Militar" },
+    "Mecânico e Delegado Sindical": { en: "Mechanic and Union Delegate", es: "Mecánico y Delegado Sindical" },
+    "Professor e Corretor Financeiro": { en: "Teacher and Financial Broker", es: "Profesor y Corredor Financiero" },
+    "Diretor no Ministério da Justiça": { en: "Director at the Ministry of Justice", es: "Director en el Ministerio de Justicia" },
+    "Militar e Ex-Vice-Prefeito de Natal": { en: "Military and Former Vice Mayor of Natal", es: "Militar y Ex Vicealcalde de Natal" },
+    "Corretor de Seguros e Tipógrafo": { en: "Insurance Broker and Typographer", es: "Corredor de Seguros y Tipógrafo" },
+    "Estudante e Servente de Pedreiro": { en: "Student and Bricklayer's Assistant", es: "Estudiante y Ayudante de Albañil" },
+    "Funcionário Público Aposentado": { en: "Retired Civil Servant", es: "Funcionario Público Jubilado" },
+    "Secretária da OAB": { en: "OAB Secretary", es: "Secretaria de la OAB" },
+    "Carpinteiro Naval e Sindicalista": { en: "Shipwright and Trade Unionist", es: "Carpintero Naval y Sindicalista" },
+    "Policial Militar e Bancário": { en: "Military Police Officer and Bank Clerk", es: "Policía Militar y Bancario" },
+    "Coronel da Força Pública": { en: "Colonel of the Public Force", es: "Coronel de la Fuerza Pública" },
+    "Professora, Fotógrafa e Estudante": { en: "Teacher, Photographer and Student", es: "Profesora, Fotógrafa y Estudiante" },
+    "Estudante, Escritor e Dramaturgo": { en: "Student, Writer and Playwright", es: "Estudiante, Escritor y Dramaturgo" },
+    "Vereador e Gerente de Transportadora": { en: "City Councilor and Trucking Company Manager", es: "Concejal y Gerente de Transportadora" },
+    "Trabalhadora Rural e Líder Sindical": { en: "Rural Worker and Union Leader", es: "Trabajadora Rural y Líder Sindical" },
+    "Estudante e Funcionário Público": { en: "Student and Civil Servant", es: "Estudiante y Funcionario Público" },
+    "Estudante de Técnico em Edificações": { en: "Building Technician Student", es: "Estudiante de Técnico en Edificaciones" },
+    "Barqueiro e Trabalhador Rural": { en: "Boatman and Rural Worker", es: "Barquero y Trabajador Rural" },
+    "Metalúrgico e Deputado Estadual": { en: "Metalworker and State Deputy", es: "Metalúrgico y Diputado Estatal" },
   };
 
+  // Keys are written without accents; match them against accented text too
+  const ACCENT_VARIANTS = { a: "[aáàâã]", e: "[eéê]", i: "[ií]", o: "[oóôõº]", u: "[uúü]", c: "[cç]" };
+
+  function accentInsensitivePattern(key) {
+    return key
+      .toLowerCase()
+      .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      .replace(/[aeiouc]/g, (ch) => ACCENT_VARIANTS[ch]);
+  }
+
+  function stripAccents(text) {
+    return text.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/º/g, "o").toLowerCase();
+  }
+
+  let occupationRegex = null;
+  const occupationKeys = {};
+
   function translateOccupationString(text, lang) {
-    let result = text;
-    // Sort keys by length descending to ensure longer phrases are replaced before sub-words
-    const keys = Object.keys(wordTranslations).sort((a, b) => b.length - a.length);
-    for (const key of keys) {
-      const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(escapedKey, "gi");
-      result = result.replace(regex, wordTranslations[key][lang] || wordTranslations[key].en);
+    if (!occupationRegex) {
+      // Longer phrases first, so they win over the words inside them
+      const keys = Object.keys(wordTranslations).sort((a, b) => b.length - a.length);
+      keys.forEach((key) => {
+        if (!occupationKeys[stripAccents(key)]) occupationKeys[stripAccents(key)] = key;
+      });
+      occupationRegex = new RegExp(keys.map(accentInsensitivePattern).join("|"), "gi");
     }
-    return result;
+    // Single pass: text that was already translated is never matched again
+    return text.replace(occupationRegex, (match) => {
+      const entry = wordTranslations[occupationKeys[stripAccents(match)]];
+      return entry ? entry[lang] || entry.en : match;
+    });
   }
 
   function translateProfileCards(lang) {
@@ -844,11 +901,11 @@
         if (lang === "en") {
           translated = translated.replace(/^em /, "in ");
           translated = translated.replace(/Espanha/, "Spain");
-          translated = translated.replace(/provincia de/, "province of");
+          translated = translated.replace(/prov[ií]ncia de/i, "province of");
         } else if (lang === "es") {
           translated = translated.replace(/^em /, "en ");
           translated = translated.replace(/Espanha/, "Espa\u00f1a");
-          translated = translated.replace(/provincia de/, "provincia de");
+          translated = translated.replace(/prov[ií]ncia de/i, "provincia de");
         }
         locationEl.textContent = translated;
       } else {

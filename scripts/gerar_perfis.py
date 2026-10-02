@@ -150,7 +150,7 @@ def clean_meta(card):
     location = ", ".join(p for p in card.get("location", "").split(", ") if p and p != "NA")
     date = " - ".join("?" if p == "NA" else p for p in card.get("date", "").split(" - "))
     occupation = card.get("occupation", "")
-    if occupation in ("NA", "Nao Consta"):
+    if occupation in ("NA", "Nao Consta", "Não Consta"):
         occupation = ""
     return location, date, occupation
 
@@ -188,19 +188,24 @@ def render(card, row):
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>{html.escape(name)} - Perfil</title>
-  <script src="../i18n.js?v=2"></script>
+  <script src="../i18n.js?v=11"></script>
+  <link rel="stylesheet" href="../menu.css?v=1" />
+  <script src="../menu.js?v=1" defer></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap"
     rel="stylesheet" />
-  <link href="perfil-vitima.css?v=1" rel="stylesheet" />
+  <link href="perfil-vitima.css?v=3" rel="stylesheet" />
 </head>
 
 <body>
   <header class="global-header">
-    <a href="../index.html" data-i18n="nav.home">INÍCIO</a>
-    <a href="../projeto.html" data-i18n="nav.project">O PROJETO</a>
-    <a href="../comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
-    <a href="../quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav class="menu-links">
+      <a href="../index.html" data-i18n="nav.home">INÍCIO</a>
+      <a href="../projeto.html" data-i18n="nav.project">O PROJETO</a>
+      <a href="../comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
+      <a href="../quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+    </nav>
   </header>
 
   <main class="profile-container">
@@ -227,9 +232,11 @@ def render(card, row):
       </div>
     </div>
 
+    <p class="source-note" data-i18n-html="profile.source">*Texto retirado de <a href="https://memoriasdaditadura.org.br" target="_blank" rel="noopener">memoriasdaditadura.org.br</a></p>
+
   </main>
 
-  <iframe src="../bandeira.html?v=17" scrolling="no"
+  <iframe src="../bandeira.html?v=21" scrolling="no"
     style="width: 100%; height: 100vh; border: none; margin-top: 80px; display: block; overflow: hidden;"></iframe>
 
   <div style="background-color: #f5f2e6; text-align: center; overflow: hidden; padding-top: 50px;">
@@ -251,9 +258,21 @@ def render(card, row):
     </div>
     <div style="font-size: 14px; line-height: 2.2;">
       <span data-i18n="footer.developed">Projeto desenvolvido por Maria Eduarda Rocha</span><br>
-      <span data-i18n="footer.orientation">Orientação Barbara Castro</span><br>
-      <span data-i18n="footer.institution">Escola Superior de Desenho Industrial - ESDI, UERJ</span>
+      <span data-i18n="footer.orientation">Orientação: Barbara Castro</span><br>
+      <span data-i18n="footer.webdev">Desenvolvimento Web: Luiz Bines</span>
     </div>
+
+    <style>
+      .footer-nav {{ display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }}
+      .footer-nav a {{ display: inline-block; padding: 10px 18px; border: 1px solid #ffffff; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; transition: background-color 0.2s ease, color 0.2s ease; }}
+      .footer-nav a:hover {{ background-color: #ffffff; color: #000000; }}
+    </style>
+    <nav class="footer-nav">
+      <a href="../index.html" data-i18n="nav.home">INÍCIO</a>
+      <a href="../projeto.html" data-i18n="nav.project">O PROJETO</a>
+      <a href="../comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
+      <a href="../quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+    </nav>
   </footer>
 </body>
 

@@ -1,0 +1,63 @@
+/* Top menu: unchanged on desktop; on mobile the links are hidden behind a ☰ dropdown */
+.global-header .menu-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.global-header .menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* header.global-header outranks the per-page ".global-header { ... !important }" mobile rules */
+  header.global-header {
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    padding: 10px 20px !important;
+  }
+
+  .global-header .lang-selector {
+    order: 1;
+    margin-left: 0;
+  }
+
+  .global-header .menu-toggle {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .global-header .menu-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 6px 0 12px;
+    background-color: #8a0e14;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .global-header.menu-open .menu-links {
+    display: flex;
+  }
+
+  .global-header .menu-links a {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}

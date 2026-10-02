@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8" />
   <title>A Comissão</title>
-  <script src="i18n.js"></script>
+  <script src="i18n.js?v=11"></script>
+  <link rel="stylesheet" href="menu.css?v=1" />
+  <script src="menu.js?v=1" defer></script>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap"
@@ -64,7 +66,7 @@
     }
 
     .profile-container {
-      max-width: 800px;
+      max-width: 1100px;
       margin: 60px auto;
       padding: 0 30px;
       display: flex;
@@ -73,18 +75,74 @@
     }
 
     p {
-      font-size: 16px;
+      font-size: 20px;
       margin: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
     }
 
-    h1 {
-      font-size: 36px;
-      text-transform: uppercase;
-      letter-spacing: -1px;
+    .profile-container p {
+      line-height: 1.9;
+      width: 60%;
+      align-self: flex-end;
+    }
+
+    /* Huge stacked typography, same as the profile hero */
+    .hero-title {
+      font-size: clamp(1.8rem, 12vw, 200px);
+      line-height: 0.82;
       color: var(--text-highlight);
-      border-bottom: 2px solid var(--text-highlight);
-      padding-bottom: 10px;
+      margin: 40px 0 35px;
+      padding: 0;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 2px;
       text-align: center;
+    }
+
+    /* Red bold style for highlights (same as the profile pages) */
+    .highlight-bold {
+      color: var(--text-highlight);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* Animations with stagger */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .profile-container>*:nth-child(1) {
+      animation-delay: 0.1s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(2) {
+      animation-delay: 0.2s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(3) {
+      animation-delay: 0.3s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(4) {
+      animation-delay: 0.4s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(5) {
+      animation-delay: 0.5s;
+      transform: translateY(20px);
+    }
+
+    .profile-container>*:nth-child(6) {
+      animation-delay: 0.6s;
+      transform: translateY(20px);
     }
 
     .image-wrapper {
@@ -93,6 +151,8 @@
       flex-direction: column;
       align-items: center;
       margin: 20px 0;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
     }
 
     .image-wrapper img {
@@ -102,10 +162,12 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .caption {
-      font-size: 14px;
-      color: #666;
+    .image-caption {
+      font-size: 13px;
+      color: #666666;
       margin-top: 10px;
+      margin-bottom: 0;
+      line-height: 1.4;
       text-align: center;
     }
 
@@ -132,12 +194,12 @@
         margin: 30px auto !important;
       }
 
-      h1 {
-        font-size: 28px !important;
-      }
-
       p {
         font-size: 14px !important;
+      }
+
+      .profile-container p {
+        width: 100%;
       }
 
       .intro-container h1 {
@@ -193,28 +255,31 @@
 
 <body>
   <header class="global-header">
-    <a href="index.html" data-i18n="nav.home">INÍCIO</a>
-    <a href="projeto.html" data-i18n="nav.project">O PROJETO</a>
-    <a href="comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
-    <a href="quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav class="menu-links">
+      <a href="index.html" data-i18n="nav.home">INÍCIO</a>
+      <a href="projeto.html" data-i18n="nav.project">O PROJETO</a>
+      <a href="comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
+      <a href="quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+    </nav>
   </header>
   <main class="profile-container">
-    <h1 data-i18n="commission.title">COMISSÃO NACIONAL DA VERDADE</h1>
-    <p data-i18n="commission.p1">A Comissão Nacional da Verdade (CNV) foi instituída em maio de 2012, com o objetivo de investigar e esclarecer as
-      graves violações de direitos humanos cometidas durante a ditadura civil-militar (1964-1985) e o período de 1946 a
+    <h1 class="hero-title" data-i18n="commission.title">COMISSÃO NACIONAL DA VERDADE</h1>
+    <p data-i18n-html="commission.p1">A Comissão Nacional da Verdade (CNV) foi instituída em maio de 2012, com o <span class="highlight-bold">objetivo de investigar e esclarecer as
+      graves violações de direitos humanos cometidas durante a ditadura civil-militar</span> (1964-1985) e o período de 1946 a
       1988.</p>
-    <p data-i18n="commission.p2">Em seu mandato de dois anos e sete meses, a CNV realizou investigações, coletou depoimentos e apurou
-      responsabilidades, focando no direito à memória e à verdade.</p>
+    <p data-i18n-html="commission.p2">Em seu mandato de dois anos e sete meses, a CNV realizou investigações, coletou depoimentos e apurou
+      responsabilidades, focando <span class="highlight-bold">no direito à memória e à verdade.</span></p>
     <p><span data-i18n="commission.report_intro">O Relatório Final da CNV, entregue em dezembro de 2014, foi organizado em três volumes principais:</span><br />
-      <span data-i18n-html="commission.vol1"><strong>Volume I:</strong> Panorama histórico das estruturas de repressão e métodos de violação.</span><br />
-      <span data-i18n-html="commission.vol2"><strong>Volume II:</strong> Investigações temáticas sobre grupos específicos e padrões de violência estatal.</span><br />
-      <span data-i18n-html="commission.vol3"><strong>Volume III:</strong> Registro dos casos de 434 pessoas mortas ou desaparecidas identificadas.</span>
+      <span data-i18n-html="commission.vol1"><strong>Volume I:</strong> <span class="highlight-bold">Panorama histórico</span> das estruturas de repressão e métodos de violação.</span><br />
+      <span data-i18n-html="commission.vol2"><strong>Volume II:</strong> Investigações temáticas sobre grupos <span class="highlight-bold">específicos e padrões de violência estatal.</span></span><br />
+      <span data-i18n-html="commission.vol3"><strong>Volume III:</strong> Registro dos casos de <span class="highlight-bold">434 pessoas mortas ou desaparecidas</span> identificadas.</span>
     </p>
     <p data-i18n="commission.recommendations">O relatório finalizou com 29 recomendações ao Estado brasileiro para evitar a repetição de abusos e consolidar a
       democracia.</p>
     <div class="image-wrapper">
       <img alt="Assinatura do Relatório Final pela então presidenta, Dilma Rousseff" src="images/node-19598.png" />
-      <div class="caption" data-i18n="commission.caption">Assinatura do Relatório Final pela então presidenta, Dilma Rousseff.</div>
+      <div class="image-caption" data-i18n="commission.caption">Assinatura do Relatório Final pela então presidenta, Dilma Rousseff.</div>
     </div>
   </main>
 
@@ -223,7 +288,7 @@
 
 
 
-  <iframe src="bandeira.html?v=17" scrolling="no"
+  <iframe src="bandeira.html?v=21" scrolling="no"
     style="width: 100%; height: 100vh; border: none; margin-top: 80px; display: block; overflow: hidden;"></iframe>
 
   <!-- SECTION 4: FOOTER-->
@@ -250,9 +315,21 @@
 
     <div style="font-size: 14px; line-height: 2.2;">
       Projeto desenvolvido por Maria Eduarda Rocha<br>
-      Orientação Barbara Castro<br>
-      Escola Superior de Desenho Industrial - ESDI, UERJ
+      Orientação: Barbara Castro<br>
+      Desenvolvimento Web: Luiz Bines
     </div>
+
+    <style>
+      .footer-nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+      .footer-nav a { display: inline-block; padding: 10px 18px; border: 1px solid #ffffff; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: bold; letter-spacing: 1px; transition: background-color 0.2s ease, color 0.2s ease; }
+      .footer-nav a:hover { background-color: #ffffff; color: #000000; }
+    </style>
+    <nav class="footer-nav">
+      <a href="index.html" data-i18n="nav.home">INÍCIO</a>
+      <a href="projeto.html" data-i18n="nav.project">O PROJETO</a>
+      <a href="comiss-o.html" data-i18n="nav.commission">A COMISSÃO</a>
+      <a href="quem-pagina.html" data-i18n="nav.others">OS OUTROS</a>
+    </nav>
 
   </footer>
 </body>
