@@ -232,18 +232,10 @@
 
         .custom-legend {
             margin-top: 40px;
-            padding: max(20px, 2vw) 0 0 0;
-            border-top: 3px solid #333;
+            margin-bottom: 32px;
             display: inline-block;
             font-family: 'Roboto Mono', monospace;
             color: #333;
-        }
-
-        .custom-legend h3 {
-            margin: 0 0 15px 0;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .legend-items {
@@ -538,6 +530,39 @@
         }
 
         /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            /* Smaller legend on mobile so it matches the small flag squares */
+            .custom-legend {
+                margin-top: 24px;
+            }
+
+            .legend-items {
+                gap: 10px 12px;
+            }
+
+            .legend-item {
+                font-size: 12px;
+            }
+
+            .legend-box {
+                margin-right: 6px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .legend-items {
+                gap: 8px 10px;
+            }
+
+            .legend-item {
+                font-size: 11px;
+            }
+
+            .legend-box {
+                margin-right: 5px;
+            }
+        }
+
         @media (max-width: 768px) {
             .global-header {
                 padding: 15px 20px !important;
@@ -1381,7 +1406,6 @@
                     <div class="empty-spacer"></div>
                 </div>
                 <div class="custom-legend">
-                    <h3 data-i18n="flag.legend_title">LEGENDA</h3>
                     <div class="legend-items">
                         <div class="legend-item">
                             <div class="legend-box property-1-desaparecidos"></div> <span data-i18n="flag.legend_disappeared">Desaparecidos</span>
@@ -1894,7 +1918,10 @@
                         }
                     }
 
-                    const searchQuery = searchInput ? searchInput.value.trim().toLowerCase() : '';
+                    // Lowercase and strip accents so "jose" matches "José"
+                    const normalizeName = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+                    const searchQuery = searchInput ? normalizeName(searchInput.value.trim()) : '';
+                    const searchWords = searchQuery.split(/\s+/).filter(Boolean);
 
                     const bypassLoc = (checkedLoc.length === 0 || checkedLoc.length === 7);
                     const bypassPeriod = (checkedPeriod.length === 0 || checkedPeriod.length === 5);
@@ -1914,9 +1941,14 @@
                         if (searchQuery) {
                             const victimSlug = sq.getAttribute('data-victim');
                             if (victimSlug) {
-                                const fullName = (victimNames[victimSlug] || '').toLowerCase();
+                                const fullName = normalizeName(victimNames[victimSlug] || '');
                                 const nameParts = fullName.split(/\s+/);
-                                matchSearch = nameParts.some(part => part.startsWith(searchQuery));
+                                // Typed words must start the name's words in the same order (middle names may be skipped)
+                                let partIndex = 0;
+                                matchSearch = searchWords.every(word => {
+                                    while (partIndex < nameParts.length && !nameParts[partIndex].startsWith(word)) partIndex++;
+                                    return partIndex++ < nameParts.length;
+                                });
                             } else {
                                 matchSearch = false;
                             }
@@ -2084,10 +2116,55 @@
                 const cardPlaceholder = document.getElementById('modal-card-placeholder');
                 const closeBtn = document.getElementById('modal-close-btn');
 
+                // When embedded in another page, the modal only dims the iframe,
+                // so dim the host page around it as well (same-origin only)
+                function notifyParentModal(open) {
+                    if (window.self === window.top) return;
+                    try {
+                        const hostDoc = window.parent.document;
+                        let hostBackdrop = hostDoc.getElementById('flag-modal-backdrop');
+                        if (!hostBackdrop) {
+                            hostBackdrop = hostDoc.createElement('div');
+                            hostBackdrop.id = 'flag-modal-backdrop';
+                            hostBackdrop.style.cssText = 'position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.3); z-index: 100000; display: none;';
+                            hostBackdrop.addEventListener('click', closeModal);
+                            hostDoc.body.appendChild(hostBackdrop);
+                            hostDoc.addEventListener('keydown', (e) => {
+                                if (e.key === 'Escape') closeModal();
+                            });
+                        }
+                        hostBackdrop.style.display = open ? 'block' : 'none';
+
+                        // Raise the iframe above the host backdrop
+                        const frame = window.frameElement;
+                        if (frame) {
+                            frame.style.position = open ? 'relative' : '';
+                            frame.style.zIndex = open ? '100001' : '';
+                        }
+
+                        // Transparent parts of the iframe would let the host backdrop show through
+                        // under our own backdrop (double dimming), so paint them with the host's background
+                        let hostBg = '';
+                        if (open && frame) {
+                            for (let el = frame.parentElement; el; el = el.parentElement) {
+                                const bg = window.parent.getComputedStyle(el).backgroundColor;
+                                if (bg && bg !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(bg)) {
+                                    hostBg = bg;
+                                    break;
+                                }
+                            }
+                        }
+                        document.documentElement.style.backgroundColor = hostBg;
+                    } catch (err) {
+                        console.warn('Could not dim host page:', err);
+                    }
+                }
+
                 function closeModal() {
                     if (modalBackdrop) {
                         modalBackdrop.classList.remove('active');
                     }
+                    notifyParentModal(false);
                     if (cardPlaceholder) {
                         cardPlaceholder.innerHTML = '';
                     }
@@ -2098,6 +2175,7 @@
 
                     cardPlaceholder.innerHTML = '<div style="font-family:\'Roboto Mono\', monospace; color:#000; background:#fffdf5; padding:20px; border:2px solid #000; border-radius:10px; width:312px; text-align:center; box-sizing:border-box;">Carregando perfil...</div>';
                     modalBackdrop.classList.add('active');
+                    notifyParentModal(true);
 
                     // Position the modal wrapper close to the clicked element if provided
                     if (clickedElement) {
@@ -2185,6 +2263,44 @@
                         closeModal();
                     }
                 });
+
+                // Close the modal once most of the flag has been scrolled out of view
+                const flagGrid = document.querySelector('.flag-grid-container');
+
+                function flagVisibleFraction() {
+                    const rect = flagGrid.getBoundingClientRect();
+                    if (rect.height === 0) return 1;
+                    let top = rect.top;
+                    let bottom = rect.bottom;
+                    let viewTop = 0;
+                    let viewBottom = window.innerHeight;
+                    if (window.self !== window.top && window.frameElement) {
+                        // Translate into the host page's viewport, clipped to the iframe itself
+                        const frameRect = window.frameElement.getBoundingClientRect();
+                        top += frameRect.top;
+                        bottom += frameRect.top;
+                        viewTop = Math.max(0, frameRect.top);
+                        viewBottom = Math.min(window.parent.innerHeight, frameRect.bottom);
+                    }
+                    const visible = Math.min(bottom, viewBottom) - Math.max(top, viewTop);
+                    return Math.max(0, visible) / rect.height;
+                }
+
+                function closeModalIfFlagHidden() {
+                    if (!modalBackdrop || !modalBackdrop.classList.contains('active') || !flagGrid) return;
+                    if (flagVisibleFraction() < 0.5) {
+                        closeModal();
+                    }
+                }
+
+                window.addEventListener('scroll', closeModalIfFlagHidden, { passive: true });
+                if (window.self !== window.top) {
+                    try {
+                        window.parent.addEventListener('scroll', closeModalIfFlagHidden, { passive: true });
+                    } catch (err) {
+                        console.warn('Could not watch host page scroll:', err);
+                    }
+                }
             });
 
             if (window.self !== window.top) {

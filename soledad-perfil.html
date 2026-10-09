@@ -350,12 +350,7 @@
 
     .highlight-black-bg {
       display: inline;
-      background-color: #000000;
-      color: #f5f2e6 !important;
       font-weight: 700 !important;
-      padding: 3px 8px;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
     }
 
     .red-banner-text-container {
@@ -489,6 +484,11 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
+      /* Slightly smaller image captions on mobile */
+      .image-caption {
+        font-size: 11px !important;
+      }
+
       .global-header {
         padding: 15px 20px !important;
         justify-content: center !important;
@@ -498,6 +498,11 @@
 
       .profile-container {
         margin: 30px auto !important;
+        gap: 20px !important;
+      }
+
+      .hero-section {
+        margin-bottom: 0 !important;
       }
 
       p {
@@ -522,6 +527,7 @@
       .quote-photo-section {
         flex-direction: column !important;
         gap: 30px !important;
+        margin-top: 0 !important;
       }
 
       .quote-text-container {
@@ -536,7 +542,9 @@
 
       .content-photo-section {
         flex-direction: column !important;
-        gap: 30px !important;
+        gap: 20px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
       }
 
       .content-text-container {
@@ -546,6 +554,10 @@
       .content-image-container {
         width: 100% !important;
         max-width: 100% !important;
+      }
+
+      .content-image-container[style*="visibility: hidden"] {
+        display: none !important;
       }
 
       .red-banner-section {
@@ -677,6 +689,17 @@
       </div>
     </div>
 
+    <div class="content-photo-section" style="margin-top: 50px; margin-bottom: 20px;">
+      <div class="content-text-container" style="flex: 0 0 75%;">
+        <p data-i18n-html="soledad.content1_p1">A partir de então, Soledad passou a ser perseguida e resolveu seguir para <span
+            class="highlight-bold">Cuba</span> onde recebeu treinamento de guerrilha e conheceu <span
+            class="highlight-bg"><a href="perfs/jose-maria-ferreira-de-araujo-perfil.html" style="color: inherit; text-decoration: none;">José Maria de Araújo</a></span>, militante da Vanguarda Popular Revolucionária (VPR) que
+          tinha sido banido do Brasil por ter participado da mobilização dos marinheiros quando era um jovem oficial.
+        </p>
+      </div>
+      <div class="content-image-container" style="flex: 0 0 25%; visibility: hidden; pointer-events: none;"></div>
+    </div>
+
     <!-- Centralized large newspaper photo -->
     <div
       style="text-align: center; margin-top: 70px; margin-bottom: 70px; display: flex; flex-direction: column; align-items: center; gap: 30px;">
@@ -685,17 +708,6 @@
           style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transform: none !important; transition: none !important; display: block; margin: 0 auto;" />
         <p class="image-caption" style="text-align: center;" data-i18n="soledad.photo2_caption">Reportagem do Jornal Época de 1962</p>
       </div>
-    </div>
-
-    <div class="content-photo-section" style="margin-top: 50px; margin-bottom: 20px;">
-      <div class="content-text-container" style="flex: 0 0 75%;">
-        <p data-i18n-html="soledad.content1_p1">A partir de então, Soledad passou a ser perseguida e resolveu seguir para <span
-            class="highlight-bold">Cuba</span> onde recebeu treinamento de guerrilha e conheceu <span
-            class="highlight-bg">José Maria de Araújo</span>, militante da Vanguarda Popular Revolucionária (VPR) que
-          tinha sido banido do Brasil por ter participado da mobilização dos marinheiros quando era um jovem oficial.
-        </p>
-      </div>
-      <div class="content-image-container" style="flex: 0 0 25%; visibility: hidden; pointer-events: none;"></div>
     </div>
 
     <!-- Section: Cuba, Treinamento & Casal (Text on Left, Image on Right) -->
@@ -709,8 +721,8 @@
       </div>
       <div class="content-image-container" style="display: flex; flex-direction: column; align-items: center;">
         <img class="content-image" alt="Soledad e José Maria" src="images/imagens-soledad/SOLEDADE-foto04-casal.png" />
-        <p class="image-caption" style="text-align: center;" data-i18n="soledad.photo3_caption">Foto de Soledad com o seu companheiro, José Maria de
-          Araújo.</p>
+        <p class="image-caption" style="text-align: center;" data-i18n-html="soledad.photo3_caption">Foto de Soledad com o seu companheiro, <a href="perfs/jose-maria-ferreira-de-araujo-perfil.html" style="color: inherit; text-decoration: none;">José Maria de
+          Araújo</a>.</p>
       </div>
     </div>
 
@@ -742,8 +754,8 @@
         <p data-i18n-html="soledad.agent3"><span class="highlight-black-bg">Carlos Alberto Augusto</span>, participou da operação que capturou os
           militantes da VPR.</p>
         <p data-i18n-html="soledad.mandate">Soledad morreu durante o mandato de <span class="highlight-black-bg">Emílio Garrastazu Médici</span>.</p>
-        <p style="margin-top: 30px; font-size: 16px; line-height: 1.8;" data-i18n-html="soledad.source">Texto baseado no <span
-            class="highlight-bold">Terceiro Volume do Relatório Final da Comissão Nacional da Verdade (CNV)</span>.</p>
+        <p class="quote-author" style="margin-top: 30px !important; line-height: 1.8;" data-i18n-html="soledad.source">Texto baseado no
+            Terceiro Volume do Relatório Final da Comissão Nacional da Verdade (CNV).</p>
       </div>
     </div>
 

@@ -76,14 +76,16 @@ p {
 }
 
 /* Source line at the end of the profile */
+/* Same look as the quote attribution (.quote-author) */
 .source-note {
   font-size: 16px;
-  color: #666666;
+  color: var(--text-highlight);
+  font-style: normal;
 }
 
 .source-note a {
-  color: var(--text-highlight);
-  font-weight: 700;
+  color: inherit;
+  font-weight: inherit;
   text-decoration: none;
 }
 

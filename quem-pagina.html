@@ -90,7 +90,7 @@
 
     /* Huge stacked typography, same as the profile hero */
     .hero-title {
-      font-size: clamp(1.8rem, 12vw, 200px);
+      font-size: clamp(1.8rem, 11vw, 175px);
       line-height: 0.82;
       color: var(--text-highlight);
       margin: 40px 0 35px;
@@ -99,6 +99,8 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-align: center;
+      /* Spread words evenly across lines so none is left alone on the last line */
+      text-wrap: balance;
     }
 
     /* Red bold style for highlights (same as the profile pages) */
@@ -152,7 +154,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-      text-align: center;
+      text-align: left;
       margin: 40px 0;
     }
 
@@ -225,6 +227,12 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
+      /* Less vertical padding so the page background shows between the red lines */
+      .quote-highlight-text {
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+
       .global-header {
         padding: 15px 20px !important;
         justify-content: center !important;
@@ -321,7 +329,7 @@
     </nav>
   </header>
   <main class="profile-container">
-    <h1 class="hero-title" data-i18n="others.title">quem não pertence À BANDEIRA</h1>
+    <h1 class="hero-title" data-i18n="others.title">quem não pertence À&nbsp;BANDEIRA</h1>
     <p data-i18n-html="others.p3">A maior parte das vítimas identificadas no <span class="highlight-bold">Terceiro Volume do Relatório Final da
         CNV</span> corresponde a um perfil específico das vítimas da ditadura.</p>
     <p data-i18n-html="others.p1">Embora o <span class="highlight-bold">Segundo Volume</span> dedique um capítulo à morte de trabalhadores,

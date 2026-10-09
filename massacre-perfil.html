@@ -77,14 +77,17 @@
       margin: 0;
     }
 
+    /* Same look as the quote attribution (.quote-author) */
     .source-note {
-      color: #666666;
+      font-size: 16px;
+      color: var(--text-highlight);
+      font-style: normal;
       margin-top: 20px;
     }
 
     .source-note a {
-      color: var(--text-highlight);
-      font-weight: 700;
+      color: inherit;
+      font-weight: inherit;
       text-decoration: none;
     }
 
@@ -155,6 +158,11 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
+      /* Slightly smaller image captions on mobile */
+      .caption {
+        font-size: 12px !important;
+      }
+
       .global-header {
         padding: 15px 20px !important;
         justify-content: center !important;

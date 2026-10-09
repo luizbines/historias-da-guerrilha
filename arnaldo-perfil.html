@@ -296,6 +296,13 @@
       max-width: 300px;
     }
 
+    /* Empty spacer that makes the text start at 40% of the page width
+       (section is centered: 50% of its width - 10vw - gap) */
+    .content-image-container.text-at-40 {
+      width: calc(50% - 10vw - 65px);
+      max-width: none;
+    }
+
     .content-image {
       width: 100%;
       height: auto;
@@ -350,12 +357,7 @@
 
     .highlight-black-bg {
       display: inline;
-      background-color: #000000;
-      color: #f5f2e6 !important;
       font-weight: 700 !important;
-      padding: 3px 8px;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
     }
 
     .red-banner-text-container {
@@ -489,6 +491,52 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
+      /* "De volta ao país..." beside the ID photo: photo on the left, paragraph on the right */
+      .return-section {
+        display: grid !important;
+        grid-template-columns: 38% 1fr;
+        column-gap: 20px;
+        row-gap: 35px;
+        align-items: center;
+      }
+
+      .return-section .content-text-container {
+        display: contents;
+      }
+
+      .return-section .content-text-container p {
+        grid-column: 1 / -1;
+        margin: 0;
+      }
+
+      .return-section .content-text-container p:last-child {
+        grid-column: 2;
+        grid-row: 3;
+      }
+
+      .return-section .content-image-container {
+        grid-column: 1;
+        grid-row: 3;
+        width: 100% !important;
+      }
+
+      /* Attribution right before the childhood photo: smaller, with more room below */
+      .quote-author-intro {
+        font-size: 13px !important;
+        margin-bottom: 25px !important;
+      }
+
+      /* Less vertical padding so the page background shows between the red lines */
+      .quote-highlight-text {
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+
+      /* Slightly smaller image captions on mobile */
+      .image-caption {
+        font-size: 11px !important;
+      }
+
       .global-header {
         padding: 15px 20px !important;
         justify-content: center !important;
@@ -662,7 +710,7 @@
           <span class="quote-highlight-text" data-i18n="arnaldo.quote1_2">“Arnaldo era um garoto como muitos de sua idade, só não amava os Beatles e
             os Rolling Stones e sim o samba e a bossa nova. Adorava dançar, namorar e conversar com os amigos.”</span>
         </p>
-        <p class="quote-author" data-i18n="arnaldo.quote1_author">Texto de Iara Xavier para a Comissão Nacional da Verdade.</p>
+        <p class="quote-author quote-author-intro" data-i18n="arnaldo.quote1_author">Texto de Iara Xavier para a Comissão Nacional da Verdade.</p>
       </div>
       <div class="quote-image-container" style="display: flex; flex-direction: column; align-items: center;">
         <img class="quote-image" alt="Arnaldo pequeno" src="images/imagens-arnaldo/foto_arnaldo-pequeno-15330.png" />
@@ -681,7 +729,7 @@
         <p data-i18n-html="arnaldo.content1_p2">Deixou o PCB no quadro de dissidências do período, formando em conjunto a outros jovens a <span
             class="highlight-bold">Corrente Revolucionária de Minas Gerais</span>, que posteriormente se integrou à
           <span class="highlight-bold">Ação Libertadora Nacional (ALN)</span>, sob o comando de <span
-            class="highlight-bg">Carlos Marighella</span>.
+            class="highlight-bg"><a href="perfs/carlos-marighella-perfil.html" style="color: inherit; text-decoration: none;">Carlos Marighella</a></span>.
         </p>
       </div>
       <div class="content-image-container" style="display: flex; flex-direction: column; align-items: center;">
@@ -723,12 +771,12 @@
     </div>
 
     <!-- Section: Exílio, Retorno & Ações -->
-    <div class="content-photo-section">
+    <div class="content-photo-section return-section">
       <div class="content-text-container">
         <p data-i18n-html="arnaldo.content3_p1">Com o aumento da repressão, decidiu deixar o país e seguir para o exterior. No entanto, sua permanência foi
           breve, pois logo retornou ao <span class="highlight-bold">Brasil</span>.</p>
-        <p data-i18n-html="arnaldo.content3_p2">Em 1972, recebeu a notícia do assassinato de seu cunhado e comandante, <span class="highlight-bg">Iuri
-            Xavier</span>. Apesar das ordens expressas do comando no <span class="highlight-bold">Brasil</span> para que
+        <p data-i18n-html="arnaldo.content3_p2">Em 1972, recebeu a notícia do assassinato de seu cunhado e comandante, <span class="highlight-bg"><a href="perfs/iuri-xavier-pereira-perfil.html" style="color: inherit; text-decoration: none;">Iuri
+            Xavier</a></span>. Apesar das ordens expressas do comando no <span class="highlight-bold">Brasil</span> para que
           permanecesse fora, comunicou sua decisão de voltar.</p>
         <p data-i18n-html="arnaldo.content3_p3">De volta ao país, permaneceu algum tempo no Nordeste, onde participou do assalto à <span
             class="highlight-bold">Coletoria de Impostos de Bodocó</span>, em <span
@@ -750,13 +798,13 @@
       <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         <img alt="Jornal referente ao assassinato de Arnaldo" src="images/imagens-arnaldo/ARNADALDO-foto06-jornal-1.png"
           style="width: 100%; height: auto; border-radius: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); transform: none !important; transition: none !important; display: block; margin: 0 auto;" />
-        <p class="image-caption" style="text-align: center;" data-i18n="arnaldo.newspaper_caption">Divulgação de morte de Francisco Emmanuel Penteado,
-          Francisco Seiko Okama e Arnaldo Cardoso Rocha pelo Jornal Folha da Tarde.</p>
+        <p class="image-caption" style="text-align: center;" data-i18n-html="arnaldo.newspaper_caption">Divulgação de morte de <a href="perfs/francisco-emanuel-penteado-perfil.html" style="color: inherit; text-decoration: none;">Francisco Emmanuel Penteado</a>,
+          <a href="perfs/francisco-seiko-okama-perfil.html" style="color: inherit; text-decoration: none;">Francisco Seiko Okama</a> e Arnaldo Cardoso Rocha pelo Jornal Folha da Tarde.</p>
       </div>
     </div>
 
     <p data-i18n-html="arnaldo.official_ver">Segundo a versão oficial divulgada em 16 de março de 1973 no Jornal Folha da Tarde, Arnaldo Cardoso Rocha, <span
-        class="highlight-bg">Francisco Emmanuel Penteado, Francisco Seiko Okama</span> foram vistos no bairro da <span
+        class="highlight-bg"><a href="perfs/francisco-emanuel-penteado-perfil.html" style="color: inherit; text-decoration: none;">Francisco Emmanuel Penteado</a>, <a href="perfs/francisco-seiko-okama-perfil.html" style="color: inherit; text-decoration: none;">Francisco Seiko Okama</a></span> foram vistos no bairro da <span
         class="highlight-bold">Penha, São Paulo</span>, por um carro da polícia que patrulhava a região. Ao receberem
       voz de prisão, segundo a versão oficial, teriam reagido com tiros.</p>
     <p data-i18n="arnaldo.contested_ver">Essa narrativa foi contestada na década de 80, quando Iara Xavier Pereira e Suzana Keniger Lisbôa iniciaram
@@ -787,7 +835,7 @@
 
     <!-- Section: Investigação e Sepultamento (à direita) -->
     <div class="content-photo-section">
-      <div class="content-image-container" style="visibility: hidden; pointer-events: none;"></div>
+      <div class="content-image-container text-at-40" style="visibility: hidden; pointer-events: none;"></div>
       <div class="content-text-container">
         <p data-i18n="arnaldo.investigation_p1">Através da investigação da sua companheira, Iara Xavier, foi descoberto que Arnaldo foi levado vivo para o
           DOI-CODI/SP, onde teria sido torturado.</p>
@@ -814,7 +862,7 @@
 
     <!-- Section: Agentes (à direita) -->
     <div class="content-photo-section">
-      <div class="content-image-container" style="visibility: hidden; pointer-events: none;"></div>
+      <div class="content-image-container text-at-40" style="visibility: hidden; pointer-events: none;"></div>
       <div class="content-text-container">
         <p data-i18n="arnaldo.agents_intro">Os principais agentes mencionados no caso são:</p>
         <p data-i18n-html="arnaldo.agent1"><span class="highlight-black-bg">Carlos Alberto Brilhante Ustra</span>, apontado como responsável por seu
@@ -826,8 +874,8 @@
         <p> </p>
         <p data-i18n="arnaldo.cert_note">Apenas em 25 de agosto de 2025, houve a entrega da sua certidão de óbito retificada aos seus familiares.</p>
         <p></p>
-        <p data-i18n-html="arnaldo.source">Texto baseado no <span class="highlight-bold">Terceiro Volume do Relatório da Comissão Nacional da
-            Verdade</span> e no Requerimento de Iara Xavier para a Comissão de Mortos e Desaparecidos.</p>
+        <p class="quote-author" data-i18n-html="arnaldo.source">Texto baseado no Terceiro Volume do Relatório da Comissão Nacional da
+            Verdade e no Requerimento de Iara Xavier para a Comissão de Mortos e Desaparecidos.</p>
       </div>
     </div>
 
