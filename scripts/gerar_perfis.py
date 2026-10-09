@@ -195,6 +195,9 @@ def render(card, row):
     href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&amp;family=Playfair+Display:ital,wght@0,600;1,400&amp;display=swap"
     rel="stylesheet" />
   <link href="perfil-vitima.css?v=3" rel="stylesheet" />
+  <!-- Contador de visitas (GoatCounter). Nao conta quando a pagina esta dentro de um iframe. -->
+  <script>if (window.self !== window.top) window.goatcounter = {{ no_onload: true }};</script>
+  <script data-goatcounter="https://historiasdaguerrilha.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 
 <body>
