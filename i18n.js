@@ -12,7 +12,7 @@
 
       // Index Page
       "video.loading": "Vídeo carregando...",
-      "index.title": "HISTÓRIAS DA GUERRILHA",
+      "index.title": "HISTÓRIAS DA\u00a0GUERRILHA",
       "index.subtitle": "VIDAS PERDIDAS NA DITADURA CIVIL MILITAR BRASILEIRA",
       "index.quote": "“Era filho do Rocha, velho militante comunista e seu referencial de vida; mas sempre apegado à mãe, Annette, que segurava as barras da família: dez filhos, um marido militante e sempre muito serviço na casa cheia para os almoços domingueiros, regados a discussão política e cerveja.”",
       "index.quote_author": "Texto de Iara Xavier para Comissão Nacional da Verdade",
@@ -169,7 +169,7 @@
 
       // Index Page
       "video.loading": "Video loading...",
-      "index.title": "STORIES OF THE GUERRILLA",
+      "index.title": "STORIES OF THE\u00a0GUERRILLA",
       "index.subtitle": "LIVES LOST IN THE BRAZILIAN CIVIL-MILITARY DICTATORSHIP",
       "index.quote": "“He was the son of Rocha, an old communist militant and his role model in life; but always attached to his mother, Annette, who held the family together: ten children, a militant husband, and always plenty of work in the full house for Sunday lunches, filled with political discussions and beer.”",
       "index.quote_author": "Text by Iara Xavier for the National Truth Commission",
@@ -323,7 +323,7 @@
       "nav.others": "LOS OTROS",
 
       "video.loading": "Cargando video...",
-      "index.title": "HISTORIAS DE LA GUERRILLA",
+      "index.title": "HISTORIAS DE LA\u00a0GUERRILLA",
       "index.subtitle": "VIDAS PERDIDAS EN LA DICTADURA CIVIL MILITAR BRASILEÑA",
       "index.quote": "“Era hijo de Rocha, un viejo militante comunista y su referente de vida; pero siempre apegado a su madre, Annette, quien sostenía la familia: diez hijos, un marido militante y siempre mucho trabajo en la casa llena para los almuerzos de domingo, llenos de discusión política y cerveza.”",
       "index.quote_author": "Texto de Iara Xavier para la Comisión Nacional de la Verdad",

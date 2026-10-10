@@ -15,7 +15,7 @@
     <meta http-equiv="Expires" content="0" />
     <title>Exported Figma Design</title>
     <link href="styles.css?v=18" rel="stylesheet" />
-    <script src="i18n.js?v=11"></script>
+    <script src="i18n.js?v=12"></script>
 
     <style>
         /* GLOBAL FONT */
@@ -546,6 +546,24 @@
 
             .legend-box {
                 margin-right: 6px;
+            }
+
+            /* Keep the CNV footnote on one line: shrink below 14px only when needed.
+               Each monospace char is 0.66em (0.6em + 6% letter-spacing); 32px = side gutters */
+            .text-8826,
+            .text-8826 span {
+                white-space: nowrap;
+                font-size: min(14px, calc((100vw - 32px) / 25.2)) !important;
+            }
+
+            html:lang(en) .text-8826,
+            html:lang(en) .text-8826 span {
+                font-size: min(14px, calc((100vw - 32px) / 26.5)) !important;
+            }
+
+            html:lang(es) .text-8826,
+            html:lang(es) .text-8826 span {
+                font-size: min(14px, calc((100vw - 32px) / 28.5)) !important;
             }
         }
 

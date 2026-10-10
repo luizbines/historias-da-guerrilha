@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,600;1,400&display=swap"
     rel="stylesheet">
-  <script src="i18n.js?v=11"></script>
+  <script src="i18n.js?v=12"></script>
 
   <style>
     .global-header {
@@ -359,9 +359,17 @@
       }
 
       .intro-container h1 {
-        font-size: clamp(1.8rem, 12vw, 60px) !important;
+        /* Same size as the other pages' titles (12vw), shrunk only where the bound second line
+           ("DA GUERRILHA" / "LA GUERRILLA": 12 monospace chars at 0.6em + 2px letter-spacing)
+           would not fit the 20px side padding */
+        font-size: max(1.8rem, min(12vw, calc((100vw - 64px) / 7.2))) !important;
         letter-spacing: 2px;
         white-space: normal;
+      }
+
+      /* "THE GUERRILLA" has 13 chars */
+      html:lang(en) .intro-container h1 {
+        font-size: max(1.8rem, min(12vw, calc((100vw - 66px) / 7.8))) !important;
       }
 
       .intro-container h2 {
@@ -377,7 +385,7 @@
     <div class="nav-bar-lang-container" style="display: flex; justify-content: flex-end; width: 100%; max-width: 1000px; box-sizing: border-box; padding: 0 40px;"></div>
     <div class="intro-container">
       <p style="margin: 0; height: 20px;"></p>
-      <h1 data-i18n="index.title">HISTÓRIAS DA GUERRILHA</h1>
+      <h1 data-i18n="index.title">HISTÓRIAS DA&nbsp;GUERRILHA</h1>
       <h2 data-i18n="index.subtitle">VIDAS PERDIDAS NA DITADURA CIVIL MILITAR BRASILEIRA</h2>
 
       <p
